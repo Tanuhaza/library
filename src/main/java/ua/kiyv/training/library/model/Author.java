@@ -74,6 +74,11 @@ public class Author {
             return this;
         }
 
+        public Author.Builder setLastName(String lastName) {
+            instance.setFirstName(lastName);
+            return this;
+        }
+
         public Author build() {
             return instance;
         }

@@ -5,6 +5,7 @@ import ua.kiyv.training.library.model.User;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 
 public class UserMapper implements ObjectMapper<User> {
 
@@ -15,11 +16,17 @@ public class UserMapper implements ObjectMapper<User> {
                 .setId(rs.getInt("id") )
                 .setFirstName( rs.getString("firstName") )
                 .setLastName( rs.getString("lastName") )
-                .setLogin(rs.getString("login"))
                 .setPassword(rs.getString("password"))
                 .setEmail(rs.getString("email"))
                 .setRole(Role.valueOf(rs.getString("role")))
                 .build();
+    }
+
+    @Override
+    public User makeUnique(Map<Integer, User> cache,
+                              User user) {
+        cache.putIfAbsent(user.getId(),user);
+        return cache.get(user.getId());
     }
 }
 

@@ -1,6 +1,7 @@
 package ua.kiyv.training.library.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class Book {
     private int id;
@@ -8,9 +9,21 @@ public class Book {
     private String description;
     private String pictureId;
     private int rate;
-    private Date year;
+    private int year;
     private boolean avaliable;
     private int quantity;
+    private String keywords;
+    private Date addedDate;
+    private int genreId;
+    private List<Author> authors;
+
+    public List<Author> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<Author> authors) {
+        this.authors = authors;
+    }
 
     public Book() {
     }
@@ -55,12 +68,36 @@ public class Book {
         this.rate = rate;
     }
 
-    public Date getYear() {
+    public int getYear() {
         return year;
     }
 
-    public void setYear(Date year) {
+    public void setYear(int year) {
         this.year = year;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
+    public void setAddedDate(Date addedDate) {
+        this.addedDate = addedDate;
+    }
+
+    public int getGenreId() {
+        return genreId;
+    }
+
+    public void setGenreId(int genreId) {
+        this.genreId = genreId;
     }
 
     public boolean isAvaliable() {
@@ -88,12 +125,15 @@ public class Book {
 
         if (id != book.id) return false;
         if (rate != book.rate) return false;
+        if (year != book.year) return false;
         if (avaliable != book.avaliable) return false;
         if (quantity != book.quantity) return false;
+        if (genreId != book.genreId) return false;
         if (title != null ? !title.equals(book.title) : book.title != null) return false;
         if (description != null ? !description.equals(book.description) : book.description != null) return false;
         if (pictureId != null ? !pictureId.equals(book.pictureId) : book.pictureId != null) return false;
-        return year != null ? year.equals(book.year) : book.year == null;
+        if (keywords != null ? !keywords.equals(book.keywords) : book.keywords != null) return false;
+        return addedDate != null ? addedDate.equals(book.addedDate) : book.addedDate == null;
     }
 
     @Override
@@ -103,9 +143,12 @@ public class Book {
         result = 31 * result + (description != null ? description.hashCode() : 0);
         result = 31 * result + (pictureId != null ? pictureId.hashCode() : 0);
         result = 31 * result + rate;
-        result = 31 * result + (year != null ? year.hashCode() : 0);
+        result = 31 * result + year;
         result = 31 * result + (avaliable ? 1 : 0);
         result = 31 * result + quantity;
+        result = 31 * result + (keywords != null ? keywords.hashCode() : 0);
+        result = 31 * result + (addedDate != null ? addedDate.hashCode() : 0);
+        result = 31 * result + genreId;
         return result;
     }
 
@@ -146,12 +189,22 @@ public class Book {
             return this;
         }
 
+        public Book.Builder setGenreId(int id) {
+            instance.setRate(id);
+            return this;
+        }
+
+        public Book.Builder setAddedDate(Date date) {
+            instance.setAddedDate(date);
+            return this;
+        }
+
         public Book.Builder setRate(int rate) {
             instance.setRate(rate);
             return this;
         }
 
-        public Book.Builder setYear(Date year) {
+        public Book.Builder setYear(int year) {
             instance.setYear(year);
             return this;
         }
@@ -163,6 +216,11 @@ public class Book {
 
         public Book.Builder setQuantity(int quantity) {
             instance.setQuantity(quantity);
+            return this;
+        }
+
+        public Book.Builder setKeywords(String keywords) {
+            instance.setKeywords(keywords);
             return this;
         }
 

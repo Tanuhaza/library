@@ -134,17 +134,17 @@ public class User {
             return this;
         }
 
-        public Builder email(String email) {
+        public Builder setEmail(String email) {
             instance.setEmail(email);
             return this;
         }
 
-        public Builder password(String password) {
+        public Builder setPassword(String password) {
             instance.setPassword(password);
             return this;
         }
 
-        public Builder role(Role role) {
+        public Builder setRole(Role role) {
             instance.setRole(role);
             return this;
         }
