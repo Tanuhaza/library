@@ -15,7 +15,8 @@ public final class PagesPath {
     public static final String LOGIN_PATH = "/library/login";
     public static final String REGISTER_PATH = "/library/register";
     public static final String LOGOUT_PATH = "/library/logout";
-    public static final String TOPICS_PATH="/topic";
+    public static final String STATISTICS_PATH="/library/statistics";
+    public static final String MANAGE_PATH="/library/manage";
     public static final String TOPICS_ID_PATH="/topic/id";
     public static final String QUIZ_ID_PATH="/quiz/id";
     public static final String QUIZ_PATH="/quiz";
@@ -26,8 +27,11 @@ public final class PagesPath {
     public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "homePage.jsp";
     public static final String ADMIN_VIEW_USERS_PAGE = VIEW_JSP_CLASSPATH + "admin/viewUsersPage.jsp";
     public static final String ADMIN_USER_RESPONSE_PAGE = VIEW_JSP_CLASSPATH + "admin/userResponsePage.jsp";
+    public static final String ADMIN_STATISTICS_PAGE= VIEW_JSP_CLASSPATH + "admin/statisticsPage.jsp";
+    public static final String ADMIN_MANAGE_PAGE= VIEW_JSP_CLASSPATH + "admin/managePage.jsp";
 
     public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
+
     public static final String TOPICS_PAGE = VIEW_JSP_CLASSPATH + "user/viewTopics.jsp";
     public static final String QUIZ_VIEW_PAGE = VIEW_JSP_CLASSPATH + "user/viewQuizzes.jsp";
     public static final String QUIZ_PAGE = VIEW_JSP_CLASSPATH + "user/quizPage.jsp";

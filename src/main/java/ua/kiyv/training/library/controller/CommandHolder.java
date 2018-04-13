@@ -5,6 +5,8 @@ package ua.kiyv.training.library.controller;
 
 import ua.kiyv.training.library.controller.command.LogoutCommand;
 import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
+import ua.kiyv.training.library.controller.command.admin.ManageCommand;
+import ua.kiyv.training.library.controller.command.admin.StatisticsCommand;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
 import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
 import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
@@ -12,9 +14,7 @@ import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
 import java.util.HashMap;
 import java.util.Map;
 
-import static ua.kiyv.training.library.utils.constants.PagesPath.LOGIN_PATH;
-import static ua.kiyv.training.library.utils.constants.PagesPath.LOGOUT_PATH;
-import static ua.kiyv.training.library.utils.constants.PagesPath.REGISTER_PATH;
+import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
 
 /**
@@ -46,8 +46,10 @@ class CommandHolder {
 
 //        commands.put(GET + deployPath + HOME_PATH, new HomeCommand());
         commands.put(GET + deployPath + LOGIN_PATH, new LoginCommand());
-//
         commands.put(GET + deployPath + LOGOUT_PATH, new LogoutCommand());
+
+        commands.put(GET + deployPath + STATISTICS_PATH, new StatisticsCommand());
+        commands.put(GET + deployPath + MANAGE_PATH, new ManageCommand());
 //        commands.put(GET + deployPath + TOPICS_PATH, new ViewTopicsCommand());
 //        commands.put(GET+ deployPath + TOPICS_ID_PATH, new ViewTestsCommand());
 //        commands.put(GET+ deployPath + QUIZ_ID_PATH, new ChooseTestCommand());
@@ -55,6 +57,7 @@ class CommandHolder {
 //        commands.put(GET+ deployPath + ADMIN_USERS_PATH, new AdminViewUsersCommand());
 //        commands.put(GET+ deployPath + ADMIN_USER_ID_PATH, new AdminViewUsersResponseCommand());
 //        commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
+
 //
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
         commands.put(POST + deployPath + REGISTER_PATH, new RegisterSubmitCommand());

@@ -53,11 +53,11 @@
                     <input id="tab" type="hidden" value="${requestScope.tab}">
                     <div class="row">
                         <div class="col-xs-6">
-                            <a href="#" class="active" id="login-form-link"><fmt:message key="testing.system.login"
+                            <a href="#" class="active" id="login-form-link"><fmt:message key="library.login"
                                                                                          bundle="${msg}"/></a>
                         </div>
                         <div class="col-xs-6">
-                            <a href="#" id="register-form-link"><fmt:message key="testing.system.register"
+                            <a href="#" id="register-form-link"><fmt:message key="library.register"
                                                                              bundle="${msg}"/></a>
                         </div>
                     </div>
@@ -70,13 +70,13 @@
                                 <div class="form-group">
                                     <input type="text" name="login_name" id="login_name" tabindex="1"
                                            class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.login" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.login" bundle="${msg}"/>"
                                            value="${requestScope.previousLogin}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="login_password" id="login_password" tabindex="2"
                                            class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.password" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.password" bundle="${msg}"/>"
                                            value="${requestScope.previousPassword}" required>
                                 </div>
                                 <div class="form-group">
@@ -84,7 +84,7 @@
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <input type="submit" name="login-submit" id="login-submit" tabindex="4"
                                                    class="form-control btn btn-login"
-                                                   value="<fmt:message key="testing.system.login" bundle="${msg}"/>">
+                                                   value="<fmt:message key="library.login" bundle="${msg}"/>">
                                         </div>
                                     </div>
                                 </div>
@@ -95,28 +95,28 @@
                                   style="display: none;">
                                 <div class="form-group">
                                     <input type="text" name="name" id="name" tabindex="1" class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.name" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.name" bundle="${msg}"/>"
                                            value="${requestScope.previousUserName}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="surname" id="surname" tabindex="1" class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.surname" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.surname" bundle="${msg}"/>"
                                            value="${requestScope.previousUserSurname}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="email" id="email" tabindex="1" class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.email" bundle="${msg}" />"
+                                           placeholder="<fmt:message key="library.registration.placeholder.email" bundle="${msg}" />"
                                            value="${requestScope.previousUserEmail}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="login" id="login" tabindex="1" class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.login" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.login" bundle="${msg}"/>"
                                            value="${requestScope.previousUserLogin}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2"
                                            class="form-control"
-                                           placeholder="<fmt:message key="testing.system.placeholder.password" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.password" bundle="${msg}"/>"
                                            value="${requestScope.previousUserPassword}" required>
                                 </div>
                                 <div class="form-group">
@@ -124,7 +124,7 @@
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <input type="submit" name="register-submit" id="register-submit"
                                                    tabindex="4" class="form-control btn btn-register"
-                                                   value="<fmt:message key="testing.system.register" bundle="${msg}"/>">
+                                                   value="<fmt:message key="library.register" bundle="${msg}"/>">
                                         </div>
                                     </div>
                                 </div>
