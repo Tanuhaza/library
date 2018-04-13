@@ -1,0 +1,47 @@
+.user-welcome {
+    font-size: 30px;
+    font-weight: bold;
+    font-family: "Bradley Hand ITC";
+    padding: 100px;
+    letter-spacing: 2.5px;
+    text-decoration-color: #5ACBFF;
+    color: #a03261;
+}
+
+.user-first-last-name {
+    padding: 50px;
+}
+
+.welcome {
+}
+.welcome-index {
+    padding: 40px 200px 40px 400px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 30;
+    font-weight: bolder;
+    color:#4f8db3;
+}
+.welcome-text {
+    padding: 0px 100px 0px 100px;
+    font-family: Georgia;
+    font-size: 20;
+    font-weight: 10px;
+    letter-spacing:0.5px
+}
+.welcome-sign-in-out{
+    margin: 0px 0px 40px 0px;
+    padding: 20px 300px 0px 500px;
+    color: red;
+    font-weight: bold;
+    font-size: 20;
+}
+.main-menu {
+
+}
+.body-profile-container{
+    color: #050661;
+    background: url(/icons/back.jpg)
+}
+.body-container{
+    background: url(/icons/back3.jpg)
+}

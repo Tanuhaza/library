@@ -16,6 +16,7 @@ public final class MessageKeys {
     public static final String WRONG_USER_DATE = "message.wrong.user.date";
     public static final String WRONG_LOGIN_DATA = "message.wrong.login.data";
     public static final String WRONG_LOGIN = "message.wrong.login";
+    public static final String WRONG_USER_CELLPHONE = "message.wrong.user.cellphone";
 
     public static final String WRONG_USER_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.user.no.rows.affected";
     public static final String WRONG_USER_DB_NO_ID_OBTAINED ="message.wrong.creating.user.no.id.obtained";

@@ -3,9 +3,18 @@ package ua.kiyv.training.library.controller;
 
 
 
+import ua.kiyv.training.library.controller.command.LogoutCommand;
+import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
+import ua.kiyv.training.library.controller.command.login.LoginCommand;
+import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
+import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
+
 import java.util.HashMap;
 import java.util.Map;
 
+import static ua.kiyv.training.library.utils.constants.PagesPath.LOGIN_PATH;
+import static ua.kiyv.training.library.utils.constants.PagesPath.LOGOUT_PATH;
+import static ua.kiyv.training.library.utils.constants.PagesPath.REGISTER_PATH;
 
 
 /**
@@ -35,21 +44,21 @@ class CommandHolder {
 
     private void init() {
 
-        commands.put(GET + deployPath + HOME_PATH, new HomeCommand());
+//        commands.put(GET + deployPath + HOME_PATH, new HomeCommand());
         commands.put(GET + deployPath + LOGIN_PATH, new LoginCommand());
-
+//
         commands.put(GET + deployPath + LOGOUT_PATH, new LogoutCommand());
-        commands.put(GET + deployPath + TOPICS_PATH, new ViewTopicsCommand());
-        commands.put(GET+ deployPath + TOPICS_ID_PATH, new ViewTestsCommand());
-        commands.put(GET+ deployPath + QUIZ_ID_PATH, new ChooseTestCommand());
-        commands.put(GET+ deployPath + PROFILE_PATH, new ViewProfileCommand());
-        commands.put(GET+ deployPath + ADMIN_USERS_PATH, new AdminViewUsersCommand());
-        commands.put(GET+ deployPath + ADMIN_USER_ID_PATH, new AdminViewUsersResponseCommand());
-        commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
-
+//        commands.put(GET + deployPath + TOPICS_PATH, new ViewTopicsCommand());
+//        commands.put(GET+ deployPath + TOPICS_ID_PATH, new ViewTestsCommand());
+//        commands.put(GET+ deployPath + QUIZ_ID_PATH, new ChooseTestCommand());
+//        commands.put(GET+ deployPath + PROFILE_PATH, new ViewProfileCommand());
+//        commands.put(GET+ deployPath + ADMIN_USERS_PATH, new AdminViewUsersCommand());
+//        commands.put(GET+ deployPath + ADMIN_USER_ID_PATH, new AdminViewUsersResponseCommand());
+//        commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
+//
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
         commands.put(POST + deployPath + REGISTER_PATH, new RegisterSubmitCommand());
-        commands.put(POST + deployPath + QUIZ_PATH, new TestSubmitCommand());
+//        commands.put(POST + deployPath + QUIZ_PATH, new TestSubmitCommand());
     }
 
     /**

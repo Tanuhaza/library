@@ -1,9 +1,12 @@
 package ua.kiyv.training.library.service;
 
+import ua.kiyv.training.library.dao.AuthorDao;
 import ua.kiyv.training.library.service.Impl.ServiceFactoryImpl;
 
-public class ServiceFactory {
+public abstract class ServiceFactory {
     private static ServiceFactory serviceFactory;
+
+    public abstract UserService createUserService();
 
     public static ServiceFactory getInstance() {
         if(serviceFactory==null) {

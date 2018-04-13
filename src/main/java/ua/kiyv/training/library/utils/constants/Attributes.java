@@ -35,6 +35,7 @@ public final class Attributes {
     public static final String USER_DATE = "userDate";
     public static final String USER_ID = "userId";
     public static final String USER_ROLE = "userRole";
+    public static final String USER_CELLPHONE = "userCellphone";
 
     public static final String CONFIRM_MESSAGE = "confirmMessage";
 
