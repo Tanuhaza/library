@@ -70,7 +70,7 @@
                                 <div class="form-group">
                                     <input type="text" name="login_name" id="login_name" tabindex="1"
                                            class="form-control"
-                                           placeholder="<fmt:message key="library.registration.placeholder.login" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.email" bundle="${msg}"/>"
                                            value="${requestScope.previousLogin}" required>
                                 </div>
                                 <div class="form-group">
@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="login" id="login" tabindex="1" class="form-control"
-                                           placeholder="<fmt:message key="library.registration.placeholder.login" bundle="${msg}"/>"
+                                           placeholder="<fmt:message key="library.registration.placeholder.phone" bundle="${msg}"/>"
                                            value="${requestScope.previousUserLogin}" required>
                                 </div>
                                 <div class="form-group">

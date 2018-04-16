@@ -1,10 +1,10 @@
 package ua.kiyv.training.library.dao.Impl.query;
 
 public interface UserQuery {
-    String SELECT_ALL = "";
-    String SELECT_BY_ID = "";
-    String INSERT = "";
-//    String
-//            String
-//    String
+    String CREATE_USER = "INSERT INTO user (firstName,lastName,email,phone,password,role) VALUES (?, ?, ?, ?, ?, ?)";
+    String SELECT_ALL_USERS = "SELECT * FROM library.user as u left join book_out_on_loan as bl on " +
+            "u.id=bl.user_id left join book as b on b.id=bl.book_id ";
+    String FILTER_BY_ID = " WHERE id = ?";
+    String UPDATE_USER = "UPDATE user SET firstName = ?, lastName = ?, email=?, phone=?, password=?,role=? WHERE id = ?";
+    String DELETE_USER = "DELETE FROM author WHERE id = ?";
 }

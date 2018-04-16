@@ -1,6 +1,7 @@
 package ua.kiyv.training.library.model;
 
 import java.util.Date;
+import java.util.List;
 
 public class User {
     private int id;
@@ -10,6 +11,15 @@ public class User {
     private String phone;
     private String password;
     private Role role;
+    private List<BorrowedBook> borrowedBooks;
+
+    public List<BorrowedBook> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(List<BorrowedBook> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
 
     public User() {
     }

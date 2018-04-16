@@ -67,7 +67,7 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Book book = null;
         Author author = null;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(FIND_ALL_BOOKS + FILTER_BY_ID);
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (!resultSet.next()) {
@@ -101,7 +101,7 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Author> authors = new HashMap<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(FIND_ALL_BOOKS);
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_BOOKS);
             BookMapper bookMapper = new BookMapper();
             AuthorMapper authorMapper = new AuthorMapper();
             while (resultSet.next()) {

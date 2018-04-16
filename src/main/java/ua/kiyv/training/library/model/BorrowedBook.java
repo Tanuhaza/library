@@ -3,7 +3,7 @@ package ua.kiyv.training.library.model;
 
 import java.util.Date;
 
-public class BorrowedBook {
+public class BorrowedBook extends Book {
     private Date startDate;
     private Date dueToReturnDate;
 
@@ -51,15 +51,71 @@ public class BorrowedBook {
                 ", dueToReturnDate=" + dueToReturnDate +
                 '}';
     }
+
     public static class Builder {
-        BorrowedBook instance = new BorrowedBook();
+        private BorrowedBook instance = new BorrowedBook();
+
+        public BorrowedBook.Builder setId(int id) {
+            instance.setId(id);
+            return this;
+        }
+
+        public BorrowedBook.Builder setTitle(String firstName) {
+            instance.setTitle(firstName);
+            return this;
+        }
+
+        public BorrowedBook.Builder setDiscription(String discription) {
+            instance.setDescription(discription);
+            return this;
+        }
+
+        public BorrowedBook.Builder setPictureId(String pictureId) {
+            instance.setPictureId(pictureId);
+            return this;
+        }
+
+        public BorrowedBook.Builder setGenreId(int id) {
+            instance.setRate(id);
+            return this;
+        }
+
+        public BorrowedBook.Builder setAddedDate(Date date) {
+            instance.setAddedDate(date);
+            return this;
+        }
+
+        public BorrowedBook.Builder setRate(int rate) {
+            instance.setRate(rate);
+            return this;
+        }
+
+        public BorrowedBook.Builder setYear(int year) {
+            instance.setYear(year);
+            return this;
+        }
+
+        public BorrowedBook.Builder setAvaliable(boolean avaliable) {
+            instance.setAvaliable(avaliable);
+            return this;
+        }
+
+        public BorrowedBook.Builder setQuantity(int quantity) {
+            instance.setQuantity(quantity);
+            return this;
+        }
+
+        public BorrowedBook.Builder setKeywords(String keywords) {
+            instance.setKeywords(keywords);
+            return this;
+        }
 
         public BorrowedBook.Builder setStartDate(Date startDate) {
             instance.setStartDate(startDate);
             return this;
         }
 
-        public BorrowedBook.Builder setDueToRuturnDate(Date dueToRuturnDate) {
+        public BorrowedBook.Builder setDueToReturnDate(Date dueToRuturnDate) {
             instance.setDueToReturnDate(dueToRuturnDate);
             return this;
         }
@@ -69,4 +125,7 @@ public class BorrowedBook {
         }
     }
 
+//    public static Builder builder(){
+//        return new Builder();
+//    }
 }

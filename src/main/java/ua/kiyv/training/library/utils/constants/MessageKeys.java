@@ -93,7 +93,7 @@ public final class MessageKeys {
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_OPTIONS_BY_QUESTION_ID = "message.can.not.get.assosiated.options.by.question.id ";
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_QUESTIONS_BY_TOPIC_ID = "message.can.not.get.assosiated.questions.by.topic ";
 
-    public static final String CONNECTION_PROBLEM_CONFIG_FILE = "message.wrong.connection.config";
+    public static final String CONNECTION_PROBLEM_CONFIG_FILE = "message.wrong.connection.webProject.config";
     public static final String CAN_NOT_CLOSE_CONNECTION = "message.wrong.connection.can.not.close";
     public static final String CAN_NOT_GET_DB_CONNECTION = "message.wrong.connection.can.not.get.connection";
     public static final String PREPARE_STATEMENT_PROBLEM_WITH_AUTO_GENERATED_KEYS = "message.wrong.prepare.statement.with.generates.keys";

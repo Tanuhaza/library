@@ -12,7 +12,7 @@ public class LoggerMessages {
     public static final String SUCCESSFULL_ACCOUNT_TRANSFER = "Account transfer was successfully done";
     public static final String SUCCESSFUL_REGISTER = "Congratulations! You was successfully registered!";
 
-    public static final String PROBLEM_WITH_DB_CONFIG= "Problem wit webProject.DB config file";
+    public static final String PROBLEM_WITH_DB_CONFIG= "Problem wit webProject.DB webProject.config file";
     public static final String CAN_NOT_GET_DB_CONNECTION = "Can not get connection to webProject.DB";
     public static final String CAN_NOT_CLOSE_CONNECTION = "Can not close connection";
     public static final String CAN_NOT_PREPARE_STATEMENT_WITH_AUTO_GENERATED_KEYS = "Can not prepare statement with auto generated keys";

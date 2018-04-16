@@ -17,6 +17,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import static ua.kiyv.training.library.dao.Impl.query.AuthorQuery.*;
+
 public class JdbcAuthorDao implements AuthorDao {
 
     JdbcAuthorDao() {
@@ -26,9 +28,8 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public void create(Author author) {
-        String sqlStatement = "INSERT INTO author (firstName,lastName) VALUES (?, ?)";
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sqlStatement,
+            PreparedStatement statement = connection.prepareStatement(CREATE_AUTHOR,
                     Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, author.getFirstName());
             statement.setString(2, author.getLastName());
@@ -53,10 +54,9 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public Author findById(int id) {
-            String sqlStatement = "SELECT * FROM author WHERE id = ?";
             Author author;
             try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-                PreparedStatement statement = connection.prepareStatement(sqlStatement);
+                PreparedStatement statement = connection.prepareStatement(SELECT_ALL_AUTHORS+FILTER_BY_ID);
                 statement.setInt(1, id);
                 ResultSet resultSet = statement.executeQuery();
                 if (!resultSet.next()) {
@@ -75,12 +75,11 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public List<Author> findAll() {
-        String sqlStatement = "SELECT * FROM author";
         Author author;
         List<Author> authors = new ArrayList<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(sqlStatement);
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_AUTHORS);
             AuthorMapper authorMapper=new AuthorMapper();
             while (resultSet.next()) {
                 author = authorMapper.extractFromResultSet(resultSet);
@@ -97,9 +96,8 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public void update(Author author) {
-        String sqlStatement = "UPDATE author SET firstName = ?, lastName = ? WHERE id = ?";
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sqlStatement);
+            PreparedStatement statement = connection.prepareStatement(UPDATE_AUTHOR);
             statement.setString(1, author.getFirstName());
             statement.setString(2, author.getLastName());
             statement.setInt(3, author.getId());
@@ -117,9 +115,8 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public void delete(Author author) {
-        String sqlStatement = "DELETE FROM author WHERE id = ?";
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sqlStatement);
+            PreparedStatement statement = connection.prepareStatement(DELETE_AUTHOR);
             statement.setInt(1, author.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {

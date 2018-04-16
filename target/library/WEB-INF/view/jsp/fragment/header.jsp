@@ -21,13 +21,13 @@
             <div class="extras">
                 <ul>
                     <li>
-                        <jsp:include page="languageSelector.jsp"/>
+                        <jsp:include page="../languageSelector.jsp"/>
                     </li>
                     <c:if test="${sessionScope.userId==null}">
-                        <li><a href="/library/login"><fmt:message key="testing.system.login" bundle="${msg}"/></a></li>
+                        <li><a href="/library/login"><fmt:message key="library.login" bundle="${msg}"/></a></li>
                     </c:if>
                     <c:if test="${sessionScope.userId!=null}">
-                        <li><a href="/logout"><fmt:message key="testing.system.logout" bundle="${msg}"/></a></li>
+                        <li><a href="/logout"><fmt:message key="library.logout" bundle="${msg}"/></a></li>
                     </c:if>
                 </ul>
             </div>
@@ -35,17 +35,17 @@
         <nav id="mainmenu" class="mainmenu">
             <ul>
                 <li>
-                    <a href="/home"><fmt:message key="testing.system.menu.home" bundle="${msg}"/></a>
+                    <a href="/home"><fmt:message key="library.menu.home" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <a href="/topic"><fmt:message key="testing.system.menu.topics" bundle="${msg}"/></a>
+                    <a href="/topic"><fmt:message key="library.menu.topics" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <a href="/profile"><fmt:message key="testing.system.menu.profile" bundle="${msg}"/></a>
+                    <a href="/profile"><fmt:message key="library.menu.profile" bundle="${msg}"/></a>
                 </li>
                 <c:if test="${sessionScope.userRole=='ADMIN'}">
                     <li>
-                        <a href="/admin/users"><fmt:message key="testing.system.menu.users" bundle="${msg}"/></a>
+                        <a href="/admin/users"><fmt:message key="library.menu.users" bundle="${msg}"/></a>
                     </li>
                 </c:if>
             </ul>

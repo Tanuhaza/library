@@ -167,7 +167,7 @@ public class Book {
     }
 
     public static class Builder {
-        Book instance = new Book();
+        private  Book instance = new Book();
 
         public Book.Builder setId(int id) {
             instance.setId(id);
@@ -228,4 +228,8 @@ public class Book {
             return instance;
         }
     }
+
+//    public static Builder builder(){
+//        return new Builder();
+//    }
 }

@@ -1,8 +1,11 @@
 package ua.kiyv.training.library.controller.validate;
 
 
+import org.apache.log4j.Logger;
+import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
 import ua.kiyv.training.library.model.dto.RegisterData;
 import ua.kiyv.training.library.utils.constants.Attributes;
+import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.util.regex.Pattern;
@@ -12,12 +15,14 @@ public class UserValidator implements Validator<RegisterData> {
     private static final String REGEX_PASSWORD = "[A-Za-z0-9]{4,200}";
     private static final String REGEX_EMAIL = "^([a-z0-9_-]+\\.)*[a-z0-9_\\-]+@[a-z0-9_-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$";
     private static  final String REGEX_PHONE="^(\\\\+380|0)([0-9]{9})$";
+    private static final Logger logger = Logger.getLogger(UserValidator.class);
 
     @Override
     public Errors validate(RegisterData data) {
         Errors results = new Errors();
         if(!Pattern.matches(REGEX_NAME, data.getFirstName())){
             results.addError(Attributes.USER_NAME, MessageKeys.WRONG_USER_NAME);
+            logger.info("NAME");
         }
         if(!Pattern.matches(REGEX_NAME, data.getLastName())){
             results.addError(Attributes.USER_SURNAME, MessageKeys.WRONG_USER_SURNAME);
@@ -30,6 +35,7 @@ public class UserValidator implements Validator<RegisterData> {
         }
         if(!Pattern.matches(REGEX_PHONE, data.getPhone())){
             results.addError(Attributes.USER_CELLPHONE, MessageKeys.WRONG_USER_CELLPHONE);
+            logger.info("PHONE");
         }
 
         return results;

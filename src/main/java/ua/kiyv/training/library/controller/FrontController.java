@@ -15,7 +15,7 @@ import java.io.IOException;
  * and forwards request to the appropriate view page.
  *
  */
-@WebServlet(name = "MainController", value = "/library/*")
+//@WebServlet(name = "MainController", value = "/library/*")
 public class FrontController extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(FrontController.class);
@@ -68,7 +68,7 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         String path = processRequest(request, response);
         if(!path.equals(PagesPath.REDIRECTED)) {
-            request.getRequestDispatcher(path).forward(request, response);
+                request.getRequestDispatcher(path).forward(request, response);
         }
     }
 
