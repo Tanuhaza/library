@@ -1,6 +1,8 @@
 package ua.kiyv.training.library.model;
 
-import java.util.Date;
+
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -32,6 +34,7 @@ public class User {
     }
 
     public User() {
+        this.borrowedBooks=new ArrayList<>();
     }
 
     public int getId() {
@@ -129,7 +132,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", borrowedBooks=" + borrowedBooks +
-                '}';
+                '}'+'\n';
     }
 
     public static class Builder {

@@ -5,6 +5,7 @@ package ua.kiyv.training.library.controller;
 
 import ua.kiyv.training.library.controller.command.LogoutCommand;
 import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
+import ua.kiyv.training.library.controller.command.admin.AdminHomeCommand;
 import ua.kiyv.training.library.controller.command.admin.ManageCommand;
 import ua.kiyv.training.library.controller.command.admin.StatisticsCommand;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
@@ -50,18 +51,13 @@ class CommandHolder {
 
         commands.put(GET + deployPath + STATISTICS_PATH, new StatisticsCommand());
         commands.put(GET + deployPath + MANAGE_PATH, new ManageCommand());
-//        commands.put(GET + deployPath + TOPICS_PATH, new ViewTopicsCommand());
-//        commands.put(GET+ deployPath + TOPICS_ID_PATH, new ViewTestsCommand());
-//        commands.put(GET+ deployPath + QUIZ_ID_PATH, new ChooseTestCommand());
-//        commands.put(GET+ deployPath + PROFILE_PATH, new ViewProfileCommand());
-//        commands.put(GET+ deployPath + ADMIN_USERS_PATH, new AdminViewUsersCommand());
-//        commands.put(GET+ deployPath + ADMIN_USER_ID_PATH, new AdminViewUsersResponseCommand());
-//        commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
+//
+          commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
 
 //
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
         commands.put(POST + deployPath + REGISTER_PATH, new RegisterSubmitCommand());
-//        commands.put(POST + deployPath + QUIZ_PATH, new TestSubmitCommand());
+
     }
 
     /**
@@ -70,6 +66,7 @@ class CommandHolder {
      */
     Command findCommand(String commandKey) {
         String convertedKey = removeAllNumbersFromUrl(commandKey);
+        System.out.println(convertedKey);
         return commands.getOrDefault(convertedKey, unsupportedPathCommand);
     }
 

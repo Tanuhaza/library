@@ -32,7 +32,7 @@ public class LoginSubmitCommand extends CommandWrapper {
         String pageToGo = PagesPath.LOGIN_PATH;
         String login = request.getParameter(PARAM_LOGIN);
         String password = request.getParameter(PARAM_PASSWORD);
-        Optional<User> user = userService.getUserByLoginPassword(login, password);
+        Optional<User> user = userService.getUserByEmailPassword(login, password);
         if( user.isPresent() ){
             User person = user.get();
             pageToGo = getResultPageByUserRole(person);

@@ -15,7 +15,7 @@ import java.io.IOException;
  * and forwards request to the appropriate view page.
  *
  */
-//@WebServlet(name = "MainController", value = "/library/*")
+@WebServlet(name = "MainController", value = "/library/*")
 public class FrontController extends HttpServlet {
 
     private static final Logger logger = Logger.getLogger(FrontController.class);
@@ -33,6 +33,7 @@ public class FrontController extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         commandHolder = new CommandHolder(getServletContext().getContextPath());
+        System.out.println("IN CONTROLLER");
     }
 
     /**
@@ -46,11 +47,13 @@ public class FrontController extends HttpServlet {
     private String processRequest(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
 
+        System.out.println("FrontController.processRequest()");
         String commandKey = getMethod(request) + DELIMITER + getUri(request);
         Command command = commandHolder.findCommand(commandKey);
-
+        System.out.println(command);
         String view = command.execute(request, response);
         return view;
+
     }
 
     private String getMethod(HttpServletRequest request) {
@@ -66,9 +69,12 @@ public class FrontController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        System.out.println("GET");
         String path = processRequest(request, response);
+        System.out.println("FrontController.doGet() path: " + path);
         if(!path.equals(PagesPath.REDIRECTED)) {
                 request.getRequestDispatcher(path).forward(request, response);
+            System.out.println("In if block FORWARD");
         }
     }
 
@@ -77,7 +83,9 @@ public class FrontController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String path = processRequest(request, response);
-        if(!path.equals(PagesPath.FORWARD))
+
+        if(!path.equals(PagesPath.FORWARD)) //trur
+            System.out.println("FrontController.doPost() path: " + path);
             response.sendRedirect(path);
     }
 

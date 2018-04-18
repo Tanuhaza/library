@@ -65,6 +65,7 @@ public class LoggerMessages {
     public static final String ERROR_DELETE_TOPIC = "Error occurred when deleting topic: ";
 
     public static final String ERROR_FIND_AUTHOR_BY_ID = "Error occurred when finding question by id: ";
+    public static final String ERROR_FIND_AUTHOR_BY_EMAIL = "Error occurred when finding question by email: ";
     public static final String ERROR_FIND_ALL_AUTHOR = "Error occurred when finding all questions";
     public static final String ERROR_CREATE_NEW_AUTHOR = "Error occurred when creating new question: ";
     public static final String ERROR_UPDATE_AUTHOR= "Error occurred when updating question: ";

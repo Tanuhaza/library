@@ -66,7 +66,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="login-form" action="/login" method="post" role="form" style="display: block;">
+                            <form id="login-form" action="/library/login" method="post" role="form" style="display: block;">
                                 <div class="form-group">
                                     <input type="text" name="login_name" id="login_name" tabindex="1"
                                            class="form-control"
@@ -91,7 +91,7 @@
                             </form>
 
 
-                            <form id="register-form" action="/register" method="post" role="form"
+                            <form id="register-form" action="/library/register" method="post" role="form"
                                   style="display: none;">
                                 <div class="form-group">
                                     <input type="text" name="name" id="name" tabindex="1" class="form-control"

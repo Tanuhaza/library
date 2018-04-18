@@ -44,14 +44,17 @@ public abstract class CommandWrapper implements Command {
             logger.error(LoggerMessages.SERVICE_EXCEPTION_OCCURRED, exception);
             putErrorMessageInRequest(request, exception.getMessageKey());
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
+            exception.printStackTrace();
         } catch (ApplicationException exception) {
             logger.error(LoggerMessages.APPLICATION_EXCEPTION_OCCURRED, exception);
             putErrorMessageInRequest(request, exception.getMessageKey());
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
+            exception.printStackTrace();
         } catch (Exception exception) {
             logger.error(LoggerMessages.UNKNOWN_ERROR_OCCURED, exception);
             putErrorMessageInRequest(request, MessageKeys.UNKNOWN_ERROR_OCCURED);
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
+            exception.printStackTrace();
         }
         return PagesPath.FORWARD;
     }

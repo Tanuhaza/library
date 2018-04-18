@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/home.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
 <fmt:setLocale value="${sessionScope['locale']}"/>
 <fmt:setBundle basename="${bundleFile}" var="msg"/>
@@ -35,7 +35,7 @@
         <nav id="mainmenu" class="mainmenu">
             <ul>
                 <li>
-                    <a href="/library/home"><fmt:message key="library.menu.home" bundle="${msg}"/></a>
+                    <a href="/library/admin"><fmt:message key="library.menu.home" bundle="${msg}"/></a>
                 </li>
                 <li>
                     <a href="/library/statistics"><fmt:message key="library.admin.menu.statistics" bundle="${msg}"/></a>

@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page import="ua.kiyv.training.testingSystem.utils.constants.Attributes" %>
+<%@ page import="ua.kiyv.training.library.utils.constants.Attributes" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page trimDirectiveWhitespaces="true" %>
 
@@ -15,7 +15,7 @@
 <body class="body-profile-container">
 <jsp:include page="fragment/header.jsp"/>
 <div class="user-welcome">
-<div  class ="welcome" align="center"><fmt:message key="testing.system.you.are.welcom" bundle="${msg}"/></div>
+<div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>
 <div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>
 </div>
 <jsp:include page="fragment/footer.jsp"/>

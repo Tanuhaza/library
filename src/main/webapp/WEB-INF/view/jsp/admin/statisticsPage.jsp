@@ -9,8 +9,14 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/login-form-initializer.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<jsp:include page="../admin/header.jsp"/>
 </body>
 </html>

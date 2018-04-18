@@ -27,7 +27,7 @@
                         <li><a href="/library/login"><fmt:message key="library.login" bundle="${msg}"/></a></li>
                     </c:if>
                     <c:if test="${sessionScope.userId!=null}">
-                        <li><a href="/logout"><fmt:message key="library.logout" bundle="${msg}"/></a></li>
+                        <li><a href="/library/logout"><fmt:message key="library.logout" bundle="${msg}"/></a></li>
                     </c:if>
                 </ul>
             </div>

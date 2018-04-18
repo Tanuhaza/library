@@ -17,10 +17,7 @@ import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import static ua.kiyv.training.library.dao.Impl.query.UserQuery.*;
 
@@ -76,15 +73,15 @@ public class JdbcUserDao implements UserDao {
             }
             UserMapper userMapper = new UserMapper();
             BorrowedBookMapper bookMapper = new BorrowedBookMapper();
-            while (resultSet.next()) {
-                user = userMapper.extractFromResultSet(resultSet);
-                borrowedBook = bookMapper.extractFromResultSet(resultSet);
-                user = userMapper.makeUnique(users, user);
-                borrowedBook = bookMapper.makeUnique(borrowedBooks, borrowedBook);
-                user.getBorrowedBooks().add(borrowedBook);
-                resultSet.close();
-                statement.close();
-            }
+//            while (resultSet.next()) {
+            user = userMapper.extractFromResultSet(resultSet);
+            borrowedBook = bookMapper.extractFromResultSet(resultSet);
+            user = userMapper.makeUnique(users, user);
+            borrowedBook = bookMapper.makeUnique(borrowedBooks, borrowedBook);
+            user.getBorrowedBooks().add(borrowedBook);
+            resultSet.close();
+            statement.close();
+//            }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
@@ -109,8 +106,6 @@ public class JdbcUserDao implements UserDao {
                 user = userMapper.makeUnique(users, user);
                 borrowedBook = bookMapper.makeUnique(borrowedBooks, borrowedBook);
                 user.getBorrowedBooks().add(borrowedBook);
-                resultSet.close();
-                statement.close();
             }
             resultSet.close();
             statement.close();
@@ -157,6 +152,30 @@ public class JdbcUserDao implements UserDao {
             logger.error(LoggerMessages.ERROR_DELETE_USER + user.getId());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_DELETE);
         }
+
+    }
+
+    @Override
+    public Optional<User> findUserByEmail(String email) {
+        Optional<User> result = Optional.empty();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(FIND_USER_BY_EMAIL)) {
+
+            statement.setString(1, email);
+            try (
+                    ResultSet resultSet = statement.executeQuery()) {
+                if (!resultSet.next()) {
+                    throw new DaoException(MessageKeys.WRONG_USER_DB_NO_ID_EXIST);
+                }
+                UserMapper userMapper = new UserMapper();
+                result = Optional.of(userMapper.extractFromResultSet(resultSet));
+            }
+            return result;
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_EMAIL + email);
+            throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
+        }
+
 
     }
 }

@@ -19,14 +19,15 @@ public class App {
         User user=new User("Tania","Zabolotko","wariushas@gmail","097394476","qwert", Role.USER);
         UserService userService =  ServiceFactory.getInstance().createUserService();
 //        userService.create(user);
-//        System.out.println( userService.findById(1));
-//        System.out.println( userService.findAll());
+//        System.out.println( userService.findById(2));
+//       System.out.println( userService.findAll());
+        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
 
-        BookService bookService = ServiceFactory.getInstance().createBookService();
-        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
-book.setId(1);
-book.setTitle("RED STARS");
-//       bookService.create(book);
-bookService.update(book);
+//        BookService bookService = ServiceFactory.getInstance().createBookService();
+//        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
+//book.setId(1);
+//book.setTitle("RED STARS");
+//      bookService.create(book);
+//bookService.update(book);
     }
 }

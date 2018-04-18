@@ -36,5 +36,5 @@ public interface UserService {
      * @param password user's password, whose entity will be returned
      * @return user entity with specified email (login)
      */
-    public Optional<User> getUserByLoginPassword(String login, String password);
+    public Optional<User> getUserByEmailPassword(String login, String password);
 }

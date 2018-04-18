@@ -19,8 +19,9 @@
     <script src="/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form id="register-form" action="/loadBook" method="post" role="form"
-      style="display: none;">
+<jsp:include page="../admin/header.jsp"/>
+
+<form id="register-form" action="/loadBook" method="post" role="form"   >
     <div class="form-group">
         <input type="text" name="title" id="title" tabindex="1" class="form-control"
                placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
@@ -36,6 +37,7 @@
                placeholder="<fmt:message key="library.addBook.placeholder.picture" bundle="${msg}" />"
                value="${requestScope.previousUserEmail}" required>
     </div>
+
 
     <div class="form-group">
         <input type="text" name="avaliable" id="avaliable" tabindex="1" class="form-control"

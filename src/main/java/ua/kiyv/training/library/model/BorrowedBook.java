@@ -47,6 +47,14 @@ public class BorrowedBook extends Book {
     @Override
     public String toString() {
         return "BorrowedBook{" +
+                "id=" + getId()+
+                ", title='" + getTitle() + '\'' +
+                ", description='" + getDescription() + '\'' +
+                ", pictureId='" + getPictureId() + '\'' +
+                ", rate=" + getRate() +
+                ", year=" + getYear() +
+                ", avaliable=" + isAvaliable()+
+                ", quantity=" + getQuantity() +
                 "startDate=" + startDate +
                 ", dueToReturnDate=" + dueToReturnDate +
                 '}';

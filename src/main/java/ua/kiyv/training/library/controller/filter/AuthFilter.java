@@ -18,7 +18,7 @@ import java.util.EnumMap;
  * Filter checks every user request, to find out his permissions.
  * If user don't have permissions, the filter forward user to login page.
  */
-//@WebFilter(urlPatterns = {"/*"})
+@WebFilter(urlPatterns = {"/*"})
 public class AuthFilter implements Filter {
     private static final Logger logger = Logger.getLogger(AuthFilter.class);
     private static final String USER_NOT_AUTHORIZED = "User isn't authorized";
@@ -36,21 +36,23 @@ public class AuthFilter implements Filter {
         HttpServletResponse res = ((HttpServletResponse) response);
         HttpSession session = req.getSession();
         String uri = req.getRequestURI();
+        System.out.println(uri);
         req.setCharacterEncoding(Attributes.UTF_8);
         res.setContentType("text/html");
 
-        if (session == null || session.isNew()) {
-            req.getRequestDispatcher("index.jsp").forward(request, response);
-        }
+//        if (session == null || session.isNew()) {
+//            req.getRequestDispatcher("index.jsp").forward(request, response);
+//        }
 
         Integer userId = (Integer) session.getAttribute(Attributes.USER_ID);
         Role role = (Role) session.getAttribute(Attributes.USER_ROLE);
 
-        if (!checkUserPermissions(uri, userId, role)) {
-            res.sendRedirect(PagesPath.LOGIN_PATH);
-            logger.info(String.format(USER_NOT_AUTHORIZED));
-            return;
-        }
+//        if (!checkUserPermissions(uri, userId, role)) {
+//            System.out.println("AuthFilter.class REDIRECT TO LOGIN");
+////            res.sendRedirect(PagesPath.LOGIN_PATH);
+//            logger.info(String.format(USER_NOT_AUTHORIZED));
+//            return;
+//        }
 
         chain.doFilter(request, response);
     }

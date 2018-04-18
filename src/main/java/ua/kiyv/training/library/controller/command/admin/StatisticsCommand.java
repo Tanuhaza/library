@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class StatisticsCommand extends CommandWrapper {
-    public StatisticsCommand() {super(PagesPath.ADMIN_STATISTICS_PAGE);}
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_STATISTICS_PAGE;
 
+public class StatisticsCommand implements Command{
     @Override
-    public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return null;
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        return ADMIN_STATISTICS_PAGE;
     }
 }
