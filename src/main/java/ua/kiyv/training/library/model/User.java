@@ -13,6 +13,16 @@ public class User {
     private Role role;
     private List<BorrowedBook> borrowedBooks;
 
+
+    public User(String firstName, String lastName, String email, String phone, String password, Role role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.password = password;
+        this.role = role;
+    }
+
     public List<BorrowedBook> getBorrowedBooks() {
         return borrowedBooks;
     }
@@ -118,11 +128,12 @@ public class User {
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 ", role=" + role +
+                ", borrowedBooks=" + borrowedBooks +
                 '}';
     }
 
     public static class Builder {
-        User instance = new User();
+        private User instance = new User();
 
         public Builder setId(int id) {
             instance.setId(id);

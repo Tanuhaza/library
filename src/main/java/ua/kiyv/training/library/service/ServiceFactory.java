@@ -7,6 +7,7 @@ public abstract class ServiceFactory {
     private static ServiceFactory serviceFactory;
 
     public abstract UserService createUserService();
+    public abstract BookService createBookService();
 
     public static ServiceFactory getInstance() {
         if(serviceFactory==null) {

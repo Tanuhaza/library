@@ -20,7 +20,7 @@ public class JdbcConnectionPool implements ConnectionPool {
 
     private static final Logger logger = Logger.getLogger(JdbcConnectionPool.class);
 
-    private static final String DB_CONFIG_FILENAME = "webProject/DBconfig.properties";
+    private static final String DB_CONFIG_FILENAME = "webProject/config/DBconfig.properties";
     private static final String DB_CONFIG_PARAM_URL = "database.url";
     private static final String DB_CONFIG_PARAM_DB_NAME = "database.dbName";
     private static final String DB_CONFIG_PARAM_USER_NAME = "database.userName";

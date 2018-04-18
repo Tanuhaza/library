@@ -40,8 +40,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
             statement.setInt(6, book.getYear());
             statement.setInt(7, book.getGenreId());
             statement.setString(8, book.getKeywords());
-            statement.setDate(9, (Date) book.getAddedDate());
-            statement.setInt(10, book.getRate());
+//            statement.setDate(9, (Date) book.getAddedDate());
+            statement.setInt(9, book.getRate());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
@@ -134,8 +134,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
             statement.setInt(6, book.getYear());
             statement.setInt(7, book.getGenreId());
             statement.setString(8, book.getKeywords());
-            statement.setDate(9, (Date) book.getAddedDate());
-            statement.setInt(10, book.getRate());
+//            statement.setDate(9, (Date) book.getAddedDate());
+            statement.setInt(9, book.getRate());
+            statement.setInt(10, book.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED);

@@ -18,7 +18,7 @@ public class BorrowedBookMapper implements ObjectMapper<BorrowedBook> {
                 .setTitle( rs.getString("title") )
                 .setDiscription( rs.getString("description") )
                 .setPictureId( rs.getString("picture") )
-                .setAvaliable( rs.getBoolean("avaliable") )
+                .setAvaliable( rs.getBoolean("available") )
                 .setQuantity( rs.getInt("quantity") )
                 .setYear( rs.getInt("year") )
                 .setGenreId( rs.getInt("genre_id") )

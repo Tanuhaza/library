@@ -59,6 +59,9 @@ CREATE TABLE IF NOT EXISTS `library`.`book` (
   `year` INT NOT NULL,
   `genre_id` INT NOT NULL,
   `keywords` VARCHAR(45) NOT NULL,
+  `added_date` TIMESTAMP NOT NULL,
+  `rate` INT NOT NULL,
+
   PRIMARY KEY (`id`, `genre_id`),
   INDEX `fk_book_genre1_idx` (`genre_id` ASC),
   CONSTRAINT `fk_book_genre1`
@@ -85,7 +88,7 @@ ENGINE = InnoDB;
 -- Table `library`.`book_out_on_loan`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `library`.`book_out_on_loan` (
-  `startData` DATE NOT NULL,
+  `startDate` DATE NOT NULL,
   `returnDate` DATE NOT NULL,
   `user_id` INT NOT NULL,
   `book_id` INT NOT NULL,

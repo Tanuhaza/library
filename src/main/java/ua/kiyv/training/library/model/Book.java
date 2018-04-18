@@ -17,6 +17,20 @@ public class Book {
     private int genreId;
     private List<Author> authors;
 
+    public Book( String title, String description, String pictureId, int rate,  boolean avaliable, int quantity,int year,  int genreId, String keywords) {
+
+        this.title = title;
+        this.description = description;
+        this.pictureId = pictureId;
+        this.rate = rate;
+        this.year = year;
+        this.avaliable = avaliable;
+        this.quantity = quantity;
+        this.keywords = keywords;
+
+        this.genreId = genreId;
+    }
+
     public List<Author> getAuthors() {
         return authors;
     }

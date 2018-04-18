@@ -68,7 +68,7 @@ public class RegisterSubmitCommand extends CommandWrapper {
         request.setAttribute(Attributes.PREVIOUS_USER_NAME, request.getParameter("name"));
         request.setAttribute(Attributes.PREVIOUS_USER_SURNAME, request.getParameter("surname"));
         request.setAttribute(Attributes.PREVIOUS_USER_EMAIL, request.getParameter("email"));
-        request.setAttribute(Attributes.PREVIOUS_USER_LOGIN, request.getParameter("login"));
+        request.setAttribute(Attributes.PREVIOUS_USER_LOGIN, request.getParameter("phone"));
         request.setAttribute(Attributes.PREVIOUS_USER_PASSWORD, request.getParameter("password"));
         request.setAttribute(Attributes.TAB, Attributes.REGISTER_TAB);
     }

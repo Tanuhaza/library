@@ -2,7 +2,6 @@ package ua.kiyv.training.library.controller.validate;
 
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
 import ua.kiyv.training.library.model.dto.RegisterData;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
@@ -26,6 +25,7 @@ public class UserValidator implements Validator<RegisterData> {
         }
         if(!Pattern.matches(REGEX_NAME, data.getLastName())){
             results.addError(Attributes.USER_SURNAME, MessageKeys.WRONG_USER_SURNAME);
+            logger.info("SURNAME");
         }
         if(!Pattern.matches(REGEX_EMAIL, data.getEmail())){
             results.addError(Attributes.USER_EMAIL, MessageKeys.WRONG_USER_EMAIL);

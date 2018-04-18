@@ -109,7 +109,7 @@
                                            value="${requestScope.previousUserEmail}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="login" id="login" tabindex="1" class="form-control"
+                                    <input type="text" name="phone" id="phone" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.registration.placeholder.phone" bundle="${msg}"/>"
                                            value="${requestScope.previousUserLogin}" required>
                                 </div>
