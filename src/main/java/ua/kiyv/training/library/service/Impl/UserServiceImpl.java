@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class UserServiceImpl implements UserService{
+//    private UserServiceImpl(){};
 
     private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
     @Override

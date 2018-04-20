@@ -75,7 +75,7 @@ public class Author {
         }
 
         public Author.Builder setLastName(String lastName) {
-            instance.setFirstName(lastName);
+            instance.setLastName(lastName);
             return this;
         }
 

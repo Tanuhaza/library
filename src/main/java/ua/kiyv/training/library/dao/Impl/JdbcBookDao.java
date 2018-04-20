@@ -65,15 +65,12 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Book> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
         Book book = null;
-        Author author = null;
+        Author author =null;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID);
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS+ FILTER_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-            if (!resultSet.next()) {
-                throw new DaoException(MessageKeys.WRONG_BOOK_DB_NO_ID_EXIST);
-            }
-            while (resultSet.next()) {
+           while (resultSet.next()) {
                 BookMapper bookMapper = new BookMapper();
                 AuthorMapper authorMapper = new AuthorMapper();
                 book = bookMapper.extractFromResultSet(resultSet);
@@ -81,9 +78,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
                 book = bookMapper.makeUnique(books, book);
                 author = authorMapper.makeUnique(authors, author);
                 book.getAuthors().add(author);
-                resultSet.close();
-                statement.close();
             }
+            resultSet.close();
+            statement.close();
 
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
@@ -95,8 +92,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public List<Book> findAll() {
-        Book book = null;
-        Author author = null;
+        Book book = new Book();
+        Author author = new Author();
         Map<Integer, Book> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
@@ -110,8 +107,6 @@ public class JdbcBookDao implements BookDao, BookQuery {
                 book = bookMapper.makeUnique(books, book);
                 author = authorMapper.makeUnique(authors, author);
                 book.getAuthors().add(author);
-                resultSet.close();
-                statement.close();
             }
             resultSet.close();
             statement.close();

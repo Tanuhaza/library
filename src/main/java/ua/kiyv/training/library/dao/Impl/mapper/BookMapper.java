@@ -1,6 +1,7 @@
 package ua.kiyv.training.library.dao.Impl.mapper;
 
 import ua.kiyv.training.library.model.Book;
+import ua.kiyv.training.library.model.BorrowedBook;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ public class BookMapper implements ObjectMapper<Book> {
 
     @Override
     public Book extractFromResultSet(ResultSet rs) throws SQLException {
+
         return new Book.Builder()
                 .setId(rs.getInt("id"))
                 .setTitle( rs.getString("title") )

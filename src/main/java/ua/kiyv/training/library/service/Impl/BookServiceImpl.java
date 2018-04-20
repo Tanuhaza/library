@@ -11,10 +11,13 @@ import ua.kiyv.training.library.service.ServiceException;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
+import java.util.List;
+
 /**
  * Created by Tanya on 17.04.2018.
  */
 public class BookServiceImpl implements BookService {
+//    private BookServiceImpl(){};
 
     private static final Logger logger = Logger.getLogger(BookServiceImpl.class);
 
@@ -44,5 +47,15 @@ public class BookServiceImpl implements BookService {
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
         }
 
+    }
+
+    @Override
+    public List<Book> findAll() {
+        return (JdbcDaoFactory.getInstance().createBookDao().findAll());
+    }
+
+    @Override
+    public Book findById(int id) {
+        return (JdbcDaoFactory.getInstance().createBookDao().findById(id));
     }
 }

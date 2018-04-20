@@ -1,5 +1,6 @@
 package ua.kiyv.training.library.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -40,6 +41,7 @@ public class Book {
     }
 
     public Book() {
+        authors=new ArrayList<>();
     }
 
     public int getId() {
@@ -177,7 +179,11 @@ public class Book {
                 ", year=" + year +
                 ", avaliable=" + avaliable +
                 ", quantity=" + quantity +
-                '}';
+                ", keywords='" + keywords + '\'' +
+                ", addedDate=" + addedDate +
+                ", genreId=" + genreId +
+                ", authors=" + authors +
+                '}'+'\n';
     }
 
     public static class Builder {

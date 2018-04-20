@@ -1,6 +1,8 @@
 package ua.kiyv.training.library.dao.Impl.mapper;
 
 import ua.kiyv.training.library.model.Author;
+import ua.kiyv.training.library.model.BorrowedBook;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
@@ -9,7 +11,7 @@ public class AuthorMapper implements ObjectMapper<Author> {
     @Override
     public Author extractFromResultSet(ResultSet rs) throws SQLException {
         return new Author.Builder()
-                .setId(rs.getInt("id"))
+                .setId(rs.getInt("author_id"))
                 .setFirstName( rs.getString("firstName") )
                 .setLastName( rs.getString("lastName") )
                 .build();

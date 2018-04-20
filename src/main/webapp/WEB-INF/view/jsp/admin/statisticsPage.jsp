@@ -18,5 +18,14 @@
 </head>
 <body>
 <jsp:include page="../admin/header.jsp"/>
+<div class="container">
+    <%--<div class="row">--%>
+        <div class="col-md-8">
+        <div class=col-md-4> Hi</div>
+        <div class=col-md-4>Hi</div>
+        <div class=col-md-4>Hi</div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
