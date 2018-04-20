@@ -43,16 +43,17 @@ public final class MessageKeys {
     public static final String WRONG_USER_RESPONSE_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.user.response.no.rows.affected";
     public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_GET_PASSED_TIMES ="message.can.not.get.passed.times";
 
-    public static final String WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.topic.no.rows.affected";
-    public static final String WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.topic.no.rows.affected";
-    public static final String WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.topic.no.rows.affected";
-    public static final String WRONG_BOOK_DB_NO_ID_OBTAINED ="message.wrong.creating.topic.no.id.obtained";
-    public static final String WRONG_BOOK_DB_CAN_NOT_CREATE ="message.can.not.create.topic";
-    public static final String WRONG_BOOK_DB_CAN_NOT_UPDATE ="message.can.not.update.topic";
-    public static final String WRONG_BOOK_DB_CAN_NOT_GET ="message.can.not.get.topic";
-    public static final String WRONG_BOOK_DB_CAN_NOT_DELETE ="message.can.not.delete.topic";
-    public static final String WRONG_BOOK_DB_NO_ID_EXIST="message.wrong.creating.topic.no.id.exist";
-    public static final String WRONG_BOOK_DB_CAN_NOT_GET_ALL_TOPICS = "message.wrong.can.not.get.all.topics";
+    public static final String WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.book.no.rows.affected";
+    public static final String WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.book.no.rows.affected";
+    public static final String WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.book.no.rows.affected";
+    public static final String WRONG_BOOK_DB_NO_ID_OBTAINED ="message.wrong.creating.book.no.id.obtained";
+    public static final String WRONG_BOOK_DB_CAN_NOT_CREATE ="message.can.not.create.book";
+    public static final String WRONG_BOOK_DB_CAN_NOT_UPDATE ="message.can.not.update.book";
+    public static final String WRONG_BOOK_DB_CAN_NOT_GET ="message.can.not.get.book";
+    public static final String WRONG_BOOK_DB_CAN_NOT_DELETE ="message.can.not.delete.book";
+    public static final String WRONG_BOOK_DB_NO_ID_EXIST="message.wrong.creating.book.no.id.exist";
+    public static final String WRONG_BOOK_DB_CAN_NOT_GET_ALL_TOPICS = "message.wrong.can.not.get.all.books";
+    public static final String WRONG_BOOK_DB_CAN_NOT_MATCH_AUTHOR ="message.can.not.create.book.author";
 
     public static final String WRONG_OPTION_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.option.no.rows.affected";
     public static final String WRONG_OPTION_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.option.no.rows.affected";
@@ -93,6 +94,8 @@ public final class MessageKeys {
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_OPTIONS_BY_QUESTION_ID = "message.can.not.get.assosiated.options.by.question.id ";
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_QUESTIONS_BY_TOPIC_ID = "message.can.not.get.assosiated.questions.by.topic ";
 
+    public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_GENRES = "message.wrong.can.not.get.all.genres";
+
     public static final String CONNECTION_PROBLEM_CONFIG_FILE = "message.wrong.connection.webProject.config";
     public static final String CAN_NOT_CLOSE_CONNECTION = "message.wrong.connection.can.not.close";
     public static final String CAN_NOT_GET_DB_CONNECTION = "message.wrong.connection.can.not.get.connection";
@@ -113,5 +116,6 @@ public final class MessageKeys {
     public static final String USER_NOT_FOUND = "messages.user.response.not.found";
 
     public static final String SUCCESSFUL_REGISTER = "testing.system.message.successful.register";
+    public static final String SUCCESSFUL_LOAD_BOOK = "library.message.successful.load.book";
     public static final String ERROR_WITD_DB = "message.error.database";
 }

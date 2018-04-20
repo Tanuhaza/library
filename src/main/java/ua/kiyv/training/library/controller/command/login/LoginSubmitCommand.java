@@ -39,7 +39,7 @@ public class LoginSubmitCommand extends CommandWrapper {
             request.getSession().setAttribute(Attributes.USER_ID, person.getId());
             request.getSession().setAttribute(Attributes.USER_ROLE, person.getRole());
         }
-        clearLoginDataFromRequest(request);
+//        clearLoginDataFromRequest(request);
         return pageToGo;
     }
 

@@ -11,7 +11,7 @@
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <meta charset="utf-8">
     <title>Title</title>
-    <link rel="stylesheet" href="/css/login.css">
+    <%--<link rel="stylesheet" href="/css/login.css">--%>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/login.js"></script>
@@ -21,63 +21,124 @@
 <body>
 <jsp:include page="../admin/header.jsp"/>
 
-<form id="register-form" action="/loadBook" method="post" role="form"   >
+<div class="container">
     <div class="form-group">
-        <input type="text" name="title" id="title" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
-               value="${requestScope.previousUserName}" required>
+        <div class="text-center">
+            Add Book
+        </div>
     </div>
-    <div class="form-group">
-        <input type="text" name="decription" id="description" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.description" bundle="${msg}"/>"
-               value="${requestScope.previousUserSurname}" required>
-    </div>
-    <div class="form-group">
-        <input type="text" name="picture" id="picture" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.picture" bundle="${msg}" />"
-               value="${requestScope.previousUserEmail}" required>
-    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-login">
+                <div>
+                    <c:if test="${requestScope.errors!=null and requestScope.errors.hasErrors()}">
+                        <c:forEach items="${requestScope.errors.getErrorsAttributes()}" var="value">
+                            <p1 class="has-error"><fmt:message key="${errors.errors.get(value)}" bundle="${msg}"/></p1>
+                            <br>
+                        </c:forEach>
+                    </c:if>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form id="register-form" action="/library/book/load" method="post" role="form">
+                                <div class="form-group">
+                                    <input type="text" name="title" id="title" tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="decription" id="description" tabindex="1"
+                                           class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.description" bundle="${msg}"/>"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="picture" id="picture" tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.picture" bundle="${msg}" />"
+                                           required>
+                                </div>
 
 
-    <div class="form-group">
-        <input type="text" name="avaliable" id="avaliable" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.available" bundle="${msg}"/>"
-               value="${requestScope.previousUserLogin}" required>
-    </div>
+                                <div class="form-group">
+                                    <select id="isAvaliable" name="isAvaliable" class="form-control">
+                                        <option selected disabled><fmt:message
+                                                key="library.addBook.placeholder.available" bundle="${msg}"/></option>
+                                        <option value="true">True</option>
+                                        <option value="false">False</option>
+                                    </select>
 
-    <div class="form-group">
-        <input type="text" name="quantity" id="quantity" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.quantity" bundle="${msg}"/>"
-               value="${requestScope.previousUserLogin}" required>
-    </div>
+                                </div>
 
-    <div class="form-group">
-        <input type="text" name="year" id="year" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.year" bundle="${msg}"/>"
-               value="${requestScope.previousUserLogin}" required>
-    </div>
+                                <div class="form-group">
+                                    <input type="text" name="quantity" id="quantity" tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.quantity" bundle="${msg}"/>"
+                                           required>
+                                </div>
 
-    <div class="form-group">
-        <input type="text" name="genre" id="genre" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.genre" bundle="${msg}"/>"
-               value="${requestScope.previousUserLogin}" required>
-    </div>
+                                <div class="form-group">
+                                    <input type="text" name="year" id="year" tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.year" bundle="${msg}"/>"
+                                           required>
+                                </div>
 
-    <div class="form-group">
-        <input type="text" name="keywords" id="keywords" tabindex="1" class="form-control"
-               placeholder="<fmt:message key="library.addBook.placeholder.keyword" bundle="${msg}"/>"
-               value="${requestScope.previousUserLogin}" required>
-    </div>
+                                <div class="form-group">
+                                    <select id="genre" name="genre" class="form-control">
+                                        <option selected disabled><fmt:message key="library.addBook.placeholder.genre"
+                                                                               bundle="${msg}"/></option>
+                                        <c:forEach var="genre" items="${genres}">
+                                            <option class="form-control" value="${genre.id}">${genre.name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
 
-    <div class="form-group">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <input type="submit" name="register-submit" id="register-submit"
-                       tabindex="4" class="form-control btn btn-register"
-                       value="<fmt:message key="library.register" bundle="${msg}"/>">
+                                <div class="form-group">
+                                    <input type="text" name="keywords" id="keywords" tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.keyword" bundle="${msg}"/>"
+                                           required>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" name="first_author_name" id="first_author_name" tabindex="1"
+                                           class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.first.author.name" bundle="${msg}"/>"
+                                           required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" name="first_author_surname" id="first_author_surname"
+                                           tabindex="1" class="form-control"
+                                           placeholder="<fmt:message key="library.addBook.placeholder.first.author.surname" bundle="${msg}"/>"
+                                           required>
+                                </div>
+                                <%--<div class="form-group">--%>
+                                    <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>
+                                           <%--class="form-control"--%>
+                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.name" bundle="${msg}"/>"--%>
+                                    <%-->--%>
+                                <%--</div>--%>
+                                <%--<div class="form-group">--%>
+                                    <%--<input type="text" name="second_author_surname" id="second_author_surname"--%>
+                                           <%--tabindex="1" class="form-control"--%>
+                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.surname" bundle="${msg}"/>"--%>
+                                    <%-->--%>
+                                <%--</div>--%>
+
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-sm-6 col-sm-offset-3">
+                                            <input type="submit" name="register-submit" id="register-submit"
+                                                   tabindex="4" class="form-control btn btn-register"
+                                                   value="<fmt:message key="library.addBook.submit" bundle="${msg}"/>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</form>
+</div>
 </body>
 </html>

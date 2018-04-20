@@ -33,6 +33,7 @@ public class JdbcAuthorDao implements AuthorDao {
                     Statement.RETURN_GENERATED_KEYS);
             statement.setString(1, author.getFirstName());
             statement.setString(2, author.getLastName());
+            statement.setString(3, author.getLastName()+author.getFirstName());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_AUTHOR_DB_CREATING_NO_ROWS_AFFECTED);

@@ -7,7 +7,7 @@ import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.Genre;
-import ua.kiyv.training.library.model.User;
+import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.ServiceException;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
@@ -18,16 +18,16 @@ import java.util.List;
 /**
  * Created by Tanya on 17.04.2018.
  */
-public class BookServiceImpl implements BookService {
+public class AuthorServiceImpl implements AuthorService {
 //    private BookServiceImpl(){};
 
-    private static final Logger logger = Logger.getLogger(BookServiceImpl.class);
+    private static final Logger logger = Logger.getLogger(AuthorServiceImpl.class);
 
     @Override
-    public void create(Book book) {
+    public void create(Author author) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createBookDao().create(book);
+            JdbcDaoFactory.getInstance().createAuthorDao().create(author);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
@@ -38,10 +38,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void update(Book book) {
+    public void update(Author author) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createBookDao().update(book);
+            JdbcDaoFactory.getInstance().createAuthorDao().update(author);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
@@ -51,23 +51,5 @@ public class BookServiceImpl implements BookService {
 
     }
 
-    @Override
-    public List<Book> findAllBooks() {
-        return (JdbcDaoFactory.getInstance().createBookDao().findAll());
-    }
 
-    @Override
-    public List<Genre> findAllGenres() {
-        return (JdbcDaoFactory.getInstance().createGenreDao().findAll());
-    }
-
-    @Override
-    public Book findById(int id) {
-        return (JdbcDaoFactory.getInstance().createBookDao().findById(id));
-    }
-
-    @Override
-    public void matchBookAuthor(Book book, Author author) {
-        JdbcDaoFactory.getInstance().createBookDao().matchBookAuthor(book,author);
-    }
 }

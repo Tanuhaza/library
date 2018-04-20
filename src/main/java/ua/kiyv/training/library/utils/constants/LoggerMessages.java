@@ -43,9 +43,10 @@ public class LoggerMessages {
     public static final String ERROR_FIND_PASSED_TESTS_ID_BY_USER_ID_PASSED_TIMES = "Error occurred when finding passed tests by userId and passedTimes: ";
     public static final String ERROR_FIND_PASSED_TIMES_BY_USER_ID_TEST_ID = "Error occurred when finding passedTimes: ";
 
-    public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding test by id: ";
+//    public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding book by id: ";
     public static final String ERROR_FIND_ALL_BOOKS = "Error occurred when finding all tests";
     public static final String ERROR_CREATE_NEW_BOOK = "Error occurred when creating new test: ";
+    public static final String ERROR_MATCH_NEW_BOOK_AUTHOR = "Error occurred when match book and author";
     public static final String ERROR_UPDATE_BOOK= "Error occurred when updating test: ";
     public static final String ERROR_DELETE_BOOK = "Error occurred when deleting test: ";
     public static final String ERROR_FIND_ASSOSIATED_QUESTIONS_BY_TEST_ID = "Error occurred when finding assosiated questions by test id";
@@ -58,18 +59,17 @@ public class LoggerMessages {
     public static final String ERROR_UPDATE_OPTION = "Error occurred when updating option: ";
     public static final String ERROR_DELETE_OPTION = "Error occurred when deleting option: ";
 
-    public static final String ERROR_FIND_TOPIC_BY_ID = "Error occurred when finding topic by id: ";
-    public static final String ERROR_FIND_ALL_TOPICS = "Error occurred when finding all topics";
-    public static final String ERROR_CREATE_NEW_TOPIC = "Error occurred when creating new topic: ";
-    public static final String ERROR_UPDATE_TOPIC= "Error occurred when updating topic: ";
-    public static final String ERROR_DELETE_TOPIC = "Error occurred when deleting topic: ";
+    public static final String ERROR_FIND_ALL_GENRES = "Error occurred when finding all genres";
 
-    public static final String ERROR_FIND_AUTHOR_BY_ID = "Error occurred when finding question by id: ";
-    public static final String ERROR_FIND_AUTHOR_BY_EMAIL = "Error occurred when finding question by email: ";
-    public static final String ERROR_FIND_ALL_AUTHOR = "Error occurred when finding all questions";
-    public static final String ERROR_CREATE_NEW_AUTHOR = "Error occurred when creating new question: ";
-    public static final String ERROR_UPDATE_AUTHOR= "Error occurred when updating question: ";
-    public static final String ERROR_DELETE_AUTHOR = "Error occurred when deleting question: ";
+    public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding book by id: ";
+    public static final String ERROR_FIND_BOOK_BY_TITLE = "Error occurred when finding book by title: ";
+
+    public static final String ERROR_FIND_AUTHOR_BY_ID = "Error occurred when finding author by id: ";
+    public static final String ERROR_FIND_AUTHOR_BY_EMAIL = "Error occurred when finding author by email: ";
+    public static final String ERROR_FIND_ALL_AUTHOR = "Error occurred when finding all authors";
+    public static final String ERROR_CREATE_NEW_AUTHOR = "Error occurred when creating new author: ";
+    public static final String ERROR_UPDATE_AUTHOR= "Error occurred when updating author: ";
+    public static final String ERROR_DELETE_AUTHOR = "Error occurred when deleting author: ";
     public static final String ERROR_FIND_ASSOSIATED_QUESTIONS_BY_TOPIC_ID = "Error occurred when finding assosiated questions by topic id";
     public static final String ERROR_FIND_FIND_ASSOSIATED_OPTIONS_BY_QUESTION_ID = "Error occurred when finding assosiated options by question id";
     public static final String ERROR_FIND_FIND_ASSOSIATED_TESTS_BY_QUESTION_ID ="Error occurred when finding assosiated tests by question id";

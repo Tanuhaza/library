@@ -8,6 +8,10 @@ import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
 import ua.kiyv.training.library.controller.command.admin.AdminHomeCommand;
 import ua.kiyv.training.library.controller.command.admin.ManageCommand;
 import ua.kiyv.training.library.controller.command.admin.StatisticsCommand;
+import ua.kiyv.training.library.controller.command.book.DeleteBookSubmitCommand;
+import ua.kiyv.training.library.controller.command.book.EditBookSubmitCommand;
+import ua.kiyv.training.library.controller.command.book.LoadBookCommand;
+import ua.kiyv.training.library.controller.command.book.LoadBookSubmitCommand;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
 import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
 import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
@@ -53,10 +57,14 @@ class CommandHolder {
         commands.put(GET + deployPath + MANAGE_PATH, new ManageCommand());
 //
           commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
+        commands.put(GET + deployPath + BOOK_LOAD_PATH, new LoadBookCommand());
 
 //
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
-        commands.put(POST + deployPath + REGISTER_PATH, new RegisterSubmitCommand());
+        commands.put(POST + deployPath +REGISTER_PATH, new RegisterSubmitCommand());
+        commands.put(POST + deployPath +BOOK_DELETE_PATH, new DeleteBookSubmitCommand());
+        commands.put(POST + deployPath + BOOK_LOAD_PATH, new LoadBookSubmitCommand());
+        commands.put(POST + deployPath + BOOK_EDIT_PATH, new EditBookSubmitCommand());
 
     }
 

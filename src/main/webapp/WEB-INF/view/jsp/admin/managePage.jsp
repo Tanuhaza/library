@@ -9,51 +9,74 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/library.css">
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <title>home page</title>
 </head>
 <body class="body-profile-container">
 <jsp:include page="../admin/header.jsp"/>
 
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-    <%--<h2 class="sub-header"><fmt:message key="librarian.catalogue.title"/></h2>--%>
-    <%--<div class="table-responsive">--%>
-        <%--<table class="table table-striped">--%>
-            <%--<thead>--%>
-            <%--<tr>--%>
-                <%--<th><fmt:message key="librarian.catalogue.column.bookId"/></th>--%>
-                <%--<th><fmt:message key="librarian.catalogue.column.bookTitle"/></th>--%>
-                <%--<th><fmt:message key="librarian.catalogue.column.bookAuthor"/></th>--%>
-                <%--<th><fmt:message key="librarian.catalogue.column.bookNumber"/></th>--%>
-                <%--<th></th>--%>
-            <%--</tr>--%>
-            <%--</thead>--%>
-            <%--<tbody>--%>
-            <c:forEach var="book" items="${books}">
-                <tr>
-                    <td>${book.id}</td>
-                    <td>${book.title}</td>
-                    <td>${book.year}</td>
+<div class="btn btn-success btn-lg">
+    <a href="/library/book/load"><fmt:message key="library.admin.LoadBook" bundle="${msg}"/></a>
+</div>
+<%--<h2 class="sub-header"><fmt:message key="librarian.catalogue.title"/></h2>--%>
+<%--<div class="table-responsive">--%>
+<%--<table class="table table-striped">--%>
+<thead>
+<div class="container">
+    <div class="row">
+        <tr>
+            <th><fmt:message key="library.admin.catalogue.column.bookId"/></th>
+            <th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>
+            <th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>
+            <th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>
+            <th></th>
+        </tr>
+    </div>
+</div>
+</thead>
+<%--<tbody>--%>
+<div class="container">
+    <div class="row">
+<c:forEach var="book" items="${books}">
+   <div class="col-lg-4">
+       <div class="book-box">
+
+            <tr>
+                <td>${book.id}</td>
+                <td>${book.title}</td>
+                <td>${book.year}</td>
                     <%--<td>${book.inventoryNumber}</td>--%>
-                    <td>
-                        <form action="/controller" method="post" class="navbar-form navbar-right">
-                            <input type="hidden" name="command" value="openBook">
-                            <input type="hidden" name="bookId" value="${book.id}">
-                            <input type="hidden" name="bookTitle" value="${book.title}">
+                <td>
+                    <form action="/library/book/add" method="post" class="navbar-form navbar-right">
+                        <input type="hidden" name="command" value="openBook">
+                        <input type="hidden" name="bookId" value="${book.id}">
+                        <input type="hidden" name="bookTitle" value="${book.title}">
                             <%--<input type="hidden" name="bookAuthor" value="${book.author}">--%>
                             <%--<input type="hidden" name="bookNumber" value="${book.inventoryNumber}">--%>
-                            <input type="submit" value="<fmt:message key="library.editBook"/>" class="btn btn-success btn-lg">
-                        </form>
-                    </td>
-                </tr>
-            </c:forEach>
+                        <input type="submit" value="<fmt:message key="library.admin.editBook"/>"
+                               class="btn btn-success btn-lg">
+                    </form>
+                </td>
 
+                <td>
+                    <form action="/library/book/delete" method="post" class="navbar-form navbar-right">
+                        <input type="hidden" name="command" value="openBook">
+                        <input type="hidden" name="bookId" value="${book.id}">
+                        <input type="hidden" name="bookTitle" value="${book.title}">
+                            <%--<input type="hidden" name="bookAuthor" value="${book.author}">--%>
+                            <%--<input type="hidden" name="bookNumber" value="${book.inventoryNumber}">--%>
+                        <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
+                               class="btn btn-success btn-lg">
+                    </form>
+                </td>
+            </tr>
+       </div>
+   </div>
+
+</c:forEach>
     </div>
-
-
-
-
-
+</div>
 
 <jsp:include page="../fragment/footer.jsp"/>
 </body>

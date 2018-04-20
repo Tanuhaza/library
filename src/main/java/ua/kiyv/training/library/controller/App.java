@@ -1,8 +1,10 @@
 package ua.kiyv.training.library.controller;
 
+import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
+import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.Impl.UserServiceImpl;
 import ua.kiyv.training.library.service.ServiceFactory;
@@ -24,12 +26,14 @@ public class App {
 //        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
 
         BookService bookService = ServiceFactory.getInstance().createBookService();
+        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
 //        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
 //book.setId(1);
 //book.setTitle("RED STARS");
 //      bookService.create(book);
 //bookService.update(book);
 //        System.out.println(bookService.findAll());
-        System.out.println(bookService.findById(1));
+//        System.out.println(bookService.findById(1));
+        System.out.println(bookService.findAllGenres());
     }
 }

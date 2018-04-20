@@ -1,0 +1,16 @@
+/*.row div{*/
+    /*height: 300px;*/
+    /*background: #333333;*/
+/*}*/
+.book-box{
+    display: block;
+    border: 1px solid #b5e9a7;
+    border-radius: 3px;
+    position: relative;
+    background: #fff;
+    margin: 0 20px 20px 0;
+    text-decoration: none;
+    color: #474747;
+    z-index: 0;
+    height: 300px;
+}

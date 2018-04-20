@@ -20,7 +20,7 @@ public class ManageCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         BookService bookService = ServiceFactory.getInstance().createBookService();
         List<Book> books =new ArrayList<>();
-        books = bookService.findAll();
+        books = bookService.findAllBooks();
         request.setAttribute("books",books);
         return PagesPath.ADMIN_MANAGE_PAGE;
     }

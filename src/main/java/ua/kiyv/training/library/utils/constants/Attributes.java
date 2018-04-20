@@ -49,6 +49,13 @@ public final class Attributes {
     public static final String PREVIOUS_USER_LOGIN = "previousUserLogin";
     public static final String PREVIOUS_USER_ROLE = "previousUserRole";
 
+    public static final String PREVIOUS_BOOK_TITLE = "previousUserEmail";
+    public static final String PREVIOUS_BOOK = "previousUserPassword";
+    public static final String PREVIOUS_BOOK_NAME = "previousUserName";
+    public static final String PREVIOUS_BOOK_SURNAME = "previousUserSurname";
+    public static final String PREVIOUS_BOOK_LOGIN = "previousUserLogin";
+    public static final String PREVIOUS_BOOK_ROLE = "previousUserRole";
+
     public static final String LIMIT = "limit";
     public static final String OFFSET = "page";
     public static final String TOTAL_PAGES = "pages";

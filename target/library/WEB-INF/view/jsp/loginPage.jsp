@@ -77,7 +77,7 @@
                                     <input type="password" name="login_password" id="login_password" tabindex="2"
                                            class="form-control"
                                            placeholder="<fmt:message key="library.registration.placeholder.password" bundle="${msg}"/>"
-                                           value="${requestScope.previousPassword}" required>
+                                           value="${requestScope.previousLoginPassword}" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="row">

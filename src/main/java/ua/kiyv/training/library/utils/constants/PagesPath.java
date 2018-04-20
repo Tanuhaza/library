@@ -17,6 +17,10 @@ public final class PagesPath {
     public static final String LOGOUT_PATH = "/library/logout";
     public static final String STATISTICS_PATH="/library/statistics";
     public static final String MANAGE_PATH="/library/manage";
+    public static final String BOOK_DELETE_PATH = "/library/book/delete";
+    public static final String BOOK_EDIT_PATH = "/library/book/edit";
+    public static final String BOOK_LOAD_PATH = "/library/book/load";
+
     public static final String TOPICS_ID_PATH="/topic/id";
     public static final String QUIZ_ID_PATH="/quiz/id";
     public static final String QUIZ_PATH="/quiz";
@@ -28,6 +32,7 @@ public final class PagesPath {
     public static final String ADMIN_HOME_PAGE = VIEW_JSP_CLASSPATH + "admin/adminHome.jsp";
     public static final String ADMIN_STATISTICS_PAGE= VIEW_JSP_CLASSPATH + "admin/statisticsPage.jsp";
     public static final String ADMIN_MANAGE_PAGE= VIEW_JSP_CLASSPATH + "admin/managePage.jsp";
+    public static final String LOAD_BOOK_PAGE= VIEW_JSP_CLASSPATH + "book/loadBook.jsp";
 
     public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
     public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "homePage.jsp";
