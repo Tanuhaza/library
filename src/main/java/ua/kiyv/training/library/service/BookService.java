@@ -17,4 +17,5 @@ public interface BookService {
     public Book findById(int id);
     public List<Genre> findAllGenres();
     public void matchBookAuthor(Book book, Author author);
+    public void delete(int id);
 }

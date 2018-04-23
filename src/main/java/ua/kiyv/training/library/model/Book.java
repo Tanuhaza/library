@@ -210,7 +210,7 @@ public class Book {
         }
 
         public Book.Builder setGenreId(int id) {
-            instance.setRate(id);
+            instance.setGenreId(id);
             return this;
         }
 

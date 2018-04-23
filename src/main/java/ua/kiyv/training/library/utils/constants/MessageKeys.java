@@ -9,6 +9,13 @@ public final class MessageKeys {
     public static final String USER_ALREADY_EXISTS = "message.user.already.exist";
     public static final String UNKNOWN_ERROR_OCCURED = "message.unknown.error";
 
+    public static final String WRONG_TITLE = "message.wrong.bookdata.title";
+    public static final String WRONG_DESCRIPION = "message.wrong.bookdata.descripion";
+    public static final String WRONG_YEAR= "message.wrong.bookdata.year";
+    public static final String WRONG_QUANTITY = "message.wrong.bookdata.quantity";
+    public static final String WRONG_FIRST_AUTHOR_NAME = "message.wrong.bookdata.first.author.name";
+    public static final String WRONG_FIRST_AUTHOR_SURNAME = "message.wrong.bookdata.first.author.surname";
+
     public static final String WRONG_USER_NAME = "message.wrong.user.name";
     public static final String WRONG_USER_SURNAME = "message.wrong.user.surname";
     public static final String WRONG_USER_PASSWORD = "message.wrong.user.password";

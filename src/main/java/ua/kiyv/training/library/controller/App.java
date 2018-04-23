@@ -26,7 +26,7 @@ public class App {
 //        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
 
         BookService bookService = ServiceFactory.getInstance().createBookService();
-        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
+//        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
 //        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
 //book.setId(1);
 //book.setTitle("RED STARS");
@@ -34,6 +34,7 @@ public class App {
 //bookService.update(book);
 //        System.out.println(bookService.findAll());
 //        System.out.println(bookService.findById(1));
-        System.out.println(bookService.findAllGenres());
+        bookService.delete(12);
+//        System.out.println(bookService.findAllGenres());
     }
 }

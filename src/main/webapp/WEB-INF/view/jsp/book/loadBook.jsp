@@ -45,20 +45,19 @@
                                 <div class="form-group">
                                     <input type="text" name="title" id="title" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousBookTitle}" required>
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" name="decription" id="description" tabindex="1"
+                                    <input type="text" name="description" id="description" tabindex="1"
                                            class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.description" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousBookDescription}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="picture" id="picture" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.picture" bundle="${msg}" />"
-                                           required>
+                                           value="${requestScope.previousBookPictureId}" required>
                                 </div>
-
 
                                 <div class="form-group">
                                     <select id="isAvaliable" name="isAvaliable" class="form-control">
@@ -73,13 +72,13 @@
                                 <div class="form-group">
                                     <input type="text" name="quantity" id="quantity" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.quantity" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousBookQuantity}" required>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" name="year" id="year" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.year" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousBookYear}" required>
                                 </div>
 
                                 <div class="form-group">
@@ -95,20 +94,20 @@
                                 <div class="form-group">
                                     <input type="text" name="keywords" id="keywords" tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.keyword" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousBookKeywords}" required>
                                 </div>
 
                                 <div class="form-group">
                                     <input type="text" name="first_author_name" id="first_author_name" tabindex="1"
                                            class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.first.author.name" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousAuthorName}" required>
                                 </div>
                                 <div class="form-group">
                                     <input type="text" name="first_author_surname" id="first_author_surname"
                                            tabindex="1" class="form-control"
                                            placeholder="<fmt:message key="library.addBook.placeholder.first.author.surname" bundle="${msg}"/>"
-                                           required>
+                                           value="${requestScope.previousAuthorSurname}" required>
                                 </div>
                                 <%--<div class="form-group">--%>
                                     <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>

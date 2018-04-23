@@ -21,11 +21,9 @@ public class UserValidator implements Validator<RegisterData> {
         Errors results = new Errors();
         if(!Pattern.matches(REGEX_NAME, data.getFirstName())){
             results.addError(Attributes.USER_NAME, MessageKeys.WRONG_USER_NAME);
-            logger.info("NAME");
         }
         if(!Pattern.matches(REGEX_NAME, data.getLastName())){
             results.addError(Attributes.USER_SURNAME, MessageKeys.WRONG_USER_SURNAME);
-            logger.info("SURNAME");
         }
         if(!Pattern.matches(REGEX_EMAIL, data.getEmail())){
             results.addError(Attributes.USER_EMAIL, MessageKeys.WRONG_USER_EMAIL);
@@ -35,7 +33,6 @@ public class UserValidator implements Validator<RegisterData> {
         }
         if(!Pattern.matches(REGEX_PHONE, data.getPhone())){
             results.addError(Attributes.USER_CELLPHONE, MessageKeys.WRONG_USER_CELLPHONE);
-            logger.info("PHONE");
         }
 
         return results;

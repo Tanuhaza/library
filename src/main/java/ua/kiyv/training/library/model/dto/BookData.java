@@ -11,19 +11,15 @@ public class BookData {
     private String title;
     private String description;
     private String pictureId;
-    private int rate;
-    private int year;
+    private String year;
     private boolean avaliable;
-    private int quantity;
+    private String quantity;
     private String keywords;
-    private Date addedDate;
     private int genreId;
     private String firstAuthorName;
     private String firstAuthorSurname;
     private String secondAuthorName;
     private String secondAuthorSurname;
-
-
 
     public BookData() {
     }
@@ -60,19 +56,11 @@ public class BookData {
         this.pictureId = pictureId;
     }
 
-    public int getRate() {
-        return rate;
-    }
-
-    public void setRate(int rate) {
-        this.rate = rate;
-    }
-
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
     }
 
@@ -84,11 +72,11 @@ public class BookData {
         this.avaliable = avaliable;
     }
 
-    public int getQuantity() {
+    public String getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
 
@@ -98,14 +86,6 @@ public class BookData {
 
     public void setKeywords(String keywords) {
         this.keywords = keywords;
-    }
-
-    public Date getAddedDate() {
-        return addedDate;
-    }
-
-    public void setAddedDate(Date addedDate) {
-        this.addedDate = addedDate;
     }
 
     public int getGenreId() {
@@ -171,22 +151,12 @@ public class BookData {
             return this;
         }
 
-        public BookData.Builder setGenreId(int id) {
-            instance.setRate(id);
+        public BookData.Builder setGenreId(int genreId) {
+            instance.setGenreId(genreId);
             return this;
         }
 
-        public BookData.Builder setAddedDate(Date date) {
-            instance.setAddedDate(date);
-            return this;
-        }
-
-        public BookData.Builder setRate(int rate) {
-            instance.setRate(rate);
-            return this;
-        }
-
-        public BookData.Builder setYear(int year) {
+        public BookData.Builder setYear(String year) {
             instance.setYear(year);
             return this;
         }
@@ -196,7 +166,7 @@ public class BookData {
             return this;
         }
 
-        public BookData.Builder setQuantity(int quantity) {
+        public BookData.Builder setQuantity(String quantity) {
             instance.setQuantity(quantity);
             return this;
         }

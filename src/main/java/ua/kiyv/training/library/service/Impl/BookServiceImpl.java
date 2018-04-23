@@ -1,6 +1,7 @@
 package ua.kiyv.training.library.service.Impl;
 
 import org.apache.log4j.Logger;
+import ua.kiyv.training.library.dao.BookDao;
 import ua.kiyv.training.library.dao.DaoException;
 import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
@@ -42,6 +43,25 @@ public class BookServiceImpl implements BookService {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
             JdbcDaoFactory.getInstance().createBookDao().update(book);
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            logger.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+        }
+
+    }
+
+    @Override
+    public void delete(int id) {
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            BookDao bookDao = JdbcDaoFactory.getInstance().createBookDao();
+            System.out.println("in service delete");
+            bookDao.deleteMatchBookAuthor(id);
+            System.out.println("delete book-author");
+            bookDao.deleteById(id);
+            System.out.println("delete book");
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();

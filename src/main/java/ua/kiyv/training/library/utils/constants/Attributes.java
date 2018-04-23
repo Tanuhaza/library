@@ -37,6 +37,15 @@ public final class Attributes {
     public static final String USER_ROLE = "userRole";
     public static final String USER_CELLPHONE = "userCellphone";
 
+    public static final String TITLE = "title";
+    public static final String DESCRIPTION = "description";
+    public static final String PICTURE_ID = "picture";
+    public static final String QUANTITY = "quantity";
+    public static final String YEAR = "year";
+    public static final String FIRST_ATHOR_NAME = "first_athor_name";
+    public static final String FIRST_ATHOR_SURNAME = "first_athor_surname";
+    public static final String KEYWORDS = "keywords";
+
     public static final String CONFIRM_MESSAGE = "confirmMessage";
 
     public static final String PREVIOUS_LOGIN = "previousLogin";
@@ -49,12 +58,14 @@ public final class Attributes {
     public static final String PREVIOUS_USER_LOGIN = "previousUserLogin";
     public static final String PREVIOUS_USER_ROLE = "previousUserRole";
 
-    public static final String PREVIOUS_BOOK_TITLE = "previousUserEmail";
-    public static final String PREVIOUS_BOOK = "previousUserPassword";
-    public static final String PREVIOUS_BOOK_NAME = "previousUserName";
-    public static final String PREVIOUS_BOOK_SURNAME = "previousUserSurname";
-    public static final String PREVIOUS_BOOK_LOGIN = "previousUserLogin";
-    public static final String PREVIOUS_BOOK_ROLE = "previousUserRole";
+    public static final String PREVIOUS_BOOK_TITLE = "previousBookTitle";
+    public static final String PREVIOUS_BOOK_DESCRIPTION = "previousBookDescription";
+    public static final String PREVIOUS_BOOK_YEAR = "previousBookYear";
+    public static final String PREVIOUS_BOOK_QUANTITY = "previousBookQuantity";
+    public static final String PREVIOUS_BOOK_AUTHOR_NAME = "previousAuthorName";
+    public static final String PREVIOUS_BOOK_AUTHOR_SURNAME = "previousAuthorSurname";
+    public static final String PREVIOUS_BOOK_KEYWORDS = "previousBookKeywords";
+    public static final String PREVIOUS_BOOK_PICTURE_ID = "previousBookPictureId";
 
     public static final String LIMIT = "limit";
     public static final String OFFSET = "page";
