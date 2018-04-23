@@ -1,6 +1,8 @@
 package ua.kiyv.training.library.service.Impl;
 
 import org.apache.log4j.Logger;
+import ua.kiyv.training.library.dao.AuthorDao;
+import ua.kiyv.training.library.dao.BookDao;
 import ua.kiyv.training.library.dao.DaoException;
 import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
@@ -19,7 +21,7 @@ import java.util.List;
  * Created by Tanya on 17.04.2018.
  */
 public class AuthorServiceImpl implements AuthorService {
-//    private BookServiceImpl(){};
+    private static AuthorDao authorDao = JdbcDaoFactory.getInstance().createAuthorDao();
 
     private static final Logger logger = Logger.getLogger(AuthorServiceImpl.class);
 
@@ -27,12 +29,12 @@ public class AuthorServiceImpl implements AuthorService {
     public void create(Author author) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createAuthorDao().create(author);
+           authorDao.create(author);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_AUTHOR);
         }
 
     }
@@ -41,12 +43,12 @@ public class AuthorServiceImpl implements AuthorService {
     public void update(Author author) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createAuthorDao().update(author);
+            authorDao.update(author);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_AUTHOR);
         }
 
     }

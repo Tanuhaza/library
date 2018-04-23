@@ -75,6 +75,28 @@ public class JdbcAuthorDao implements AuthorDao {
         }
 
     @Override
+    public Author findByFirstLastName(String firstName,String lastName) {
+        Author author;
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_AUTHORS+FILTER_BY_FIRST_LAST_NAME)) {
+
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            ResultSet resultSet = statement.executeQuery();
+            if (!resultSet.next()) {
+                throw new DaoException(MessageKeys.WRONG_AUTHOR_DB_NO_ID_EXIST);
+            }
+            AuthorMapper authorMapper = new AuthorMapper();
+            author = authorMapper.extractFromResultSet(resultSet);
+            resultSet.close();
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + firstName +" "+lastName);
+            throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_GET);
+        }
+        return author;
+    }
+
+    @Override
     public List<Author> findAll() {
         Author author;
         List<Author> authors = new ArrayList<>();

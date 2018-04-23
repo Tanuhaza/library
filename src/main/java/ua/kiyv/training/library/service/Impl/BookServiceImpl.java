@@ -8,7 +8,6 @@ import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.Genre;
-import ua.kiyv.training.library.model.User;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.ServiceException;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
@@ -20,20 +19,19 @@ import java.util.List;
  * Created by Tanya on 17.04.2018.
  */
 public class BookServiceImpl implements BookService {
-//    private BookServiceImpl(){};
-
+    private static BookDao bookDao = JdbcDaoFactory.getInstance().createBookDao();
     private static final Logger logger = Logger.getLogger(BookServiceImpl.class);
 
     @Override
     public void create(Book book) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createBookDao().create(book);
+            bookDao.create(book);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_BOOK);
         }
 
     }
@@ -42,12 +40,12 @@ public class BookServiceImpl implements BookService {
     public void update(Book book) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createBookDao().update(book);
+            bookDao.update(book);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_BOOK);
         }
 
     }
@@ -56,7 +54,6 @@ public class BookServiceImpl implements BookService {
     public void delete(int id) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            BookDao bookDao = JdbcDaoFactory.getInstance().createBookDao();
             System.out.println("in service delete");
             bookDao.deleteMatchBookAuthor(id);
             System.out.println("delete book-author");
@@ -66,7 +63,7 @@ public class BookServiceImpl implements BookService {
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_DELETING_BOOK);
         }
 
     }
@@ -88,6 +85,6 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void matchBookAuthor(Book book, Author author) {
-        JdbcDaoFactory.getInstance().createBookDao().matchBookAuthor(book,author);
+        JdbcDaoFactory.getInstance().createBookDao().matchBookAuthor(book, author);
     }
 }

@@ -65,12 +65,12 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Book> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
         Book book = null;
-        Author author =null;
+        Author author = null;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS+ FILTER_BY_ID);
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID);
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
-           while (resultSet.next()) {
+            while (resultSet.next()) {
                 BookMapper bookMapper = new BookMapper();
                 AuthorMapper authorMapper = new AuthorMapper();
                 book = bookMapper.extractFromResultSet(resultSet);
@@ -94,9 +94,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Book> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
         Book book = null;
-        Author author =null;
+        Author author = null;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS+ FILTER_BY_TITLE);
+            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_TITLE);
             statement.setString(1, title);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -191,14 +191,13 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void deleteById(int id) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(DELETE_BOOK);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_BOOK)) {
             statement.setInt(1, id);
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_DELETE_BOOK + id);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
@@ -207,14 +206,13 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void deleteMatchBookAuthor(int id) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(DELETE_MATCH_BOOK_AUTHOR);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_MATCH_BOOK_AUTHOR)) {
             statement.setInt(1, id);
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_DELETE_BOOK + id);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
@@ -225,11 +223,11 @@ public class JdbcBookDao implements BookDao, BookQuery {
     public void matchBookAuthor(Book book, Author author) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
             PreparedStatement statement = connection.prepareStatement(MATCH_BOOK_AUTHOR);
-            System.out.println( "First Match book id "+book.getId());
+            System.out.println("First Match book id " + book.getId());
             statement.setInt(1, book.getId());
-            System.out.println( "Match book id "+book.getId());
+            System.out.println("Match book id " + book.getId());
             statement.setInt(2, author.getId());
-            System.out.println( "Match book id "+book.getId());
+            System.out.println("Match book id " + book.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED);

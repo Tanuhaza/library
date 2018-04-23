@@ -4,8 +4,10 @@ package ua.kiyv.training.library.controller.command.login;
 
 
 import ua.kiyv.training.library.controller.CommandWrapper;
+import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
+import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.ServiceFactory;
 import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.Attributes;
@@ -14,6 +16,8 @@ import ua.kiyv.training.library.utils.constants.PagesPath;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class LoginSubmitCommand extends CommandWrapper {
@@ -38,6 +42,11 @@ public class LoginSubmitCommand extends CommandWrapper {
             pageToGo = getResultPageByUserRole(person);
             request.getSession().setAttribute(Attributes.USER_ID, person.getId());
             request.getSession().setAttribute(Attributes.USER_ROLE, person.getRole());
+            /** DELETE!!!*/
+            BookService bookService = ServiceFactory.getInstance().createBookService();
+            List<Genre> genres =new ArrayList<>();
+            genres = bookService.findAllGenres();
+            request.getSession().setAttribute("genres",genres);
         }
 //        clearLoginDataFromRequest(request);
         return pageToGo;

@@ -17,11 +17,10 @@ import java.util.List;
 public class LoadBookCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookService bookService = ServiceFactory.getInstance().createBookService();
-        List<Genre> genres =new ArrayList<>();
-        genres = bookService.findAllGenres();
-        request.setAttribute("genres",genres);
-
+//        BookService bookService = ServiceFactory.getInstance().createBookService();
+//        List<Genre> genres =new ArrayList<>();
+//        genres = bookService.findAllGenres();
+//        request.getSession().setAttribute("genres",genres);
         return PagesPath.LOAD_BOOK_PAGE;
     }
 }

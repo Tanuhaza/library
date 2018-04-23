@@ -28,9 +28,9 @@ public class DeleteBookSubmitCommand extends CommandWrapper {
         System.out.println(request.getParameter("bookId"));
         BookService bookService = ServiceFactory.getInstance().createBookService();
         bookService.delete(id);
-        List<Book> books =new ArrayList<>();
-        books = bookService.findAllBooks();
-        request.setAttribute("books",books);
-        return PagesPath.ADMIN_MANAGE_PAGE;
+//        List<Book> books =new ArrayList<>();
+//        books = bookService.findAllBooks();
+//        request.setAttribute("books",books);
+        return PagesPath.MANAGE_PATH;
     }
 }

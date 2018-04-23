@@ -116,7 +116,12 @@ public final class MessageKeys {
     public static final String TANSACTION_CAN_NOT_ROLLBACK = "message.wrong.transaction.can.not.rollback";
     public static final String CAN_NOT_COMMIT_TRANSACTION_NOT_BEGUN= "message.wrong.commit.transaction.no.begun";
     public static final String CAN_NOT_ROLLBACK_TRANSACTION_NOT_BEGUN = "message.wrong.rollback.transaction.no.begun";
-    public static final String WRONG_TRANSACTION = "message.wrong.transaction";
+    public static final String WRONG_TRANSACTION_WHILE_DELETING_BOOK = "message.wrong.transaction.book.delete";
+    public static final String WRONG_TRANSACTION_WHILE_UPDATING_BOOK = "message.wrong.transaction.book.update";
+    public static final String WRONG_TRANSACTION_WHILE_CREATING_BOOK = "message.wrong.transaction.book.create";
+    public static final String WRONG_TRANSACTION_WHILE_CREATING_AUTHOR = "message.wrong.transaction.author.create";
+    public static final String WRONG_TRANSACTION_WHILE_UPDATING_AUTHOR = "message.wrong.transaction.author.update";
+    public static final String WRONG_TRANSACTION_WHILE_CREATING_USER = "message.wrong.transaction.user.creating";
 
     public static final String WRONG_QUERY_PARAMETER = "message.wrong.query.parameter";
     public static final String WRONG_PARAMETER = "message.wrong.parameter";

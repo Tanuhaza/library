@@ -1,7 +1,10 @@
 package ua.kiyv.training.library.controller.filter;
 
 import org.apache.log4j.Logger;
+import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.model.Role;
+import ua.kiyv.training.library.service.BookService;
+import ua.kiyv.training.library.service.ServiceFactory;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 
@@ -11,7 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.EnumMap;
+import java.util.List;
 
 /**
  * This class is authorization filter.
@@ -39,6 +44,8 @@ public class AuthFilter implements Filter {
         System.out.println(uri);
         req.setCharacterEncoding(Attributes.UTF_8);
         res.setContentType("text/html");
+
+
 
 //        if (session == null || session.isNew()) {
 //            req.getRequestDispatcher("index.jsp").forward(request, response);

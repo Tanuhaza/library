@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService{
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             logger.error(LoggerMessages.WRONG_TRANSACTION);
-            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_USER);
         }
 
     }

@@ -1,17 +1,12 @@
 package ua.kiyv.training.library.controller;
 
 
-
-
 import ua.kiyv.training.library.controller.command.LogoutCommand;
 import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
 import ua.kiyv.training.library.controller.command.admin.AdminHomeCommand;
 import ua.kiyv.training.library.controller.command.admin.ManageCommand;
 import ua.kiyv.training.library.controller.command.admin.StatisticsCommand;
-import ua.kiyv.training.library.controller.command.book.DeleteBookSubmitCommand;
-import ua.kiyv.training.library.controller.command.book.EditBookSubmitCommand;
-import ua.kiyv.training.library.controller.command.book.LoadBookCommand;
-import ua.kiyv.training.library.controller.command.book.LoadBookSubmitCommand;
+import ua.kiyv.training.library.controller.command.book.*;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
 import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
 import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
@@ -24,7 +19,6 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
 /**
  * This class is implementation of CommandHolder. It defines command for every supported request uri.
- *
  */
 class CommandHolder {
 
@@ -52,19 +46,18 @@ class CommandHolder {
 //        commands.put(GET + deployPath + HOME_PATH, new HomeCommand());
         commands.put(GET + deployPath + LOGIN_PATH, new LoginCommand());
         commands.put(GET + deployPath + LOGOUT_PATH, new LogoutCommand());
-
         commands.put(GET + deployPath + STATISTICS_PATH, new StatisticsCommand());
         commands.put(GET + deployPath + MANAGE_PATH, new ManageCommand());
-//
-          commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
+        commands.put(GET + deployPath + ADMIN_PATH, new AdminHomeCommand());
         commands.put(GET + deployPath + BOOK_LOAD_PATH, new LoadBookCommand());
 
-//
+        commands.put(POST + deployPath + BOOK_UPDATE_PATH, new UpdateBookSubmitCommand());
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
-        commands.put(POST + deployPath +REGISTER_PATH, new RegisterSubmitCommand());
-        commands.put(POST + deployPath +BOOK_DELETE_PATH, new DeleteBookSubmitCommand());
+        commands.put(POST + deployPath + REGISTER_PATH, new RegisterSubmitCommand());
+        commands.put(POST + deployPath + BOOK_DELETE_PATH, new DeleteBookSubmitCommand());
         commands.put(POST + deployPath + BOOK_LOAD_PATH, new LoadBookSubmitCommand());
         commands.put(POST + deployPath + BOOK_EDIT_PATH, new EditBookSubmitCommand());
+        commands.put(POST + deployPath + USER_BORROWED_BOOKS_PATH, new EditBookSubmitCommand());
 
     }
 
@@ -81,10 +74,11 @@ class CommandHolder {
     /**
      * this method replaces all digits between slashes to "id"
      * this is necessary because search algorithm doesn't support regular expressions
+     *
      * @param url
      * @return converted url
      */
-    private String removeAllNumbersFromUrl(String url){
+    private String removeAllNumbersFromUrl(String url) {
         return url.replaceAll(NUMBER_BETWEEN_SLASHES_PATTERN, "/id");
     }
 

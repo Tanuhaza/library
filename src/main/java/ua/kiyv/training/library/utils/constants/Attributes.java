@@ -37,6 +37,7 @@ public final class Attributes {
     public static final String USER_ROLE = "userRole";
     public static final String USER_CELLPHONE = "userCellphone";
 
+    public static final String BOOK_ID = "bookId";
     public static final String TITLE = "title";
     public static final String DESCRIPTION = "description";
     public static final String PICTURE_ID = "picture";
