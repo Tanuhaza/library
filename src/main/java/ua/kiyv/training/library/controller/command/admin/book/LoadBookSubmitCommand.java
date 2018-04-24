@@ -1,4 +1,4 @@
-package ua.kiyv.training.library.controller.command.book;
+package ua.kiyv.training.library.controller.command.admin.book;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.controller.CommandWrapper;
@@ -18,15 +18,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 
-public class UpdateBookSubmitCommand extends CommandWrapper {
+/**
+ * Created by Tanya on 19.04.2018.
+ */
+public class LoadBookSubmitCommand extends CommandWrapper {
     private static final Logger logger = Logger.getLogger(LoadBookSubmitCommand.class);
     private BookService bookService = ServiceFactory.getInstance().createBookService();
     private AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
     private BookValidator bookValidator;
 
-    public UpdateBookSubmitCommand() {
+    public LoadBookSubmitCommand() {
         super(PagesPath.LOGIN_PAGE);
         bookValidator = new BookValidator();
     }
@@ -40,22 +42,21 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
         if (errors.hasErrors()) {
             System.out.println("has errors");
             processErrors(request, errors);
-            request.getRequestDispatcher(PagesPath.UPDATE_BOOK_PAGE).forward(request, response);
+            request.getRequestDispatcher(PagesPath.LOAD_BOOK_PAGE).forward(request, response);
             return PagesPath.FORWARD;
         }
         Book book = extractBookFromRegisterData(bookdata);
         Author author = extractAuthorFromRegisterData(bookdata);
-        bookService.update(book);
-//        authorService.create(author);
-//        bookService.matchBookAuthor(book, author);
+        bookService.create(book);
+        authorService.create(author);
+        bookService.matchBookAuthor(book, author);
         System.out.println("Save Date to DB");
         logger.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
-        return PagesPath.MANAGE_PATH;
+        return PagesPath.ADMIN_MANAGE_PATH;
     }
 
     private BookData extractBookDate(HttpServletRequest request) {
         return new BookData.Builder()
-                .setId((Integer)request.getSession().getAttribute(BOOK_ID))
                 .setTitle(request.getParameter("title"))
                 .setDiscription(request.getParameter("description"))
                 .setPictureId(request.getParameter("picture"))

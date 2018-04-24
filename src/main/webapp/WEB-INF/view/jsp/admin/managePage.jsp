@@ -22,19 +22,19 @@
 <%--<h2 class="sub-header"><fmt:message key="librarian.catalogue.title"/></h2>--%>
 <%--<div class="table-responsive">--%>
 <%--<table class="table table-striped">--%>
-<thead>
-<div class="container">
-    <div class="row">
-        <tr>
-            <th><fmt:message key="library.admin.catalogue.column.bookId"/></th>
-            <th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>
-            <th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>
-            <th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>
-            <th></th>
-        </tr>
-    </div>
-</div>
-</thead>
+<%--<thead>--%>
+<%--<div class="container">--%>
+    <%--<div class="row">--%>
+        <%--<tr>--%>
+            <%--<th><fmt:message key="library.admin.catalogue.column.bookId"/></th>--%>
+            <%--<th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>--%>
+            <%--<th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>--%>
+            <%--<th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>--%>
+            <%--<th></th>--%>
+        <%--</tr>--%>
+    <%--</div>--%>
+<%--</div>--%>
+<%--</thead>--%>
 <%--<tbody>--%>
 <div class="container">
     <div class="row">
@@ -50,7 +50,7 @@
                 <%--<td>${book.description}</td>--%>
                 <td>${book.quantity}</td>
                 <td>
-                    <form action="/library/book/edit" method="post" class="navbar-form navbar-right">
+                    <form action="/library/admin/book/edit" method="post" class="navbar-form navbar-right">
                         <input type="hidden" name="command" value="openBook">
                         <input type="hidden" name="bookId" value="${book.id}">
                         <input type="hidden" name="title" value="${book.title}">
@@ -67,7 +67,7 @@
                 </td>
 
                 <td>
-                    <form action="/library/book/delete" method="post" class="navbar-form navbar-right">
+                    <form action="/library/admin/book/delete" method="post" class="navbar-form navbar-right">
                         <input type="hidden" name="command" value="openBook">
                         <input type="hidden" name="bookId" value="${book.id}">
                         <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"

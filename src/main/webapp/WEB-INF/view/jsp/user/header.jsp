@@ -35,13 +35,13 @@
         <nav id="mainmenu" class="mainmenu">
             <ul>
                 <li>
-                    <a href="/library/admin"><fmt:message key="library.menu.home" bundle="${msg}"/></a>
+                    <a href="/library/user"><fmt:message key="library.user.menu.home" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <a href="/library/admin/statistics"><fmt:message key="library.admin.menu.statistics" bundle="${msg}"/></a>
+                    <a href="/library/user/books"><fmt:message key="library.user.menu.books" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <a href="/library/admin/manage"><fmt:message key="library.admin.menu.manage" bundle="${msg}"/></a>
+                    <a href="/library/user/books/genre"><fmt:message key="library.user.menu.books.by.genre" bundle="${msg}"/></a>
                 </li>
 
             </ul>

@@ -7,6 +7,7 @@ import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
+import ua.kiyv.training.library.model.BorrowedBook;
 import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.ServiceException;
@@ -71,6 +72,11 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Book> findAllBooks() {
         return (JdbcDaoFactory.getInstance().createBookDao().findAll());
+    }
+
+    @Override
+    public List<BorrowedBook> findAllBorrowedBooksByUserId(int id) {
+        return (JdbcDaoFactory.getInstance().createBorrowedBookDao().findAllByUserId(id));
     }
 
     @Override

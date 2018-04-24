@@ -2,10 +2,7 @@ package ua.kiyv.training.library.controller;
 
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
-import ua.kiyv.training.library.model.Author;
-import ua.kiyv.training.library.model.Book;
-import ua.kiyv.training.library.model.Role;
-import ua.kiyv.training.library.model.User;
+import ua.kiyv.training.library.model.*;
 import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.Impl.UserServiceImpl;
@@ -15,6 +12,7 @@ import ua.kiyv.training.library.service.UserService;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -39,7 +37,7 @@ public class App {
 ////bookService.update(book);
 ////        System.out.println(bookService.findAll());
 ////        System.out.println(bookService.findById(1));
-        bookService.delete(100);
+//        bookService.delete(100);
 //        System.out.println(bookService.findAllGenres());
 //        DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
 //        try {
@@ -48,5 +46,12 @@ public class App {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
+        List<BorrowedBook> borrowedBooks =new ArrayList<>();
+        borrowedBooks=bookService.findAllBorrowedBooksByUserId(2);
+        System.out.println(bookService.findAllBorrowedBooksByUserId(2));
+        System.out.println(borrowedBooks.get(1).getId());
+        System.out.println(borrowedBooks.get(1).getTitle());
+        System.out.println(borrowedBooks.get(1).getStartDate());
+        System.out.println(borrowedBooks.get(1).getDueToReturnDate());
     }
 }

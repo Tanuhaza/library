@@ -10,43 +10,37 @@ public final class PagesPath {
     public static final String VIEW_JSP_CLASSPATH = "/WEB-INF/view/jsp/";
 
     public static final String INDEX_PATH = "/";
-    public static final String HOME_PATH = "/library/home";
+
+    public static final String HOME_PATH = "/library/user";
     public static final String ADMIN_PATH = "/library/admin";
     public static final String LOGIN_PATH = "/library/login";
     public static final String REGISTER_PATH = "/library/register";
     public static final String LOGOUT_PATH = "/library/logout";
-    public static final String STATISTICS_PATH="/library/statistics";
-    public static final String MANAGE_PATH="/library/manage";
-    public static final String BOOK_DELETE_PATH = "/library/book/delete";
-    public static final String BOOK_EDIT_PATH = "/library/book/edit";
-    public static final String BOOK_LOAD_PATH = "/library/book/load";
-    public static final String BOOK_UPDATE_PATH ="/library/book/update";
-    public static final String USER_BORROWED_BOOKS_PATH ="/library/user/books";
+    public static final String ADMIN_STATISTICS_PATH="/library/admin/statistics";
+    public static final String ADMIN_MANAGE_PATH="/library/admin/manage";
+    public static final String ADMIN_BOOK_DELETE_PATH = "/library/admin/book/delete";
+    public static final String ADMIN_BOOK_EDIT_PATH = "/library/admin/book/edit";
+    public static final String ADMIN_BOOK_LOAD_PATH = "/library/admin/book/load";
+    public static final String ADMIN_BOOK_UPDATE_PATH ="/library/admin/book/update";
+    public static final String ADMIN_BORROWED_BOOKS_BY_USER_PATH ="/library/admin/user/borrowed/books";
 
-    public static final String TOPICS_ID_PATH="/topic/id";
-    public static final String QUIZ_ID_PATH="/quiz/id";
-    public static final String QUIZ_PATH="/quiz";
-    public static final String ADMIN_USERS_PATH="/admin/users";
-    public static final String ADMIN_USER_ID_PATH="/admin/user/id";
-    public static final String PROFILE_PATH = "/profile";
+    public static final String USER_BOOKS_PATH ="/library/user/books";
+    public static final String USER_BOOKS_BY_GENRE_PATH ="/library/user/books/genre";
 
+    public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
+    public static final String CONFIRMATION_PAGE = VIEW_JSP_CLASSPATH + "confirmation.jsp";
+    public static final String ERROR_PAGE = VIEW_JSP_CLASSPATH + "error.jsp";
 
     public static final String ADMIN_HOME_PAGE = VIEW_JSP_CLASSPATH + "admin/adminHome.jsp";
     public static final String ADMIN_STATISTICS_PAGE= VIEW_JSP_CLASSPATH + "admin/statisticsPage.jsp";
     public static final String ADMIN_MANAGE_PAGE= VIEW_JSP_CLASSPATH + "admin/managePage.jsp";
     public static final String LOAD_BOOK_PAGE= VIEW_JSP_CLASSPATH + "book/loadBook.jsp";
     public static final String UPDATE_BOOK_PAGE= VIEW_JSP_CLASSPATH + "book/updateBook.jsp";
+    public static final String USER_BORROWED_BOOK_PAGE= VIEW_JSP_CLASSPATH + "book/userBorrowedBooks.jsp";
 
-    public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
-    public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "homePage.jsp";
-    public static final String TOPICS_PAGE = VIEW_JSP_CLASSPATH + "user/viewTopics.jsp";
-    public static final String QUIZ_VIEW_PAGE = VIEW_JSP_CLASSPATH + "user/viewQuizzes.jsp";
-    public static final String QUIZ_PAGE = VIEW_JSP_CLASSPATH + "user/quizPage.jsp";
-    public static final String RESPONSE_PAGE = VIEW_JSP_CLASSPATH + "user/userResponsePage.jsp";
-    public static final String PARTIAL_RESPONSE_PAGE = VIEW_JSP_CLASSPATH + "user/partialResponsePage.jsp";
-    public static final String PROFILE_PAGE = VIEW_JSP_CLASSPATH + "user/profilePage.jsp";
-    public static final String CONFIRMATION_PAGE = VIEW_JSP_CLASSPATH + "confirmation.jsp";
+    public static final String USER_BOOKS_PAGE= VIEW_JSP_CLASSPATH + "user/getBooksPage.jsp";
+    public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "user/userHome.jsp";}
 
-    public static final String ERROR_PAGE = VIEW_JSP_CLASSPATH + "error.jsp";}
+
 
 

@@ -1,18 +1,12 @@
-package ua.kiyv.training.library.controller.command.book;
+package ua.kiyv.training.library.controller.command.admin.book;
 
 import ua.kiyv.training.library.controller.Command;
-import ua.kiyv.training.library.model.Book;
-import ua.kiyv.training.library.model.Genre;
-import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoadBookCommand implements Command {
     @Override

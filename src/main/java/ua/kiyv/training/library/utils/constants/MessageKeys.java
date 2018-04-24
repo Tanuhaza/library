@@ -51,13 +51,17 @@ public final class MessageKeys {
     public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_GET_PASSED_TIMES ="message.can.not.get.passed.times";
 
     public static final String WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.book.no.rows.affected";
+    public static final String WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.book.no.rows.affected";
     public static final String WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.book.no.rows.affected";
     public static final String WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.book.no.rows.affected";
     public static final String WRONG_BOOK_DB_NO_ID_OBTAINED ="message.wrong.creating.book.no.id.obtained";
+    public static final String WRONG_BORROWED_BOOK_DB_NO_ID_OBTAINED ="message.wrong.creating.book.no.id.obtained";
     public static final String WRONG_BOOK_DB_CAN_NOT_CREATE ="message.can.not.create.book";
+    public static final String WRONG_BORROWED_BOOK_DB_CAN_NOT_CREATE ="message.can.not.create.borrowed.book";
     public static final String WRONG_BOOK_DB_CAN_NOT_UPDATE ="message.can.not.update.book";
     public static final String WRONG_BOOK_DB_CAN_NOT_GET ="message.can.not.get.book";
     public static final String WRONG_BOOK_DB_CAN_NOT_DELETE ="message.can.not.delete.book";
+    public static final String WRONG_BORROWED_BOOK_DB_CAN_NOT_GET_ALL_BOROOWED_BOOKS= "message.wrong.can.not.get.all.borrowed.books";
     public static final String WRONG_BOOK_DB_NO_ID_EXIST="message.wrong.creating.book.no.id.exist";
     public static final String WRONG_BOOK_DB_CAN_NOT_GET_ALL_TOPICS = "message.wrong.can.not.get.all.books";
     public static final String WRONG_BOOK_DB_CAN_NOT_MATCH_AUTHOR ="message.can.not.create.book.author";

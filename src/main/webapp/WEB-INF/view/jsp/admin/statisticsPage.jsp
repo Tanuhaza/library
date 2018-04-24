@@ -15,35 +15,36 @@
 </head>
 <body>
 <jsp:include page="../admin/header.jsp"/>
-<div class="container">
-    <%--<div class="row">--%>
-    <div class="col-md-8">
-        <div class=col-md-4> Hi</div>
-        <div class=col-md-4>Hi</div>
-        <div class=col-md-4>Hi</div>
-    </div>
-</div>
-</div>
+<%--<div class="container">--%>
+    <%--&lt;%&ndash;<div class="row">&ndash;%&gt;--%>
+    <%--<div class="col-md-8">--%>
+        <%--<div class=col-md-4> Hi</div>--%>
+        <%--<div class=col-md-4>Hi</div>--%>
+        <%--<div class=col-md-4>Hi</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
+<%--</div>--%>
 
+<table class="table table-striped">
 <thead>
 <%--<div class="container">--%>
 <%--<div class="row">--%>
-<%--<tr>--%>
-<%--<th><fmt:message key="library.admin.catalogue.column.bookId"/></th>--%>
-<%--<th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>--%>
-<%--<th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>--%>
-<%--<th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>--%>
-<%--<th></th>--%>
-<%--</tr>--%>
+<tr>
+    <th><fmt:message key="library.admin.column.user.first.name"/></th>
+<th><fmt:message key="library.admin.column.user.last.name"/></th>
+<th><fmt:message key="library.admin.column.user.email"/></th>
+<th><fmt:message key="library.admin.column.user.phone"/></th>
+</tr>
 <%--</div>--%>
 <%--</div>--%>
 </thead>
 <%--<tbody>--%>
-<div class="container">
+<%--<div class="container">--%>
     <%--<div class="row">--%>
+        <tbody>
         <c:forEach var="user" items="${users}">
             <%--<div class="col-lg-4">--%>
-                <div class="book-box">
+                <%--<div class="book-box">--%>
 
                     <tr>
                         <td>${user.firstName}</td>
@@ -52,19 +53,21 @@
                         <td>${user.phone}</td>
 
                         <td>
-                            <form action="/library/user/books" method="post" class="navbar-form navbar-right">
+                                <form action="/library/admin/user/borrowed/books" method="post" class="navbar-form navbar-right">
                                 <input type="hidden" name="command" value="openBook">
-                                <input type="hidden" name="bookId" value="${user.id}">
+                                <input type="hidden" name="userId" value="${user.id}">
                                 <input type="submit" value="<fmt:message key="library.admin.checkBook"/>"
                                        class="btn btn-success btn-lg">
                             </form>
                         </td>
                     </tr>
-                </div>
+                <%--</div>--%>
             <%--</div>--%>
         </c:forEach>
+        </tbody>
         <%--</c:forEach>--%>
-    </div>
+    <%--</div>--%>
+</table>
 <%--</div>--%>
 
 

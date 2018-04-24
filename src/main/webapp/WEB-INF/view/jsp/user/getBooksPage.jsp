@@ -14,40 +14,18 @@
     <title>home page</title>
 </head>
 <body class="body-profile-container">
-<jsp:include page="../admin/header.jsp"/>
+<jsp:include page="../user/header.jsp"/>
 
-<div class="btn btn-success btn-lg">
-    <a href="/library/book/load"><fmt:message key="library.admin.LoadBook" bundle="${msg}"/></a>
-</div>
-<%--<h2 class="sub-header"><fmt:message key="librarian.catalogue.title"/></h2>--%>
-<%--<div class="table-responsive">--%>
-<%--<table class="table table-striped">--%>
-<%--<thead>--%>
-<%--<div class="container">--%>
-    <%--<div class="row">--%>
-        <%--<tr>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookId"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>--%>
-            <%--<th></th>--%>
-        <%--</tr>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<%--</thead>--%>
-<%--<tbody>--%>
+
 <div class="container">
     <div class="row">
 <c:forEach var="book" items="${books}">
-    <%--<c:forEach var="author" items="${books.getAuthors}">--%>
    <div class="col-lg-4">
        <div class="book-box">
-
             <tr>
                 <td>${book.id}</td>
                 <td>${book.title}</td>
                 <td>${book.year}</td>
-                <%--<td>${book.description}</td>--%>
                 <td>${book.quantity}</td>
                 <td>
                     <form action="/library/admin/book/edit" method="post" class="navbar-form navbar-right">

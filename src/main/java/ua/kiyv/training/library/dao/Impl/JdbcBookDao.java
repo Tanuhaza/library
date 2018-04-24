@@ -28,10 +28,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void create(Book book) {
-        String sqlStatement = CREATE_BOOK;
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sqlStatement,
-                    Statement.RETURN_GENERATED_KEYS);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(CREATE_BOOK,
+                     Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getDescription());
             statement.setString(3, book.getPictureId());
@@ -53,7 +52,6 @@ public class JdbcBookDao implements BookDao, BookQuery {
             Integer id = generatedKeys.getInt(1);
             book.setId(id);
             generatedKeys.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_BOOK + book.toString());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_CREATE);
@@ -125,8 +123,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Author author = new Author();
         Map<Integer, Book> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            Statement statement = connection.createStatement();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             Statement statement = connection.createStatement()) {
             ResultSet resultSet = statement.executeQuery(SELECT_ALL_BOOKS);
             BookMapper bookMapper = new BookMapper();
             AuthorMapper authorMapper = new AuthorMapper();
@@ -174,14 +172,14 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void delete(Book book) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(DELETE_BOOK);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_BOOK)) {
+
             statement.setInt(1, book.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_DELETE_BOOK + book.getId());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);

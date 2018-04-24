@@ -41,6 +41,7 @@ public class LoginSubmitCommand extends CommandWrapper {
             User person = user.get();
             pageToGo = getResultPageByUserRole(person);
             request.getSession().setAttribute(Attributes.USER_ID, person.getId());
+            System.out.println("PERSON_ID " +person.getId());
             request.getSession().setAttribute(Attributes.USER_ROLE, person.getRole());
             /** DELETE!!!*/
             BookService bookService = ServiceFactory.getInstance().createBookService();

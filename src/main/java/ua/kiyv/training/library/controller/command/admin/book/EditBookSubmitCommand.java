@@ -1,15 +1,7 @@
-package ua.kiyv.training.library.controller.command.book;
+package ua.kiyv.training.library.controller.command.admin.book;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.controller.CommandWrapper;
-import ua.kiyv.training.library.controller.validate.BookValidator;
-import ua.kiyv.training.library.controller.validate.Errors;
-import ua.kiyv.training.library.model.Author;
-import ua.kiyv.training.library.model.Book;
-import ua.kiyv.training.library.model.dto.BookData;
-import ua.kiyv.training.library.service.AuthorService;
-import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 

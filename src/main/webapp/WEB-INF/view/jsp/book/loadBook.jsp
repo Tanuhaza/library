@@ -41,7 +41,7 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="register-form" action="/library/book/load" method="post" role="form">
+                            <form id="register-form" action="/library/admin/book/load" method="post" role="form">
                                 <input type="hidden" name="bookId" value="${book.id}">
                                 <div class="form-group">
                                     <input type="text" name="title" id="title" tabindex="1" class="form-control"

@@ -46,12 +46,14 @@ public class LoggerMessages {
 //    public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding book by id: ";
     public static final String ERROR_FIND_ALL_BOOKS = "Error occurred when finding all books";
     public static final String ERROR_CREATE_NEW_BOOK = "Error occurred when creating new book: ";
+    public static final String ERROR_CREATE_NEW_BORROWED_BOOK = "Error occurred when creating new borrowed book: ";
     public static final String ERROR_MATCH_NEW_BOOK_AUTHOR = "Error occurred when match book and author";
     public static final String ERROR_UPDATE_BOOK= "Error occurred when updating book: ";
     public static final String ERROR_DELETE_BOOK = "Error occurred when deleting book: ";
     public static final String ERROR_FIND_ASSOSIATED_QUESTIONS_BY_TEST_ID = "Error occurred when finding assosiated questions by book id";
     public static final String ERROR_FIND_FIND_ASSOSIATED_TESTS_BY_TOPIC_ID = "Error occurred when finding assosiated tests by topic id";
     public static final String ERROR_ASSOSIATE_TEST_WITH_QUESTION = "Error occurred when assosiate test with question";
+    public static final String ERROR_FIND_ALL_BORROWED_BOOKS = "Error occurred when finding all borrowed books";
 
     public static final String ERROR_FIND_OPTION_BY_ID = "Error occurred when finding option by id: ";
     public static final String ERROR_FIND_ALL_OPTIONS = "Error occurred when finding all options";

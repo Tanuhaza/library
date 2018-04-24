@@ -1,9 +1,6 @@
 package ua.kiyv.training.library.service;
 
-import ua.kiyv.training.library.model.Author;
-import ua.kiyv.training.library.model.Book;
-import ua.kiyv.training.library.model.Genre;
-import ua.kiyv.training.library.model.User;
+import ua.kiyv.training.library.model.*;
 
 import java.util.List;
 
@@ -18,4 +15,5 @@ public interface BookService {
     public List<Genre> findAllGenres();
     public void matchBookAuthor(Book book, Author author);
     public void delete(int id);
+    public List<BorrowedBook> findAllBorrowedBooksByUserId(int id);
 }
