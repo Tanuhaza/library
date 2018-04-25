@@ -16,7 +16,7 @@ import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
  * Created by Tanya on 19.04.2018.
  */
 public class EditBookSubmitCommand extends CommandWrapper {
-    private static final Logger logger = Logger.getLogger(LoadBookSubmitCommand.class);
+    private static final Logger logger = Logger.getLogger(EditBookSubmitCommand.class);
     public EditBookSubmitCommand() {
         super(PagesPath.LOGIN_PAGE);
     }

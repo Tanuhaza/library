@@ -23,40 +23,25 @@
    <div class="col-lg-4">
        <div class="book-box">
             <tr>
-                <td>${book.id}</td>
-                <td>${book.title}</td>
-                <td>${book.year}</td>
-                <td>${book.quantity}</td>
-                <td>
-                    <form action="/library/admin/book/edit" method="post" class="navbar-form navbar-right">
-                        <input type="hidden" name="command" value="openBook">
-                        <input type="hidden" name="bookId" value="${book.id}">
-                        <input type="hidden" name="title" value="${book.title}">
-                        <input type="hidden" name="description" value="${book.description}">
-                        <input type="hidden" name="quantity" value="${book.quantity}">
-                        <input type="hidden" name="year" value="${book.year}">
-                        <input type="hidden" name="keywords" value="${book.keywords}">
-                        <input type="hidden" name="picture" value="${book.pictureId}">
-                        <%--<input type="hidden" name="first_author_name" value="${book.getAuthors.}">--%>
-                            <%--<input type="hidden" name="bookNumber" value="${book.inventoryNumber}">--%>
-                        <input type="submit" value="<fmt:message key="library.admin.editBook"/>"
-                               class="btn btn-success btn-lg">
-                    </form>
-                </td>
-
-                <td>
-                    <form action="/library/admin/book/delete" method="post" class="navbar-form navbar-right">
-                        <input type="hidden" name="command" value="openBook">
-                        <input type="hidden" name="bookId" value="${book.id}">
-                        <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
-                               class="btn btn-success btn-lg">
-                    </form>
-                </td>
+                <div class="book-id">${book.id}</div>
+                <div class="book-title">${book.title}</div>
+                <div class="book-year">${book.year}</div>
+                <div class ="book-available">${book.avaliable}</div>
+                <div class="info-bottom">
+                    <div class="book-image"><img src="/icons/${book.pictureId}.jpg" alt="picture"></div>
+                    <div class="order">
+                        <form action="/library/user/book/order" method="post" class="navbar-form button">
+                            <input type="hidden" name="command" value="openBook">
+                            <input type="hidden" name="bookId" value="${book.id}">
+                            <input type="submit" value="<fmt:message key="library.user.submit.order"/>"
+                                   class="btn btn-success btn-lg">
+                        </form>
+                    </div>
+                </div>
             </tr>
        </div>
    </div>
     </c:forEach>
-<%--</c:forEach>--%>
     </div>
 </div>
 

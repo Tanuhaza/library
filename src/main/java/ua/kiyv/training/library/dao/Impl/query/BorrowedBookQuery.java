@@ -6,6 +6,6 @@ public interface BorrowedBookQuery {
             "left join author as a on ba.author_id=a.id";
     String FILTER_BY_USER_ID = " where bl.user_id= ?";
 
-    String CREATE_BORROWED_BOOK = "INSERT INTO book_out_on_loan (startDate, returnDate, user_id, book_id) VALUES (?, ?, ?, ?)";
+    String CREATE_BORROWED_BOOK = "INSERT INTO book_out_on_loan (user_id, book_id,startDate, returnDate ) VALUES (?, ?, ?, ?)";
     String DELETE_BORROWED_BOOK = "DELETE FROM book WHERE id = ?";
 }

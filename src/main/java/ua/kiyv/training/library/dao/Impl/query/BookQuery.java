@@ -9,6 +9,7 @@ public interface BookQuery {
             "left join author as a on ba.author_id=a.id";
     String FILTER_BY_ID = "  where b.id= ?";
     String FILTER_BY_TITLE = "  where b.title= ?";
+    String FILTER_BY_GENRE_ID = "  where b.genre_id= ?";
 
     String UPDATE_BOOK = "UPDATE book SET title = ?, description = ?, picture=?,available=?,quantity=?,year=?,genre_id=?," +
             "keywords=?,rate=?  WHERE id = ?";

@@ -7,8 +7,6 @@ public class BorrowedBook extends Book {
     private Date startDate;
     private Date dueToReturnDate;
 
-    public BorrowedBook() {
-    }
 
     public Date getStartDate() {
         return startDate;

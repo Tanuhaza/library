@@ -66,6 +66,7 @@ class CommandHolder {
         commands.put(POST + deployPath + ADMIN_BOOK_LOAD_PATH, new LoadBookSubmitCommand());
         commands.put(POST + deployPath + ADMIN_BOOK_EDIT_PATH, new EditBookSubmitCommand());
         commands.put(POST + deployPath + ADMIN_BORROWED_BOOKS_BY_USER_PATH, new CheckUserBorrowedBooksSubmitCommand());
+        commands.put(POST + deployPath +USER_ORDER, new CheckUserBorrowedBooksSubmitCommand());
 
     }
 

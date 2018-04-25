@@ -16,4 +16,7 @@ public interface BookService {
     public void matchBookAuthor(Book book, Author author);
     public void delete(int id);
     public List<BorrowedBook> findAllBorrowedBooksByUserId(int id);
+    public List<Book> findByGenreId(Integer id);
+    public void createBorrowedBookByUserId(Book book,int userId);
+    public void delete(BorrowedBook borrowedBook);
 }

@@ -6,6 +6,7 @@
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/dropdown.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/home.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
@@ -41,7 +42,20 @@
                     <a href="/library/user/books"><fmt:message key="library.user.menu.books" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <a href="/library/user/books/genre"><fmt:message key="library.user.menu.books.by.genre" bundle="${msg}"/></a>
+                    <a href="/library/user/books/genre">
+                        <div class="dropdown show">
+                            <a class=" dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <fmt:message key="library.user.menu.books.by.genre" bundle="${msg}"/>
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <c:forEach var="genre" items="${genres}">
+                                <a class="dropdown-item" href="/library/user/books/genre/${genre.id}"> ${genre.name}</a>
+                                </c:forEach>
+                            </div>
+                        </div>
+                    </a>
+
                 </li>
 
             </ul>

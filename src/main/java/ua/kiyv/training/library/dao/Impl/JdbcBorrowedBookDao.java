@@ -36,19 +36,19 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     }
 
     @Override
-    public void createBorrowedBookByUserId(BorrowedBook borrowedBook,int userId) {
+    public void createBorrowedBookByUserId(Book book,int userId) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_BORROWED_BOOK)) {
-            statement.setInt(1, borrowedBook.getId());
-            statement.setInt(2, borrowedBook.getGenreId());
-            statement.setDate(3, (Date) borrowedBook.getStartDate());
-            statement.setDate(4, (Date) borrowedBook.getDueToReturnDate());
+            statement.setInt(1, userId);
+            statement.setInt(2, book.getId());
+            statement.setDate(3, (Date) ((BorrowedBook)book).getStartDate());
+            statement.setDate(4, (Date) ((BorrowedBook)book).getDueToReturnDate());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + borrowedBook.toString());
+            logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + book.toString());
             throw new DaoException(ex, MessageKeys.WRONG_BORROWED_BOOK_DB_CAN_NOT_CREATE);
         }
 

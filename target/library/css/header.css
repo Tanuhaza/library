@@ -155,3 +155,33 @@ header > nav > ul > li > a > div > span {
         margin: 4px 0 0;
     }
 }
+#dropdownMenuLink {
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 20px;
+    padding: 0;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+#dropdownMenuLink:hover {
+    border: none;
+    text-decoration: none;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 5px 0 5px 15px;
+    text-decoration: none;
+    color: #999;
+    font-size: 14px;
+}
+.dropdown-item:hover {
+    border: none;
+    color: #666666;
+    transition: all .5s ease;
+    text-decoration: none;
+}
+.dropdown-toggle:hover {
+    border: none;
+}

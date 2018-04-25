@@ -64,6 +64,7 @@ public class LoggerMessages {
     public static final String ERROR_FIND_ALL_GENRES = "Error occurred when finding all genres";
 
     public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding book by id: ";
+    public static final String ERROR_FIND_BOOK_BY_GENRE_ID = "Error occurred when finding book by genre id: ";
     public static final String ERROR_FIND_BOOK_BY_TITLE = "Error occurred when finding book by title: ";
 
     public static final String ERROR_FIND_AUTHOR_BY_ID = "Error occurred when finding author by id: ";

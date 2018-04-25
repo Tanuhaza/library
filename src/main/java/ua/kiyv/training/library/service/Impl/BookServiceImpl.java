@@ -93,4 +93,20 @@ public class BookServiceImpl implements BookService {
     public void matchBookAuthor(Book book, Author author) {
         JdbcDaoFactory.getInstance().createBookDao().matchBookAuthor(book, author);
     }
+
+    @Override
+    public List<Book> findByGenreId(Integer id) {
+        return JdbcDaoFactory.getInstance().createBookDao().findByGenreId(id);
+    }
+
+    @Override
+    public void createBorrowedBookByUserId(Book book, int userId) {
+        JdbcDaoFactory.getInstance().createBorrowedBookDao().createBorrowedBookByUserId(book,userId);
+    }
+
+    @Override
+    public void delete(BorrowedBook borrowedBook) {
+        JdbcDaoFactory.getInstance().createBorrowedBookDao().delete(borrowedBook);
+
+    }
 }

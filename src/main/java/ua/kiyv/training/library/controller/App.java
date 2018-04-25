@@ -1,5 +1,7 @@
 package ua.kiyv.training.library.controller;
 
+import ua.kiyv.training.library.controller.TestParentChild.Child;
+import ua.kiyv.training.library.controller.TestParentChild.Parent;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.*;
@@ -12,9 +14,7 @@ import ua.kiyv.training.library.service.UserService;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Created by Tanya on 17.04.2018.
@@ -46,12 +46,26 @@ public class App {
 //        } catch (SQLException e) {
 //            e.printStackTrace();
 //        }
-        List<BorrowedBook> borrowedBooks =new ArrayList<>();
-        borrowedBooks=bookService.findAllBorrowedBooksByUserId(2);
-        System.out.println(bookService.findAllBorrowedBooksByUserId(2));
-        System.out.println(borrowedBooks.get(1).getId());
-        System.out.println(borrowedBooks.get(1).getTitle());
-        System.out.println(borrowedBooks.get(1).getStartDate());
-        System.out.println(borrowedBooks.get(1).getDueToReturnDate());
+//        List<BorrowedBook> borrowedBooks =new ArrayList<>();
+//        borrowedBooks=bookService.findAllBorrowedBooksByUserId(2);
+//        System.out.println(bookService.findAllBorrowedBooksByUserId(2));
+//        System.out.println(borrowedBooks.get(1).getId());
+//        System.out.println(borrowedBooks.get(1).getTitle());
+//        System.out.println(borrowedBooks.get(1).getStartDate());
+//        System.out.println(borrowedBooks.get(1).getDueToReturnDate());
+//        System.out.println( bookService.findByGenreId(1));
+//        Parent parent=new Parent("green","white",30,180);
+
+//        Child child =new Child("gambling","45");
+//        System.out.println(child.getEyesColor());
+//        Parent child1 =child;
+//        Child child2=new Parent();
+        Date d =new Date();
+        System.out.println(d);
+        Calendar c =Calendar.getInstance() ;
+        c.setTime(d);
+        c.add(Calendar.MONTH,1);
+        Date d2=c.getTime();
+        System.out.println(d2);
     }
 }

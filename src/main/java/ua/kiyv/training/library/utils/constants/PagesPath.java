@@ -25,7 +25,9 @@ public final class PagesPath {
     public static final String ADMIN_BORROWED_BOOKS_BY_USER_PATH ="/library/admin/user/borrowed/books";
 
     public static final String USER_BOOKS_PATH ="/library/user/books";
-    public static final String USER_BOOKS_BY_GENRE_PATH ="/library/user/books/genre";
+    public static final String USER_BOOKS_BY_GENRE_PATH ="/library/user/books/genre/id";
+    public static final String USER_ORDER ="/library/user/book/order" ;
+
 
     public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
     public static final String CONFIRMATION_PAGE = VIEW_JSP_CLASSPATH + "confirmation.jsp";
@@ -39,6 +41,8 @@ public final class PagesPath {
     public static final String USER_BORROWED_BOOK_PAGE= VIEW_JSP_CLASSPATH + "book/userBorrowedBooks.jsp";
 
     public static final String USER_BOOKS_PAGE= VIEW_JSP_CLASSPATH + "user/getBooksPage.jsp";
+    public static final String USER_BOOKS_BY_GENRE_PAGE= VIEW_JSP_CLASSPATH + "/user/getBooksByGenrePage.jsp";
+
     public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "user/userHome.jsp";}
 
 
