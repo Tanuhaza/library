@@ -38,17 +38,18 @@
                         <input type="hidden" name="year" value="${borrowedBook.year}">
                         <input type="hidden" name="keywords" value="${borrowedBook.keywords}">
                         <input type="hidden" name="picture" value="${borrowedBook.pictureId}">
-                        <%--<input type="hidden" name="first_author_name" value="${borrowedBook.getAuthors.}">--%>
-                            <%--<input type="hidden" name="borrowedBookNumber" value="${book.inventoryNumber}">--%>
+                        <input type="hidden" name="userId" value="${userId}">
+
                         <input type="submit" value="<fmt:message key="library.admin.editBook"/>"
                                class="btn btn-success btn-lg">
                     </form>
                 </td>
 
                 <td>
-                    <form action="/library/admin/book/delete" method="post" class="navbar-form navbar-right">
+                    <form action="/library/admin/borrowed/book/delete" method="post" class="navbar-form navbar-right">
                         <input type="hidden" name="command" value="openBook">
                         <input type="hidden" name="bookId" value="${borrowedBook.id}">
+                        <input type="hidden" name="userId" value="${userId}">
                         <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
                                class="btn btn-success btn-lg">
                     </form>

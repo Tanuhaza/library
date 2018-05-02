@@ -18,6 +18,25 @@
 <div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>
 <div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>
 </div>
+
+<div class="container">
+    <div class="row">
+        <c:forEach var="borrowedBook" items="${borrowedBooks}">
+            <div class="col-lg-4">
+                <div class="book-box">
+                    <tr>
+                        <td>${borrowedBook.title}</td>
+                        <td>${borrowedBook.year}</td>
+                        <td>${borrowedBook.pictureId}</td>
+                        <td>${borrowedBook.startDate}</td>
+                        <td>${borrowedBook.dueToReturnDate}</td>
+                    </tr>
+                </div>
+            </div>
+        </c:forEach>
+    </div>
+</div>
+
 <jsp:include page="fragment/footer.jsp"/>
 </body>
 </html>

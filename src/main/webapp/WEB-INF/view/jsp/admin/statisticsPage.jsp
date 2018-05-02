@@ -35,23 +35,14 @@
 <th><fmt:message key="library.admin.column.user.email"/></th>
 <th><fmt:message key="library.admin.column.user.phone"/></th>
 </tr>
-<%--</div>--%>
-<%--</div>--%>
 </thead>
-<%--<tbody>--%>
-<%--<div class="container">--%>
-    <%--<div class="row">--%>
         <tbody>
         <c:forEach var="user" items="${users}">
-            <%--<div class="col-lg-4">--%>
-                <%--<div class="book-box">--%>
-
                     <tr>
                         <td>${user.firstName}</td>
                         <td>${user.lastName}</td>
                         <td>${user.email}</td>
                         <td>${user.phone}</td>
-
                         <td>
                                 <form action="/library/admin/user/borrowed/books" method="post" class="navbar-form navbar-right">
                                 <input type="hidden" name="command" value="openBook">
@@ -61,8 +52,6 @@
                             </form>
                         </td>
                     </tr>
-                <%--</div>--%>
-            <%--</div>--%>
         </c:forEach>
         </tbody>
         <%--</c:forEach>--%>

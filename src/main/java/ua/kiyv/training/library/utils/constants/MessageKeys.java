@@ -65,6 +65,7 @@ public final class MessageKeys {
     public static final String WRONG_BOOK_DB_NO_ID_EXIST="message.wrong.creating.book.no.id.exist";
     public static final String WRONG_BOOK_DB_CAN_NOT_GET_ALL_TOPICS = "message.wrong.can.not.get.all.books";
     public static final String WRONG_BOOK_DB_CAN_NOT_MATCH_AUTHOR ="message.can.not.create.book.author";
+    public static final String WRONG_BOOK_IS_NOT_AVAILABLE ="message.can.not.create.book.is.not.available";
 
     public static final String WRONG_OPTION_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.option.no.rows.affected";
     public static final String WRONG_OPTION_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.option.no.rows.affected";

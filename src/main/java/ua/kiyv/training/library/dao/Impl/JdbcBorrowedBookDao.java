@@ -15,16 +15,17 @@ import ua.kiyv.training.library.model.BorrowedBook;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
+import java.time.LocalDate;
 import java.sql.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static ua.kiyv.training.library.dao.Impl.query.BorrowedBookQuery.FILTER_BY_USER_ID;
-import static ua.kiyv.training.library.dao.Impl.query.BorrowedBookQuery.SELECT_ALL_BORROWED_BOOKS;
-
 public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
+    private LocalDate localDate = LocalDate.now();
+
     JdbcBorrowedBookDao() {
     }
 
@@ -36,19 +37,21 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     }
 
     @Override
-    public void createBorrowedBookByUserId(Book book,int userId) {
+    public void createBorrowedBookByUserId(Integer bookId, Integer userId) {
+        System.out.println("In Create Borrowed Book");
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_BORROWED_BOOK)) {
             statement.setInt(1, userId);
-            statement.setInt(2, book.getId());
-            statement.setDate(3, (Date) ((BorrowedBook)book).getStartDate());
-            statement.setDate(4, (Date) ((BorrowedBook)book).getDueToReturnDate());
+            statement.setInt(2, bookId);
+            statement.setDate(3,  Date.valueOf(localDate));
+            statement.setDate(4, Date.valueOf(localDate.plusMonths(1)));
             int affectedRows = statement.executeUpdate();
+            System.out.println("Create Borrowed Book");
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + book.toString());
+            logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BORROWED_BOOK_DB_CAN_NOT_CREATE);
         }
 
@@ -109,6 +112,22 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
             }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_DELETE_BOOK + borrowedBook.getId());
+            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
+        }
+    }
+
+    @Override
+    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId){
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_BORROWED_BOOK_BY_USER_ID_BOOK_ID)) {
+            statement.setInt(1, bookId);
+            statement.setInt(2, userId);
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
+            }
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_DELETE_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
         }
     }

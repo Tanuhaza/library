@@ -17,6 +17,8 @@ public interface BookService {
     public void delete(int id);
     public List<BorrowedBook> findAllBorrowedBooksByUserId(int id);
     public List<Book> findByGenreId(Integer id);
-    public void createBorrowedBookByUserId(Book book,int userId);
+    public void createBorrowedBookByUserId(Integer bookId,Integer userId);
     public void delete(BorrowedBook borrowedBook);
+    public Boolean isBookAvailable(Book book);
+    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId);
 }

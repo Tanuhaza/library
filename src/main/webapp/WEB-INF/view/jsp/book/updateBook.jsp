@@ -111,16 +111,16 @@
                                            value="${requestScope.previousAuthorSurname}" required>
                                 </div>
                                 <%--<div class="form-group">--%>
-                                    <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>
-                                           <%--class="form-control"--%>
-                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.name" bundle="${msg}"/>"--%>
-                                    <%-->--%>
+                                <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>
+                                <%--class="form-control"--%>
+                                <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.name" bundle="${msg}"/>"--%>
+                                <%-->--%>
                                 <%--</div>--%>
                                 <%--<div class="form-group">--%>
-                                    <%--<input type="text" name="second_author_surname" id="second_author_surname"--%>
-                                           <%--tabindex="1" class="form-control"--%>
-                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.surname" bundle="${msg}"/>"--%>
-                                    <%-->--%>
+                                <%--<input type="text" name="second_author_surname" id="second_author_surname"--%>
+                                <%--tabindex="1" class="form-control"--%>
+                                <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.surname" bundle="${msg}"/>"--%>
+                                <%-->--%>
                                 <%--</div>--%>
 
                                 <div class="form-group">

@@ -3,13 +3,8 @@ package ua.kiyv.training.library.controller;
 
 import ua.kiyv.training.library.controller.command.LogoutCommand;
 import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
-import ua.kiyv.training.library.controller.command.User.GetBooksByGenreCommand;
-import ua.kiyv.training.library.controller.command.User.GetBooksCommand;
-import ua.kiyv.training.library.controller.command.User.UserHomeCommand;
-import ua.kiyv.training.library.controller.command.admin.AdminHomeCommand;
-import ua.kiyv.training.library.controller.command.admin.CheckUserBorrowedBooksSubmitCommand;
-import ua.kiyv.training.library.controller.command.admin.ManageBookCommand;
-import ua.kiyv.training.library.controller.command.admin.StatisticsCommand;
+import ua.kiyv.training.library.controller.command.User.*;
+import ua.kiyv.training.library.controller.command.admin.*;
 import ua.kiyv.training.library.controller.command.admin.book.*;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
 import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
@@ -58,6 +53,8 @@ class CommandHolder {
 
         commands.put(GET + deployPath + USER_BOOKS_BY_GENRE_PATH, new GetBooksByGenreCommand());
         commands.put(GET + deployPath + USER_BOOKS_PATH, new GetBooksCommand());
+        commands.put(GET + deployPath + USER_BOOK_DESCRIPTION_PATH, new BookDescriptionCommand());
+        commands.put(GET + deployPath + ADMIN_BORROWED_BOOKS_BY_USER_PATH, new CheckUserBorrowedBooksSubmitCommand());
 
         commands.put(POST + deployPath + ADMIN_BOOK_UPDATE_PATH, new UpdateBookSubmitCommand());
         commands.put(POST + deployPath + LOGIN_PATH, new LoginSubmitCommand());
@@ -66,7 +63,9 @@ class CommandHolder {
         commands.put(POST + deployPath + ADMIN_BOOK_LOAD_PATH, new LoadBookSubmitCommand());
         commands.put(POST + deployPath + ADMIN_BOOK_EDIT_PATH, new EditBookSubmitCommand());
         commands.put(POST + deployPath + ADMIN_BORROWED_BOOKS_BY_USER_PATH, new CheckUserBorrowedBooksSubmitCommand());
-        commands.put(POST + deployPath +USER_ORDER, new CheckUserBorrowedBooksSubmitCommand());
+        commands.put(POST + deployPath + ADMIN_BORROWED_BOOK_DELETE_BY_USER_PATH, new DeleteBorrowedBookSubmitCommand());
+
+        commands.put(POST + deployPath +USER_ORDER, new BookOrderSubmitCommand());
 
     }
 

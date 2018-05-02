@@ -19,37 +19,22 @@
 <div class="btn btn-success btn-lg">
     <a href="/library/book/load"><fmt:message key="library.admin.LoadBook" bundle="${msg}"/></a>
 </div>
-<%--<h2 class="sub-header"><fmt:message key="librarian.catalogue.title"/></h2>--%>
-<%--<div class="table-responsive">--%>
-<%--<table class="table table-striped">--%>
-<%--<thead>--%>
-<%--<div class="container">--%>
-    <%--<div class="row">--%>
-        <%--<tr>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookId"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookTitle"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookAuthor"/></th>--%>
-            <%--<th><fmt:message key="library.admin.catalogue.column.bookNumber"/></th>--%>
-            <%--<th></th>--%>
-        <%--</tr>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<%--</thead>--%>
-<%--<tbody>--%>
+
 <div class="container">
     <div class="row">
 <c:forEach var="book" items="${books}">
-    <%--<c:forEach var="author" items="${books.getAuthors}">--%>
    <div class="col-lg-4">
        <div class="book-box">
 
             <tr>
-                <td>${book.id}</td>
-                <td>${book.title}</td>
-                <td>${book.year}</td>
-                <%--<td>${book.description}</td>--%>
-                <td>${book.quantity}</td>
-                <td>
+                <div class="book-id">${book.id}</div>
+                <div class="book-title">${book.title}</div>
+                <div class="book-year">${book.year}</div>
+
+                <div class="info-bottom">
+                    <div class="book-image"><img src="/icons/${book.pictureId}.jpg" alt="picture"></div>
+
+                    <div class="order">
                     <form action="/library/admin/book/edit" method="post" class="navbar-form navbar-right">
                         <input type="hidden" name="command" value="openBook">
                         <input type="hidden" name="bookId" value="${book.id}">
@@ -64,21 +49,18 @@
                         <input type="submit" value="<fmt:message key="library.admin.editBook"/>"
                                class="btn btn-success btn-lg">
                     </form>
-                </td>
-
-                <td>
                     <form action="/library/admin/book/delete" method="post" class="navbar-form navbar-right">
                         <input type="hidden" name="command" value="openBook">
                         <input type="hidden" name="bookId" value="${book.id}">
                         <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
                                class="btn btn-success btn-lg">
                     </form>
-                </td>
+                    </div>
+                </div>
             </tr>
        </div>
    </div>
     </c:forEach>
-<%--</c:forEach>--%>
     </div>
 </div>
 

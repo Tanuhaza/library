@@ -61,11 +61,11 @@ public class App {
 //        Parent child1 =child;
 //        Child child2=new Parent();
         Date d =new Date();
-        System.out.println(d);
-        Calendar c =Calendar.getInstance() ;
-        c.setTime(d);
-        c.add(Calendar.MONTH,1);
-        Date d2=c.getTime();
-        System.out.println(d2);
+//        System.out.println(d);
+//        Calendar.getInstance().setTime(d);
+////        c.setTime(d);
+//        c.add(Calendar.MONTH,1);
+//        Date d2=c.getTime();
+//        System.out.println(d2);
     }
 }

@@ -10,12 +10,17 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/library.css">
+    <fmt:setLocale value="${sessionScope['locale']}"/>
+    <fmt:requestEncoding value="UTF-8"/>
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
-    <title>home page</title>
+    <title>Description</title>
 </head>
 <body class="body-profile-container">
 <jsp:include page="../user/header.jsp"/>
-<jsp:include page="../fragment/book.jsp"/>
-<jsp:include page="../fragment/footer.jsp"/>
+<div>${book.id}</div>
+<div>${book.title}</div>
+<div>${book.description}</div>
+<div>${book.description}</div>
+<div class="book-image"><img src="/icons/${book.pictureId}.jpg" alt="picture"></div>
+
 </body>
-</html>

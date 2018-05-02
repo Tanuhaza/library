@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface BorrowedBookDao extends GenericDao<BorrowedBook> {
     public List<BorrowedBook> findAllByUserId(int id);
-    public void createBorrowedBookByUserId(Book book, int userId);
+    public void createBorrowedBookByUserId(Integer bookId, Integer userId);
+    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId);
 }
