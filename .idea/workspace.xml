@@ -10,52 +10,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="427b4c2f-78c5-44f6-ad2c-54246a74b53e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/User/BookDescriptionCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/admin/DeleteBorrowedBookSubmitCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/fragment/book.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/user/bookDescriptionPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/controller/App.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/controller/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/controller/CommandHolder.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/controller/CommandHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/dao/BorrowedBookDao.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/dao/BorrowedBookDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/service/BookService.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/service/BookService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/service/Impl/BookServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/service/Impl/BookServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/utils/constants/MessageKeys.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/utils/constants/MessageKeys.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/utils/constants/PagesPath.class" afterPath="$PROJECT_DIR$/target/classes/ua/kiyv/training/library/utils/constants/PagesPath.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/controller/App.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/controller/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/controller/CommandHolder.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/controller/CommandHolder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/BorrowedBookDao.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/BorrowedBookDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/Impl/query/BorrowedBookQuery.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/dao/Impl/query/BorrowedBookQuery.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/model/BorrowedBook$Builder.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/model/BorrowedBook$Builder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/model/BorrowedBook.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/model/BorrowedBook.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/utils/constants/MessageKeys.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/utils/constants/MessageKeys.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/utils/constants/PagesPath.class" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/ua/kiyv/training/library/utils/constants/PagesPath.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/App.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/App.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/CommandHolder.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/CommandHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/User/BookOrderSubmitCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/User/BookOrderSubmitCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/User/UserHomeCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/User/UserHomeCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/admin/CheckUserBorrowedBooksSubmitCommand.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/controller/command/admin/CheckUserBorrowedBooksSubmitCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/BorrowedBookDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/BorrowedBookDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/Impl/JdbcBorrowedBookDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/Impl/query/BorrowedBookQuery.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/dao/Impl/query/BorrowedBookQuery.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/service/BookService.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/service/BookService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/service/Impl/BookServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/service/Impl/BookServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/utils/constants/MessageKeys.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/utils/constants/MessageKeys.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/utils/constants/PagesPath.java" afterPath="$PROJECT_DIR$/src/main/java/ua/kiyv/training/library/utils/constants/PagesPath.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/webProject/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/webProject/i18n/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/admin/managePage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/admin/managePage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/admin/statisticsPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/admin/statisticsPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/book/updateBook.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/book/updateBook.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/book/userBorrowedBooks.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/book/userBorrowedBooks.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/homePage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/homePage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/user/getBooksPage.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/user/getBooksPage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/user/userHome.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/view/jsp/user/userHome.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/webProject/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/target/classes/webProject/i18n/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/classes/webProject/i18n/messages_en.properties" afterPath="$PROJECT_DIR$/target/library/WEB-INF/classes/webProject/i18n/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/view/jsp/admin/ManagePage.jsp" afterPath="$PROJECT_DIR$/target/library/WEB-INF/view/jsp/admin/ManagePage.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/library/WEB-INF/view/jsp/homePage.jsp" afterPath="$PROJECT_DIR$/target/library/WEB-INF/view/jsp/homePage.jsp" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -1465,12 +1420,12 @@
       <workItem from="1524214644480" duration="28102000" />
       <workItem from="1524324179852" duration="4550000" />
       <workItem from="1524402447584" duration="16470000" />
-      <workItem from="1525254441957" duration="26970000" />
+      <workItem from="1525254441957" duration="27225000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="284085000" />
+    <option name="totallyTimeSpent" value="284340000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
