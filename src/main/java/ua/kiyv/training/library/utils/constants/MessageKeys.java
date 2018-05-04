@@ -102,9 +102,9 @@ public final class MessageKeys {
     public static final String WRONG_AUTHOR_DB_CAN_NOT_DELETE ="message.can.not.delete.question";
     public static final String WRONG_AUTHOR_DB_NO_ID_EXIST="message.wrong.creating.question.no.id.exist";
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_AUTHORS = "message.wrong.can.not.get.all.questions";
-    public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_TESTS_BY_QUESTION_ID = "message.can.not.get.assosiated.tests.by.question.id";
-    public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_OPTIONS_BY_QUESTION_ID = "message.can.not.get.assosiated.options.by.question.id ";
-    public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ASSOSIATED_QUESTIONS_BY_TOPIC_ID = "message.can.not.get.assosiated.questions.by.topic ";
+    public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_AUTHOR = "message.wrong.can.not.search.by.author";
+    public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_TITLE = "message.wrong.can.not.search.by.title";
+    public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_KEYWORDS = "message.wrong.can.not.search.by.keywords";
 
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_GENRES = "message.wrong.can.not.get.all.genres";
 

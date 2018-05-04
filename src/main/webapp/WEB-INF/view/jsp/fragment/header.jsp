@@ -43,11 +43,12 @@
                 <li>
                     <a href="/profile"><fmt:message key="library.menu.profile" bundle="${msg}"/></a>
                 </li>
-                <c:if test="${sessionScope.userRole=='ADMIN'}">
-                    <li>
-                        <a href="/admin/users"><fmt:message key="library.menu.users" bundle="${msg}"/></a>
-                    </li>
-                </c:if>
+                <%--<c:if test="${sessionScope.userRole=='ADMIN'}">--%>
+                    <%--<li>--%>
+                        <%--<a href="/admin/users"><fmt:message key="library.menu.users" bundle="${msg}"/></a>--%>
+                    <%--</li>--%>
+                <%--</c:if>--%>
+
             </ul>
         </nav>
     </div>

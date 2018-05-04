@@ -34,3 +34,12 @@
 .button {
     text-align: center;
 }
+.mainmenu-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mainmenu-list:last-child {
+    margin-top: 20px;
+}

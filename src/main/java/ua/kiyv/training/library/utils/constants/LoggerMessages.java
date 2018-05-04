@@ -34,14 +34,7 @@ public class LoggerMessages {
     public static final String ERROR_DELETE_USER = "Error occurred when deleting user: ";
     public static final String ERROR_FIND_ROLE = "Error occurred when finding user by role:";
 
-    public static final String ERROR_FIND_USER_RESPONSES_BY_USER_ID_TEST_ID = "Error occurred when finding user response by userId and testID: ";
-    public static final String ERROR_FIND_USER_RESPONSE_BY_USER_ID = "Error occurred when finding user response  by id: ";
-    public static final String ERROR_FIND_ALL_USER_RESPONSES = "Error occurred when finding all user responses";
-    public static final String ERROR_CREATE_NEW_USER_RESPONSE = "Error occurred when creating new user response: ";
-    public static final String ERROR_UPDATE_USER_RESPONSE = "Error occurred when updating user response: ";
-    public static final String ERROR_DELETE_USER_RESPONSE = "Error occurred when deleting user response: ";
-    public static final String ERROR_FIND_PASSED_TESTS_ID_BY_USER_ID_PASSED_TIMES = "Error occurred when finding passed tests by userId and passedTimes: ";
-    public static final String ERROR_FIND_PASSED_TIMES_BY_USER_ID_TEST_ID = "Error occurred when finding passedTimes: ";
+
 
 //    public static final String ERROR_FIND_BOOK_BY_ID = "Error occurred when finding book by id: ";
     public static final String ERROR_FIND_ALL_BOOKS = "Error occurred when finding all books";
@@ -50,16 +43,8 @@ public class LoggerMessages {
     public static final String ERROR_MATCH_NEW_BOOK_AUTHOR = "Error occurred when match book and author";
     public static final String ERROR_UPDATE_BOOK= "Error occurred when updating book: ";
     public static final String ERROR_DELETE_BOOK = "Error occurred when deleting book: ";
-    public static final String ERROR_FIND_ASSOSIATED_QUESTIONS_BY_TEST_ID = "Error occurred when finding assosiated questions by book id";
-    public static final String ERROR_FIND_FIND_ASSOSIATED_TESTS_BY_TOPIC_ID = "Error occurred when finding assosiated tests by topic id";
-    public static final String ERROR_ASSOSIATE_TEST_WITH_QUESTION = "Error occurred when assosiate test with question";
     public static final String ERROR_FIND_ALL_BORROWED_BOOKS = "Error occurred when finding all borrowed books";
 
-    public static final String ERROR_FIND_OPTION_BY_ID = "Error occurred when finding option by id: ";
-    public static final String ERROR_FIND_ALL_OPTIONS = "Error occurred when finding all options";
-    public static final String ERROR_CREATE_NEW_OPTION= "Error occurred when creating new option: ";
-    public static final String ERROR_UPDATE_OPTION = "Error occurred when updating option: ";
-    public static final String ERROR_DELETE_OPTION = "Error occurred when deleting option: ";
 
     public static final String ERROR_FIND_ALL_GENRES = "Error occurred when finding all genres";
 
@@ -70,12 +55,12 @@ public class LoggerMessages {
     public static final String ERROR_FIND_AUTHOR_BY_ID = "Error occurred when finding author by id: ";
     public static final String ERROR_FIND_AUTHOR_BY_EMAIL = "Error occurred when finding author by email: ";
     public static final String ERROR_FIND_ALL_AUTHOR = "Error occurred when finding all authors";
+    public static final String ERROR_SEARCH_BY_AUTHOR = "Error occurred when searching by author";
+    public static final String ERROR_SEARCH_BY_TITLE = "Error occurred when searching by title";
+    public static final String ERROR_SEARCH_BY_KEYWORDS = "Error occurred when searching by keywords";
     public static final String ERROR_CREATE_NEW_AUTHOR = "Error occurred when creating new author: ";
     public static final String ERROR_UPDATE_AUTHOR= "Error occurred when updating author: ";
     public static final String ERROR_DELETE_AUTHOR = "Error occurred when deleting author: ";
-    public static final String ERROR_FIND_ASSOSIATED_QUESTIONS_BY_TOPIC_ID = "Error occurred when finding assosiated questions by topic id";
-    public static final String ERROR_FIND_FIND_ASSOSIATED_OPTIONS_BY_QUESTION_ID = "Error occurred when finding assosiated options by question id";
-    public static final String ERROR_FIND_FIND_ASSOSIATED_TESTS_BY_QUESTION_ID ="Error occurred when finding assosiated tests by question id";
 
     public static final String UNKNOWN_ERROR_OCCURED = "Unknown error occurred";
     public static final String SERVICE_EXCEPTION_OCCURRED = "exception in business logic";

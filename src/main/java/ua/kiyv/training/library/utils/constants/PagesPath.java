@@ -29,6 +29,7 @@ public final class PagesPath {
     public static final String USER_BOOKS_BY_GENRE_PATH = "/library/user/books/genre/id";
     public static final String USER_ORDER = "/library/user/book/order";
     public static final String USER_BOOK_DESCRIPTION_PATH = "/library/user/book/id";
+    public static final String SEARCH_PATH = "/library/search";
 
 
     public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";

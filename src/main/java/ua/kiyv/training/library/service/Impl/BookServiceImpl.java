@@ -149,4 +149,14 @@ public class BookServiceImpl implements BookService {
 
         }
     }
+
+    @Override
+    public List<Book> findByAuthor(String searchValue) {
+        return bookDao.findByAuthor(searchValue);
+    }
+
+    @Override
+    public List<Book> findByTitle(String searchValue) {
+        return bookDao.findByTitle(searchValue);
+    }
 }

@@ -87,32 +87,32 @@ public class JdbcBookDao implements BookDao, BookQuery {
         return book;
     }
 
-    @Override
-    public Book findByTitle(String title) {
-        Map<Integer, Book> books = new HashMap<>();
-        Map<Integer, Author> authors = new HashMap<>();
-        Book book = null;
-        Author author = null;
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_TITLE)) {
-            statement.setString(1, title);
-            ResultSet resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                BookMapper bookMapper = new BookMapper();
-                AuthorMapper authorMapper = new AuthorMapper();
-                book = bookMapper.extractFromResultSet(resultSet);
-                author = authorMapper.extractFromResultSet(resultSet);
-                book = bookMapper.makeUnique(books, book);
-                author = authorMapper.makeUnique(authors, author);
-                book.getAuthors().add(author);
-            }
-            resultSet.close();
-        } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_BOOK_BY_ID + title);
-            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_GET);
-        }
-        return book;
-    }
+//    @Override
+//    public Book findByTitle(String title) {
+//        Map<Integer, Book> books = new HashMap<>();
+//        Map<Integer, Author> authors = new HashMap<>();
+//        Book book = null;
+//        Author author = null;
+//        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+//             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_TITLE)) {
+//            statement.setString(1, title);
+//            ResultSet resultSet = statement.executeQuery();
+//            while (resultSet.next()) {
+//                BookMapper bookMapper = new BookMapper();
+//                AuthorMapper authorMapper = new AuthorMapper();
+//                book = bookMapper.extractFromResultSet(resultSet);
+//                author = authorMapper.extractFromResultSet(resultSet);
+//                book = bookMapper.makeUnique(books, book);
+//                author = authorMapper.makeUnique(authors, author);
+//                book.getAuthors().add(author);
+//            }
+//            resultSet.close();
+//        } catch (SQLException ex) {
+//            logger.error(LoggerMessages.ERROR_FIND_BOOK_BY_ID + title);
+//            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_GET);
+//        }
+//        return book;
+//    }
 
     @Override
     public List<Book> findByGenreId(Integer id) {
@@ -124,9 +124,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
              PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_GENRE_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
+            BookMapper bookMapper = new BookMapper();
+            AuthorMapper authorMapper = new AuthorMapper();
             while (resultSet.next()) {
-                BookMapper bookMapper = new BookMapper();
-                AuthorMapper authorMapper = new AuthorMapper();
                 book = bookMapper.extractFromResultSet(resultSet);
                 author = authorMapper.extractFromResultSet(resultSet);
                 book = bookMapper.makeUnique(books, book);
@@ -164,6 +164,58 @@ public class JdbcBookDao implements BookDao, BookQuery {
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_ALL_AUTHOR);
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_AUTHORS);
+        }
+        return new ArrayList<>(books.values());
+    }
+    @Override
+    public List<Book> findByAuthor(String searchValue) {
+        Book book = new Book();
+        Author author = new Author();
+        Map<Integer, Book> books = new HashMap<>();
+        Map<Integer, Author> authors = new HashMap<>();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + SEARCH_BY_AUTHOR)) {
+            statement.setString(1, "%"+searchValue+"%");
+            ResultSet resultSet = statement.executeQuery();
+            BookMapper bookMapper = new BookMapper();
+            AuthorMapper authorMapper = new AuthorMapper();
+            while (resultSet.next()) {
+                book = bookMapper.extractFromResultSet(resultSet);
+                author = authorMapper.extractFromResultSet(resultSet);
+                book = bookMapper.makeUnique(books, book);
+                author = authorMapper.makeUnique(authors, author);
+                book.getAuthors().add(author);
+            }
+            resultSet.close();
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_SEARCH_BY_AUTHOR);
+            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_AUTHOR);
+        }
+        return new ArrayList<>(books.values());
+    }
+    @Override
+    public List<Book> findByTitle(String searchValue) {
+        Book book = new Book();
+        Author author = new Author();
+        Map<Integer, Book> books = new HashMap<>();
+        Map<Integer, Author> authors = new HashMap<>();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + SEARCH_BY_TITLE)) {
+            statement.setString(1, searchValue);
+            ResultSet resultSet = statement.executeQuery();
+            BookMapper bookMapper = new BookMapper();
+            AuthorMapper authorMapper = new AuthorMapper();
+            while (resultSet.next()) {
+                book = bookMapper.extractFromResultSet(resultSet);
+                author = authorMapper.extractFromResultSet(resultSet);
+                book = bookMapper.makeUnique(books, book);
+                author = authorMapper.makeUnique(authors, author);
+                book.getAuthors().add(author);
+            }
+            resultSet.close();
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_SEARCH_BY_TITLE);
+            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_TITLE);
         }
         return new ArrayList<>(books.values());
     }
@@ -243,8 +295,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void matchBookAuthor(Book book, Author author) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(MATCH_BOOK_AUTHOR);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(MATCH_BOOK_AUTHOR)) {
             System.out.println("First Match book id " + book.getId());
             statement.setInt(1, book.getId());
             System.out.println("Match book id " + book.getId());
@@ -254,10 +306,13 @@ public class JdbcBookDao implements BookDao, BookQuery {
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_BOOK + book.toString());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_CREATE);
         }
     }
+
+
+
+
 }

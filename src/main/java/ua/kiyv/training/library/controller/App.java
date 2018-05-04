@@ -29,6 +29,7 @@ public class App {
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
 //
        BookService bookService = ServiceFactory.getInstance().createBookService();
+        System.out.println(bookService.findByAuthor("sco"));
 ////        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
 ////        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
 ////book.setId(1);
@@ -60,7 +61,7 @@ public class App {
 //        System.out.println(child.getEyesColor());
 //        Parent child1 =child;
 //        Child child2=new Parent();
-        Date d =new Date();
+//        Date d =new Date();
 //        System.out.println(d);
 //        Calendar.getInstance().setTime(d);
 ////        c.setTime(d);

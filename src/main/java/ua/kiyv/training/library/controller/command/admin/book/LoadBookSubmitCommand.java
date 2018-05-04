@@ -48,7 +48,11 @@ public class LoadBookSubmitCommand extends CommandWrapper {
         Book book = extractBookFromRegisterData(bookdata);
         Author author = extractAuthorFromRegisterData(bookdata);
         bookService.create(book);
-        authorService.create(author);
+//        try {
+//            authorService.getAuthor(author.getFirstName() + author.getLastName());
+//        } catch (NullPointerException e) {}
+            authorService.create(author);
+//        }
         bookService.matchBookAuthor(book, author);
         System.out.println("Save Date to DB");
         logger.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));

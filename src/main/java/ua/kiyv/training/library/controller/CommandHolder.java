@@ -9,6 +9,7 @@ import ua.kiyv.training.library.controller.command.admin.book.*;
 import ua.kiyv.training.library.controller.command.login.LoginCommand;
 import ua.kiyv.training.library.controller.command.login.LoginSubmitCommand;
 import ua.kiyv.training.library.controller.command.login.RegisterSubmitCommand;
+import ua.kiyv.training.library.controller.command.search.SearchSubmitCommand;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -66,6 +67,7 @@ class CommandHolder {
         commands.put(POST + deployPath + ADMIN_BORROWED_BOOK_DELETE_BY_USER_PATH, new DeleteBorrowedBookSubmitCommand());
 
         commands.put(POST + deployPath +USER_ORDER, new BookOrderSubmitCommand());
+        commands.put(POST + deployPath +SEARCH_PATH, new SearchSubmitCommand());
 
     }
 

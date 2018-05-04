@@ -16,5 +16,9 @@ public interface BookQuery {
     String DELETE_BOOK = "DELETE FROM book WHERE id = ?";
     String DELETE_MATCH_BOOK_AUTHOR = "DELETE FROM book_author WHERE book_id = ?";
     String MATCH_BOOK_AUTHOR ="INSERT INTO book_author (book_id,author_id) values (?,?)";
+    String SEARCH_BY_AUTHOR =" WHERE a.unique_cipher LIKE ?";
+    String SEARCH_BY_TITLE =" WHERE b.title LIKE CONCAT('%',?,'%')";
+    String SEARCH_BY_KEYWORDS =" WHERE b.keywords LIKE CONCAT('%',?,'%')";
+//    String SEARCH_ALL ="WHERE b.title LIKE CONCAT('%',?,'%')";
 
 }

@@ -249,7 +249,7 @@ public class Book {
         }
     }
 
-//    public static Builder builder(){
-//        return new Builder();
-//    }
+    public static Builder builder(){
+        return new Builder();
+    }
 }

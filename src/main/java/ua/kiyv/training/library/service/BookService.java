@@ -21,4 +21,6 @@ public interface BookService {
     public void delete(BorrowedBook borrowedBook);
     public Boolean isBookAvailable(Book book);
     public void deleteBorrowedBookByUserId(Integer bookId, Integer userId);
+    public List<Book> findByAuthor(String searchValue);
+    public List<Book> findByTitle(String searchValue);
 }
