@@ -21,7 +21,7 @@
             <div class="extras">
                 <ul>
                     <li>
-                        <jsp:include page="../languageSelector.jsp"/>
+                        <jsp:include page="../fragment/languageSelector.jsp"/>
                     </li>
                     <c:if test="${sessionScope.userId==null}">
                         <li><a href="/library/login"><fmt:message key="library.login" bundle="${msg}"/></a></li>

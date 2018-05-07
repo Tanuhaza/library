@@ -11,10 +11,11 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/library.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
-<script src="/js/bootstrap.min.js"></script>
+<%--<script src="/js/bootstrap.min.js"></script>--%>
 
 <fmt:setLocale value="${sessionScope['locale']}"/>
-<fmt:setBundle basename="${bundleFile}" var="msg"/>
+<fmt:setBundle basename="webProject.i18n.messages" var="msg"/>
+<%--<fmt:setBundle basename="${bundleFile}" var="msg"/>--%>
 <fmt:requestEncoding value="UTF-8"/>
 
 <div class="mainmenu-wrapper">
@@ -23,7 +24,7 @@
             <div class="extras">
                 <ul>
                     <li>
-                        <jsp:include page="../languageSelector.jsp"/>
+                        <jsp:include page="../fragment/languageSelector.jsp"/>
                     </li>
                     <c:if test="${sessionScope.userId==null}">
                         <li><a href="/library/login"><fmt:message key="library.login" bundle="${msg}"/></a></li>

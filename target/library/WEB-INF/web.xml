@@ -10,6 +10,12 @@
     <welcome-file>/index.jsp</welcome-file>
   </welcome-file-list>
 
+  <absolute-ordering>
+    <name>Local</name>
+    <name>Auth</name>
+
+  </absolute-ordering>
+
   <!--<servlet>-->
     <!--<servlet-name>MainController</servlet-name>-->
     <!--<servlet-class>ua.kiyv.training.library.controller.FrontController</servlet-class>-->
