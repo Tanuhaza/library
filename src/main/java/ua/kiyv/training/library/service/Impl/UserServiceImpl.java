@@ -1,13 +1,14 @@
 package ua.kiyv.training.library.service.Impl;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.dao.AuthorDao;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.DaoFactory;
 import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.UserDao;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.User;
-import ua.kiyv.training.library.service.ServiceException;
+import ua.kiyv.training.library.exception.ServiceException;
 import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
@@ -15,19 +16,37 @@ import ua.kiyv.training.library.utils.constants.MessageKeys;
 import java.util.List;
 import java.util.Optional;
 
-public class UserServiceImpl implements UserService{
-//    private UserServiceImpl(){};
+public class UserServiceImpl implements UserService {
+    private static AuthorDao authorDao = JdbcDaoFactory.getInstance().createAuthorDao();
 
-    private static final Logger logger = Logger.getLogger(UserServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(BookServiceImpl.class);
+
+    private DaoFactory daoFactory;
+    private UserDao userDao;
+
+    public UserServiceImpl(DaoFactory instance) {
+        this.daoFactory = instance;
+        this.userDao = daoFactory.createUserDao();
+    }
+
+    private static class Holder {
+        private static final UserService INSTANCE = new UserServiceImpl(DaoFactory.getInstance());
+    }
+
+    public static UserService getInstance() {
+        return Holder.INSTANCE;
+    }
+
+
     @Override
     public void create(User user) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
-            JdbcDaoFactory.getInstance().createUserDao().create(user);
+            userDao.create(user);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
-            logger.error(LoggerMessages.WRONG_TRANSACTION);
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_USER);
         }
 
@@ -35,12 +54,12 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public Optional<User> findById(int id) {
-        return Optional.of(JdbcDaoFactory.getInstance().createUserDao().findById(id));
+        return Optional.of(userDao.findById(id));
     }
 
     @Override
     public List<User> findAll() {
-        return (JdbcDaoFactory.getInstance().createUserDao().findAll());
+        return (userDao.findAll());
     }
 
     @Override
@@ -54,11 +73,10 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> getUserByEmailPassword(String email, String password){
-        UserDao userDao =DaoFactory.getInstance().createUserDao();
-            User user = userDao.findUserByEmail(email)
-                    .filter( person-> password.equals(person.getPassword()))
-                    .orElseThrow(()->new ServiceException(MessageKeys.WRONG_LOGIN_DATA));
-            return Optional.of(user);
-        }
+    public Optional<User> getUserByEmailPassword(String email, String password) {
+        User user = userDao.findUserByEmail(email)
+                .filter(person -> password.equals(person.getPassword()))
+                .orElseThrow(() -> new ServiceException(MessageKeys.WRONG_LOGIN_DATA));
+        return Optional.of(user);
+    }
 }

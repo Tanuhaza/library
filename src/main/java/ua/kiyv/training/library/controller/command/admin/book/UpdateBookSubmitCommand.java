@@ -1,15 +1,16 @@
 package ua.kiyv.training.library.controller.command.admin.book;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.controller.CommandWrapper;
+
+import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.controller.validate.BookValidator;
 import ua.kiyv.training.library.controller.validate.Errors;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.dto.BookData;
-import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
+
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 
@@ -21,13 +22,11 @@ import java.io.IOException;
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 
 public class UpdateBookSubmitCommand extends CommandWrapper {
-    private static final Logger logger = Logger.getLogger(LoadBookSubmitCommand.class);
-    private BookService bookService = ServiceFactory.getInstance().createBookService();
-    private AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
+    private static final Logger LOGGER = Logger.getLogger(LoadBookSubmitCommand.class);
+    BookService bookService = BookServiceImpl.getInstance();
     private BookValidator bookValidator;
 
     public UpdateBookSubmitCommand() {
-        super(PagesPath.LOGIN_PAGE);
         bookValidator = new BookValidator();
     }
 
@@ -49,7 +48,7 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
 //        authorService.create(author);
 //        bookService.matchBookAuthor(book, author);
         System.out.println("Save Date to DB");
-        logger.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
+        LOGGER.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
         return PagesPath.ADMIN_MANAGE_PATH;
     }
 
@@ -70,7 +69,7 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
     }
 
     private void processErrors(HttpServletRequest request, Errors errors) {
-        logger.error("Wrong input data in registration");
+        LOGGER.error("Wrong input data in registration");
         request.setAttribute(Attributes.ERRORS, errors);
     }
 

@@ -1,9 +1,9 @@
-package ua.kiyv.training.library.controller;
+package ua.kiyv.training.library.controller.command;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.controller.validate.Errors;
 import ua.kiyv.training.library.exception.ApplicationException;
-import ua.kiyv.training.library.service.ServiceException;
+import ua.kiyv.training.library.exception.ServiceException;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
@@ -20,12 +20,7 @@ import java.io.IOException;
  * wrapper class for specific commands which can throw exception
  */
 public abstract class CommandWrapper implements Command {
-    private static final Logger logger = Logger.getLogger(CommandWrapper.class);
-    private final String nextPage;
-
-    protected CommandWrapper(String nextPage) {
-        this.nextPage = nextPage;
-    }
+    private static final Logger LOGGER = Logger.getLogger(CommandWrapper.class);
 
     /**
      * main method which wrap all actions, which could throw some exception
@@ -41,17 +36,17 @@ public abstract class CommandWrapper implements Command {
         try {
             return performExecute(request, response);
         } catch (ServiceException exception) {
-            logger.error(LoggerMessages.SERVICE_EXCEPTION_OCCURRED, exception);
+            LOGGER.error(LoggerMessages.SERVICE_EXCEPTION_OCCURRED, exception);
             putErrorMessageInRequest(request, exception.getMessageKey());
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
             exception.printStackTrace();
         } catch (ApplicationException exception) {
-            logger.error(LoggerMessages.APPLICATION_EXCEPTION_OCCURRED, exception);
+            LOGGER.error(LoggerMessages.APPLICATION_EXCEPTION_OCCURRED, exception);
             putErrorMessageInRequest(request, exception.getMessageKey());
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
             exception.printStackTrace();
         } catch (Exception exception) {
-            logger.error(LoggerMessages.UNKNOWN_ERROR_OCCURED, exception);
+            LOGGER.error(LoggerMessages.UNKNOWN_ERROR_OCCURED, exception);
             putErrorMessageInRequest(request, MessageKeys.UNKNOWN_ERROR_OCCURED);
             request.getRequestDispatcher(PagesPath.ERROR_PAGE).forward(request, response);
             exception.printStackTrace();

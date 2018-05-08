@@ -1,7 +1,9 @@
 package ua.kiyv.training.library.controller.command.admin.book;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.controller.CommandWrapper;
+import ua.kiyv.training.library.controller.command.CommandWrapper;
+import ua.kiyv.training.library.service.BookService;
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 
@@ -16,10 +18,8 @@ import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
  * Created by Tanya on 19.04.2018.
  */
 public class EditBookSubmitCommand extends CommandWrapper {
-    private static final Logger logger = Logger.getLogger(EditBookSubmitCommand.class);
-    public EditBookSubmitCommand() {
-        super(PagesPath.LOGIN_PAGE);
-    }
+    private static final Logger LOGGER = Logger.getLogger(EditBookSubmitCommand.class);
+    BookService bookService = BookServiceImpl.getInstance();
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

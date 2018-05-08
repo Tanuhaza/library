@@ -1,14 +1,14 @@
 package ua.kiyv.training.library.controller;
 
-import ua.kiyv.training.library.controller.TestParentChild.Child;
-import ua.kiyv.training.library.controller.TestParentChild.Parent;
+
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.*;
 import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
+import ua.kiyv.training.library.service.Impl.AuthorServiceImpl;
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.service.Impl.UserServiceImpl;
-import ua.kiyv.training.library.service.ServiceFactory;
 import ua.kiyv.training.library.service.UserService;
 
 import java.sql.Connection;
@@ -28,7 +28,10 @@ public class App {
 ////       System.out.println( userService.findAll());
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
 //
-       BookService bookService = ServiceFactory.getInstance().createBookService();
+       BookService bookService = BookServiceImpl.getInstance();
+//       AuthorService authorService = AuthorServiceImpl.getInstance();
+        System.out.println(bookService.findAllBooks());
+       bookService.findById(1);
 //        System.out.println(bookService.findByAuthor("sco"));
 ////        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
 ////        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");
@@ -69,11 +72,11 @@ public class App {
 //        Date d2=c.getTime();
 //        System.out.println(d2);
 
-            String john = null;
-            Optional<String> name = Optional.of(john);
-            System.out.println(name); //output Optional.empty
-       if (name.isPresent())
-        System.out.println(name.get());
+//            String john = null;
+//            Optional<String> name = Optional.of(john);
+//            System.out.println(name); //output Optional.empty
+//       if (name.isPresent())
+//        System.out.println(name.get());
 
 
     }

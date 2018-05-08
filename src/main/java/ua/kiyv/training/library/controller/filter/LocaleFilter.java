@@ -15,7 +15,7 @@ import java.util.Locale;
  * Filter which sets character encoding to utf-8
  * This filter also sets and changes locales
  */
-@WebFilter(filterName = "Local",urlPatterns = {"/library/*"})
+@WebFilter(filterName = "Local",urlPatterns = {"/*"})
 public class LocaleFilter implements Filter {
     /**
      * contains all supported locales

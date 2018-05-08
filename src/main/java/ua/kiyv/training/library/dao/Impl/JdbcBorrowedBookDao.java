@@ -2,22 +2,19 @@ package ua.kiyv.training.library.dao.Impl;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.BorrowedBookDao;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.Impl.mapper.AuthorMapper;
-import ua.kiyv.training.library.dao.Impl.mapper.BookMapper;
 import ua.kiyv.training.library.dao.Impl.mapper.BorrowedBookMapper;
 import ua.kiyv.training.library.dao.Impl.query.BorrowedBookQuery;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
-import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.BorrowedBook;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.time.LocalDate;
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

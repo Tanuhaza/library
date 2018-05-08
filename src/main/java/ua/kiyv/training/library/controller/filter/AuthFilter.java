@@ -1,10 +1,8 @@
 package ua.kiyv.training.library.controller.filter;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.model.Role;
-import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
+
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 

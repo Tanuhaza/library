@@ -1,6 +1,7 @@
-package ua.kiyv.training.library.controller;
+package ua.kiyv.training.library.controller.command;
 
 
+import ua.kiyv.training.library.controller.command.Command;
 import ua.kiyv.training.library.controller.command.LogoutCommand;
 import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
 import ua.kiyv.training.library.controller.command.User.*;
@@ -20,9 +21,9 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 /**
  * This class is implementation of CommandHolder. It defines command for every supported request uri.
  */
-class CommandHolder {
+public class CommandHolder {
 
-    static final String DELIMITER = ":";
+    public static final String DELIMITER = ":";
     private static final String GET = "GET" + DELIMITER;
     private static final String POST = "POST" + DELIMITER;
     public static final String NUMBER_BETWEEN_SLASHES_PATTERN = "/\\d+(?=/|$)";
@@ -36,7 +37,7 @@ class CommandHolder {
      */
     private Map<String, Command> commands = new HashMap<>();
 
-    CommandHolder(String deployPath) {
+    public CommandHolder(String deployPath) {
         this.deployPath = deployPath;
         init();
     }
@@ -75,7 +76,7 @@ class CommandHolder {
      * @param commandKey Key of the command, mapped to certain uri and request method
      * @return Command instance, mapped to certain uri and request method
      */
-    Command findCommand(String commandKey) {
+    public Command findCommand(String commandKey) {
         String convertedKey = removeAllNumbersFromUrl(commandKey);
         System.out.println(convertedKey);
         return commands.getOrDefault(convertedKey, unsupportedPathCommand);

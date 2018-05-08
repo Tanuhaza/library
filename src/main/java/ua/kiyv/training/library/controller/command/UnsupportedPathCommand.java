@@ -2,7 +2,6 @@ package ua.kiyv.training.library.controller.command;
 
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.controller.Command;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 

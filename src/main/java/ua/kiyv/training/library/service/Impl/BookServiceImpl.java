@@ -3,28 +3,45 @@ package ua.kiyv.training.library.service.Impl;
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.BookDao;
 import ua.kiyv.training.library.dao.BorrowedBookDao;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
+import ua.kiyv.training.library.dao.DaoFactory;
 import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.BorrowedBook;
 import ua.kiyv.training.library.model.Genre;
+import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceException;
+import ua.kiyv.training.library.exception.ServiceException;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
  * Created by Tanya on 17.04.2018.
  */
 public class BookServiceImpl implements BookService {
-    private static BookDao bookDao = JdbcDaoFactory.getInstance().createBookDao();
-    private static BorrowedBookDao borrowedBookDao = JdbcDaoFactory.getInstance().createBorrowedBookDao();
-    private static final Logger logger = Logger.getLogger(BookServiceImpl.class);
+    private static final Logger LOGGER = Logger.getLogger(BookServiceImpl.class);
+    private DaoFactory daoFactory;
+    private BookDao bookDao;
+    private BorrowedBookDao borrowedBookDao;
+
+    public BookServiceImpl(DaoFactory instance) {
+        this.daoFactory = instance;
+        this.bookDao = daoFactory.createBookDao();
+        this.borrowedBookDao = daoFactory.createBorrowedBookDao();
+    }
+
+    private static class Holder {
+        private static final BookService INSTANCE = new BookServiceImpl(DaoFactory.getInstance());
+    }
+
+    public static BookService getInstance() {
+        return Holder.INSTANCE;
+    }
+
 
     @Override
     public void create(Book book) {
@@ -34,7 +51,7 @@ public class BookServiceImpl implements BookService {
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
-            logger.error(LoggerMessages.WRONG_TRANSACTION);
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_BOOK);
         }
 
@@ -48,7 +65,7 @@ public class BookServiceImpl implements BookService {
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
-            logger.error(LoggerMessages.WRONG_TRANSACTION);
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_BOOK);
         }
 
@@ -66,7 +83,7 @@ public class BookServiceImpl implements BookService {
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
-            logger.error(LoggerMessages.WRONG_TRANSACTION);
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_DELETING_BOOK);
         }
 
@@ -74,6 +91,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> findAllBooks() {
+        System.out.println(bookDao);
         return (bookDao.findAll());
     }
 
@@ -89,6 +107,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(int id) {
+        System.out.println(bookDao);
         return (bookDao.findById(id));
     }
 
@@ -110,8 +129,9 @@ public class BookServiceImpl implements BookService {
             book.setAvaliable(isBookAvailable(book));
             bookDao.update(book);
             borrowedBookDao.createBorrowedBookByUserId(bookId, userId);
+        } else {
+            throw new ServiceException(MessageKeys.WRONG_BOOK_IS_NOT_AVAILABLE);
         }
-        else {throw new ServiceException(MessageKeys.WRONG_BOOK_IS_NOT_AVAILABLE);}
     }
 
     @Override
@@ -130,22 +150,22 @@ public class BookServiceImpl implements BookService {
         return false;
     }
 
-    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId){
+    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId) {
 
-            JdbcTransactionHelper.getInstance().beginTransaction();
-            try {
-                Book book = bookDao.findById(bookId);
-                System.out.println("in service delete");
-                borrowedBookDao.deleteBorrowedBookByUserId(bookId,userId);
-                System.out.println("delete book");
-                book.setQuantity(book.getQuantity() + 1);
-                book.setAvaliable(isBookAvailable(book));
-                bookDao.update(book);
-                JdbcTransactionHelper.getInstance().commitTransaction();
-            } catch (DaoException ex) {
-                JdbcTransactionHelper.getInstance().rollbackTransaction();
-                logger.error(LoggerMessages.WRONG_TRANSACTION);
-                throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_DELETING_BOOK);
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            Book book = bookDao.findById(bookId);
+            System.out.println("in service delete");
+            borrowedBookDao.deleteBorrowedBookByUserId(bookId, userId);
+            System.out.println("delete book");
+            book.setQuantity(book.getQuantity() + 1);
+            book.setAvaliable(isBookAvailable(book));
+            bookDao.update(book);
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_DELETING_BOOK);
 
         }
     }

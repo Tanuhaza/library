@@ -16,62 +16,16 @@
     <link rel="stylesheet" href="/css/library.css">
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <fmt:setLocale value="${sessionScope['locale']}"/>
+    <fmt:requestEncoding value="UTF-8"/>
+    <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <title>home page</title>
 </head>
 <body class="body-profile-container">
-<fmt:setLocale value="en"/>
-<fmt:setBundle basename="webProject.i18n.messages" var="msg"/>
-<div class="mainmenu-wrapper">
-    <div class="container">
-        <div class="menuextras">
-            <div class="extras">
-            <ul>
-                    <c:if test="${sessionScope.userId==null}">
-                        <li><a href="/library/login"><fmt:message key="library.login" bundle="${msg}"/></a></li>
-                    </c:if>
-                    <c:if test="${sessionScope.userId!=null}">
-                        <li><a href="/library/logout"><fmt:message key="library.logout" bundle="${msg}"/></a></li>
-                    </c:if>
-                </ul>
-            </div>
-        </div>
-        <nav id="mainmenu" class="mainmenu">
-            <ul class="mainmenu-list">
-                <li>
-                    <a href="/library/user"><fmt:message key="library.user.menu.home" bundle="${msg}"/></a>
-                </li>
-                <li>
-                    <a href="/library/user/books"><fmt:message key="library.user.menu.books" bundle="${msg}"/></a>
-                </li>
-                <li>
-                    <a href="/library/user/books/genre"><fmt:message key="library.user.menu.books.by.genre"
-                                                                     bundle="${msg}"/></a>
-
-                </li>
-                <li>
-
-                    <form id="register-form" action="/library/search" method="post" role="form">
-                        <input type="search" id="searchValue" name="searchValue"
-                               placeholder="Search the site..." size="50">
-                        <button>Search</button>
-                        <br>
-                        <input type="radio" name="filter" value="author" checked> author
-                        <input type="radio" name="filter" value="title"> title
-                        <input type="radio" name="filter" value="keywords"> keywords
-                    </form>
-
-                </li>
-
-            </ul>
-        </nav>
-    </div>
-</div>
-
-
+<jsp:include page="WEB-INF/view/jsp/user/header.jsp"/>
 <div class="welcome-index"><fmt:message key="library.welcome" bundle="${msg}"/></div>
 <div class="welcome-text"><fmt:message key="library.welcome.text" bundle="${msg}"/></div>
 <div class="welcome-sign-in-out"><fmt:message key="library.sign.in.or.sign.out" bundle="${msg}"/></div>
-
 <jsp:include page="WEB-INF/view/jsp/fragment/footer.jsp"/>
 </body>
 </html>

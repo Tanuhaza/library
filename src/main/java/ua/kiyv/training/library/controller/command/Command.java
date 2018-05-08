@@ -1,4 +1,4 @@
-package ua.kiyv.training.library.controller;
+package ua.kiyv.training.library.controller.command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

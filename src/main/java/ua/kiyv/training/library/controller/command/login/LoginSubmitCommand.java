@@ -3,12 +3,15 @@ package ua.kiyv.training.library.controller.command.login;
 
 
 
-import ua.kiyv.training.library.controller.CommandWrapper;
+
+import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
+
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
+import ua.kiyv.training.library.service.Impl.UserServiceImpl;
 import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.PagesPath;
@@ -24,11 +27,9 @@ public class LoginSubmitCommand extends CommandWrapper {
     private static final String PARAM_LOGIN = "login_name";
     private static final String PARAM_PASSWORD ="login_password";
 
-    private UserService userService = ServiceFactory.getInstance().createUserService();
+    private UserService userService = UserServiceImpl.getInstance();
+    private BookService bookService = BookServiceImpl.getInstance();
 
-    public LoginSubmitCommand() {
-        super(PagesPath.LOGIN_PAGE);
-    }
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -44,9 +45,9 @@ public class LoginSubmitCommand extends CommandWrapper {
             System.out.println("PERSON_ID " +person.getId());
             request.getSession().setAttribute(Attributes.USER_ROLE, person.getRole());
             /** DELETE!!!*/
-            BookService bookService = ServiceFactory.getInstance().createBookService();
-            List<Genre> genres =new ArrayList<>();
-            genres = bookService.findAllGenres();
+
+            List<Genre>  genres = bookService.findAllGenres();
+
             request.getSession().setAttribute("genres",genres);
         }
 //        clearLoginDataFromRequest(request);

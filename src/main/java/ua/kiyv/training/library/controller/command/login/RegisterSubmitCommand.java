@@ -1,13 +1,17 @@
 package ua.kiyv.training.library.controller.command.login;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.controller.CommandWrapper;
+
+import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.controller.validate.Errors;
 import ua.kiyv.training.library.controller.validate.UserValidator;
 import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
 import ua.kiyv.training.library.model.dto.RegisterData;
-import ua.kiyv.training.library.service.ServiceFactory;
+
+import ua.kiyv.training.library.service.BookService;
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
+import ua.kiyv.training.library.service.Impl.UserServiceImpl;
 import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
@@ -20,11 +24,10 @@ import java.io.IOException;
 
 public class RegisterSubmitCommand extends CommandWrapper {
     private static final Logger logger = Logger.getLogger(RegisterSubmitCommand.class);
-    private UserService userService = ServiceFactory.getInstance().createUserService();
+    private UserService userService = UserServiceImpl.getInstance();
     private UserValidator userValidator;
 
     public RegisterSubmitCommand() {
-        super(PagesPath.LOGIN_PAGE);
         userValidator = new UserValidator();
             }
 

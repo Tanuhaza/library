@@ -4,7 +4,7 @@ package ua.kiyv.training.library.dao.connection.Jdbc;
 
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;

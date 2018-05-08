@@ -1,11 +1,10 @@
 package ua.kiyv.training.library.controller.command.search;
 
-import ua.kiyv.training.library.controller.CommandWrapper;
+
+import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
-import ua.kiyv.training.library.utils.constants.PagesPath;
-
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,11 +16,9 @@ import java.util.Map;
 import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
 public class SearchSubmitCommand extends CommandWrapper {
-    private BookService bookService = ServiceFactory.getInstance().createBookService();
+    private BookService bookService = BookServiceImpl.getInstance();
     private  Map<String ,List<Book>> commandSearch =new HashMap<>();
-    public SearchSubmitCommand() {
-            super(PagesPath.LOGIN_PAGE);
-    }
+
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

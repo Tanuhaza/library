@@ -2,7 +2,7 @@ package ua.kiyv.training.library.dao.Impl;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.AuthorDao;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.Impl.mapper.AuthorMapper;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;

@@ -1,9 +1,13 @@
 package ua.kiyv.training.library.controller.command.User;
 
-import ua.kiyv.training.library.controller.Command;
+
+import ua.kiyv.training.library.controller.command.Command;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
+
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
+import ua.kiyv.training.library.service.Impl.UserServiceImpl;
+import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.ParamExtractor;
 
 import javax.servlet.ServletException;
@@ -15,10 +19,7 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.USER_BOOK_DESCR
 
 public class BookDescriptionCommand implements Command {
     private ParamExtractor paramExtractor = new ParamExtractor();
-    private BookService bookService = ServiceFactory.getInstance().createBookService();
-
-    public BookDescriptionCommand() {
-    }
+    private BookService bookService = BookServiceImpl.getInstance();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

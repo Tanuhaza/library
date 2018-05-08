@@ -1,13 +1,11 @@
 package ua.kiyv.training.library.dao.Impl;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.GenreDao;
-import ua.kiyv.training.library.dao.Impl.mapper.AuthorMapper;
 import ua.kiyv.training.library.dao.Impl.mapper.GenreMapper;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
-import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
@@ -18,7 +16,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ua.kiyv.training.library.dao.Impl.query.AuthorQuery.SELECT_ALL_AUTHORS;
 import static ua.kiyv.training.library.dao.Impl.query.GenreQuery.SELECT_ALL_GENRES;
 
 public class JdbcGenreDao implements GenreDao {

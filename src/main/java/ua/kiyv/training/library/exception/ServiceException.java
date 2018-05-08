@@ -1,4 +1,4 @@
-package ua.kiyv.training.library.service;
+package ua.kiyv.training.library.exception;
 
 
 import ua.kiyv.training.library.exception.ApplicationException;

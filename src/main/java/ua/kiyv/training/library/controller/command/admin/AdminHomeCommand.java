@@ -1,8 +1,7 @@
 package ua.kiyv.training.library.controller.command.admin;
 
-import ua.kiyv.training.library.controller.Command;
-import ua.kiyv.training.library.controller.CommandWrapper;
-import ua.kiyv.training.library.utils.constants.PagesPath;
+
+import ua.kiyv.training.library.controller.command.Command;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

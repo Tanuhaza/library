@@ -1,8 +1,9 @@
 package ua.kiyv.training.library.controller.command.admin.book;
 
-import ua.kiyv.training.library.controller.CommandWrapper;
+
+import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.ServiceFactory;
+import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.utils.constants.PagesPath;
 
 import javax.servlet.ServletException;
@@ -14,19 +15,13 @@ import java.io.IOException;
  * Created by Tanya on 19.04.2018.
  */
 public class DeleteBookSubmitCommand extends CommandWrapper {
-    public DeleteBookSubmitCommand() {
-        super(PagesPath.LOGIN_PAGE);
-    }
+    BookService bookService = BookServiceImpl.getInstance();
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int id =Integer.parseInt(request.getParameter("bookId"));
         System.out.println(request.getParameter("bookId"));
-        BookService bookService = ServiceFactory.getInstance().createBookService();
         bookService.delete(id);
-//        List<Book> books =new ArrayList<>();
-//        books = bookService.findAllBooks();
-//        request.setAttribute("books",books);
         return PagesPath.ADMIN_MANAGE_PATH;
     }
 }

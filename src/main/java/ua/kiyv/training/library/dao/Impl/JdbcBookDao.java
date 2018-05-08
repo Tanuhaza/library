@@ -2,7 +2,7 @@ package ua.kiyv.training.library.dao.Impl;
 
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.BookDao;
-import ua.kiyv.training.library.dao.DaoException;
+import ua.kiyv.training.library.exception.DaoException;
 import ua.kiyv.training.library.dao.Impl.mapper.AuthorMapper;
 import ua.kiyv.training.library.dao.Impl.mapper.BookMapper;
 import ua.kiyv.training.library.dao.Impl.query.BookQuery;
@@ -14,10 +14,7 @@ import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class JdbcBookDao implements BookDao, BookQuery {
 
@@ -62,8 +59,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Author> authors = new HashMap<>();
         Book book = null;
         Author author = null;
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID)) {
+
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -76,7 +74,6 @@ public class JdbcBookDao implements BookDao, BookQuery {
                 book.getAuthors().add(author);
             }
             resultSet.close();
-            statement.close();
 
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
