@@ -126,7 +126,8 @@ public final class MessageKeys {
     public static final String WRONG_TRANSACTION_WHILE_CREATING_BOOK = "message.wrong.transaction.book.create";
     public static final String WRONG_TRANSACTION_WHILE_CREATING_AUTHOR = "message.wrong.transaction.author.create";
     public static final String WRONG_TRANSACTION_WHILE_UPDATING_AUTHOR = "message.wrong.transaction.author.update";
-    public static final String WRONG_TRANSACTION_WHILE_CREATING_USER = "message.wrong.transaction.user.creating";
+    public static final String WRONG_TRANSACTION_WHILE_CREATING_USER = "message.wrong.transaction.user.create";
+    public static final String WRONG_TRANSACTION_WHILE_UPDATING_USER = "message.wrong.transaction.user.update";
 
     public static final String WRONG_QUERY_PARAMETER = "message.wrong.query.parameter";
     public static final String WRONG_PARAMETER = "message.wrong.parameter";

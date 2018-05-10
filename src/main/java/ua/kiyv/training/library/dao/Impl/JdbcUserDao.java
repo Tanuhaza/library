@@ -18,17 +18,15 @@ import java.util.*;
 import static ua.kiyv.training.library.dao.Impl.query.UserQuery.*;
 
 public class JdbcUserDao implements UserDao {
-    JdbcUserDao() {
-    }
 
     private static final Logger logger = Logger.getLogger(JdbcUserDao.class);
 
     @Override
     public void create(User user) {
         String sqlStatement = CREATE_USER;
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(sqlStatement,
-                    Statement.RETURN_GENERATED_KEYS);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(sqlStatement,
+                     Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getEmail());
@@ -36,7 +34,7 @@ public class JdbcUserDao implements UserDao {
             statement.setString(5, user.getPassword());
             statement.setString(6, user.getRole().toString());
 
-            int affectedRows = statement.executeUpdate();
+            Integer affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_CREATING_NO_ROWS_AFFECTED);
             }
@@ -47,7 +45,6 @@ public class JdbcUserDao implements UserDao {
             Integer id = generatedKeys.getInt(1);
             user.setId(id);
             generatedKeys.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_USER + user.toString());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_CREATE);
@@ -55,13 +52,13 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public User findById(int id) {
-        User user = null;
-        BorrowedBook borrowedBook = null;
+    public User findById(Integer id) {
+        User user;
+        BorrowedBook borrowedBook;
         Map<Integer, User> users = new HashMap<>();
         Map<Integer, BorrowedBook> borrowedBooks = new HashMap<>();
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(SELECT_ALL_USERS + FILTER_BY_ID);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_USERS + FILTER_BY_ID)) {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             if (!resultSet.next()) {
@@ -69,15 +66,12 @@ public class JdbcUserDao implements UserDao {
             }
             UserMapper userMapper = new UserMapper();
             BorrowedBookMapper bookMapper = new BorrowedBookMapper();
-//            while (resultSet.next()) {
             user = userMapper.extractFromResultSet(resultSet);
             borrowedBook = bookMapper.extractFromResultSet(resultSet);
             user = userMapper.makeUnique(users, user);
             borrowedBook = bookMapper.makeUnique(borrowedBooks, borrowedBook);
             user.getBorrowedBooks().add(borrowedBook);
             resultSet.close();
-            statement.close();
-//            }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
@@ -87,13 +81,13 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public List<User> findAll() {
-        User user = null;
-        BorrowedBook borrowedBook = null;
+        User user;
+        BorrowedBook borrowedBook;
         Map<Integer, User> users = new HashMap<>();
         Map<Integer, BorrowedBook> borrowedBooks = new HashMap<>();
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_USERS);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_USERS)) {
             UserMapper userMapper = new UserMapper();
             BorrowedBookMapper bookMapper = new BorrowedBookMapper();
             while (resultSet.next()) {
@@ -103,8 +97,6 @@ public class JdbcUserDao implements UserDao {
                 borrowedBook = bookMapper.makeUnique(borrowedBooks, borrowedBook);
                 user.getBorrowedBooks().add(borrowedBook);
             }
-            resultSet.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
@@ -114,8 +106,8 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public void update(User user) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(UPDATE_USER);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_USER)) {
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
             statement.setString(3, user.getEmail());
@@ -126,52 +118,83 @@ public class JdbcUserDao implements UserDao {
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_UPDATING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_UPDATE_USER + user.toString());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_UPDATE);
         }
-
     }
 
     @Override
     public void delete(User user) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(DELETE_USER);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_USER)) {
             statement.setInt(1, user.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_DELETING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_DELETE_USER + user.getId());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_DELETE);
         }
-
     }
 
     @Override
-    public Optional<User> findUserByEmail(String email) {
-        Optional<User> result = Optional.empty();
+    public User findUserByEmail(String email) {
+        User result;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(FIND_USER_BY_EMAIL)) {
-
             statement.setString(1, email);
-            try (
-                    ResultSet resultSet = statement.executeQuery()) {
+            try (ResultSet resultSet = statement.executeQuery()) {
                 if (!resultSet.next()) {
                     throw new DaoException(MessageKeys.WRONG_USER_DB_NO_ID_EXIST);
                 }
                 UserMapper userMapper = new UserMapper();
-                result = Optional.of(userMapper.extractFromResultSet(resultSet));
+                result = userMapper.extractFromResultSet(resultSet);
             }
-            return result;
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_EMAIL + email);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
         }
+        return result;
+    }
 
+    @Override
+    public int countAllUsers() {
+        int totalNumberOfUsers;
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(COUNT_USERS);
+            ResultSet resultSet = statement.executeQuery()){
+            if (!resultSet.next()) {
+                throw new DaoException(MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
+            }
+            totalNumberOfUsers = resultSet.getInt("total_count");
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
+            throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
+        }
+        return totalNumberOfUsers;
+    }
 
+    @Override
+    public List<User> getAllWithLimitPerPage(Integer startFrom, Integer quantity) {
+        User user;
+        List<User> users = new ArrayList<>();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
+            PreparedStatement statement = connection.prepareStatement(SELECT_USER_WITH_LIMIT_PER_PAGE);
+            statement.setInt(1, startFrom);
+            statement.setInt(2, quantity);
+            ResultSet resultSet = statement.executeQuery();
+            UserMapper userMapper = new UserMapper();
+            while (resultSet.next()) {
+                user = userMapper.extractFromResultSet(resultSet);
+                users.add(user);
+            }
+            resultSet.close();
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
+            throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
+        }
+        return users;
     }
 }

@@ -7,14 +7,15 @@ import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class UserValidator implements Validator<RegisterData> {
-    private static final String REGEX_NAME="[A-Z]{1}[a-z]{1,}";
+    private static final String REGEX_NAME="[A-ZÀ-ß¯²ª¨]{1}[a-zà-ÿ¿³º¸]{1,}";
     private static final String REGEX_PASSWORD = "[A-Za-z0-9]{4,200}";
     private static final String REGEX_EMAIL = "^([a-z0-9_-]+\\.)*[a-z0-9_\\-]+@[a-z0-9_-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$";
     private static  final String REGEX_PHONE="^(\\\\+380|0)([0-9]{9})$";
-    private static final Logger logger = Logger.getLogger(UserValidator.class);
+    private static final Logger LOGGER = Logger.getLogger(UserValidator.class);
 
     @Override
     public Errors validate(RegisterData data) {
@@ -36,5 +37,14 @@ public class UserValidator implements Validator<RegisterData> {
         }
 
         return results;
+    }
+
+    private boolean hasScript(String line) {
+        if (line == null)
+            return true;
+        String scriptRegex = new String("<script");
+        Pattern pattern = Pattern.compile(scriptRegex);
+        Matcher matcher = pattern.matcher(line);
+        return matcher.find();
     }
 }

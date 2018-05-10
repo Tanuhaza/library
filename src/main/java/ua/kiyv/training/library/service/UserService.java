@@ -14,7 +14,7 @@ public interface UserService {
      * @param id user's id, whose entity will be returned
      * @return user entity with specified id
      */
-    Optional<User> findById(int id);
+    Optional<User> findById(Integer id);
 
     /**
      * @return list of user entity
@@ -37,4 +37,10 @@ public interface UserService {
      * @return user entity with specified email (login)
      */
     public Optional<User> getUserByEmailPassword(String login, String password);
+
+    public int countAllUsers();
+
+    public List<User> getAllWithLimitPerPage(Integer startFrom, Integer quantity);
+
+    public String encrypt(String password);
 }

@@ -1,8 +1,12 @@
 package ua.kiyv.training.library.controller;
 
 
+import ua.kiyv.training.library.dao.By;
+import ua.kiyv.training.library.dao.DaoFactory;
+import ua.kiyv.training.library.dao.UserDao;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
+import ua.kiyv.training.library.exception.ServiceException;
 import ua.kiyv.training.library.model.*;
 import ua.kiyv.training.library.service.AuthorService;
 import ua.kiyv.training.library.service.BookService;
@@ -10,6 +14,7 @@ import ua.kiyv.training.library.service.Impl.AuthorServiceImpl;
 import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.service.Impl.UserServiceImpl;
 import ua.kiyv.training.library.service.UserService;
+import ua.kiyv.training.library.utils.constants.MessageKeys;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -27,11 +32,25 @@ public class App {
 ////        System.out.println( userService.findById(2));
 ////       System.out.println( userService.findAll());
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
-//
+UserDao userDao = DaoFactory.getInstance().createUserDao();
        BookService bookService = BookServiceImpl.getInstance();
+       String searchValue ="Lukas";
+       By query = By.byTitle();
+        List<Book> books = bookService.findBy(searchValue,query);
+        System.out.println(books);
 //       AuthorService authorService = AuthorServiceImpl.getInstance();
-        System.out.println(bookService.findAllBooks());
-       bookService.findById(1);
+//        System.out.println(bookService.findAllBooks());
+//       Optional<Book> book =
+//              Book book = bookService.findById(1);
+//        System.out.println(book);
+//        String email="wariushas1@gmail.com";
+//                String password="root";
+//        Optional.of(userDao.findUserByEmail(email)).filter(person -> password.equals(person.getPassword()))
+//                .orElseThrow(() -> new ServiceException(MessageKeys.WRONG_LOGIN_DATA));
+//       if(book.isPresent()){
+//           Book book1 =book.get();
+//           System.out.println(book1);
+//       }
 //        System.out.println(bookService.findByAuthor("sco"));
 ////        AuthorService authorService = ServiceFactory.getInstance().createAuthorService();
 ////        Book book =new Book("tuiyi","hhhh","jhkj",4,true,3,1978,1,"hffj,hfhf");

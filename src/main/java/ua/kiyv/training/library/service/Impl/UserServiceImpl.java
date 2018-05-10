@@ -1,5 +1,6 @@
 package ua.kiyv.training.library.service.Impl;
 
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.AuthorDao;
 import ua.kiyv.training.library.exception.DaoException;
@@ -13,6 +14,10 @@ import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.LoggerMessages;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,7 +42,6 @@ public class UserServiceImpl implements UserService {
         return Holder.INSTANCE;
     }
 
-
     @Override
     public void create(User user) {
         JdbcTransactionHelper.getInstance().beginTransaction();
@@ -49,11 +53,10 @@ public class UserServiceImpl implements UserService {
             LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_USER);
         }
-
     }
 
     @Override
-    public Optional<User> findById(int id) {
+    public Optional<User> findById(Integer id) {
         return Optional.of(userDao.findById(id));
     }
 
@@ -64,19 +67,57 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void update(User user) {
-
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            userDao.update(user);
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_USER);
+        }
     }
 
     @Override
     public void delete(User user) {
-
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            userDao.delete(user);
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_USER);
+        }
     }
 
     @Override
     public Optional<User> getUserByEmailPassword(String email, String password) {
-        User user = userDao.findUserByEmail(email)
-                .filter(person -> password.equals(person.getPassword()))
+        User user = Optional.of(userDao.findUserByEmail(email)).filter(person -> password.equals(person.getPassword()))
                 .orElseThrow(() -> new ServiceException(MessageKeys.WRONG_LOGIN_DATA));
         return Optional.of(user);
+    }
+
+    @Override
+    public int countAllUsers() {
+        return userDao.countAllUsers();
+    }
+
+    @Override
+    public List<User> getAllWithLimitPerPage(Integer startFrom, Integer quantity) {
+        return userDao.getAllWithLimitPerPage(startFrom, quantity);
+    }
+
+    public String encrypt(String password) {
+        String result = null;
+        try {
+            MessageDigest digest = MessageDigest.getInstance("SHA-256");
+            byte[] hashedByteArray = digest.digest(password.getBytes("UTF-8"));
+            result = Base64.getEncoder().encodeToString(hashedByteArray);
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException e) {
+            LOGGER.info(LoggerMessages.WRONG_TRANSACTION);
+            e.printStackTrace();
+        }
+        return result;
     }
 }

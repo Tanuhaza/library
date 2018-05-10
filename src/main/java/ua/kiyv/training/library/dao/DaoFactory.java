@@ -19,7 +19,6 @@ public abstract class   DaoFactory {
                 if (daoFactory == null) {
                     DaoFactory temp = new JdbcDaoFactory();
                     daoFactory = temp;
-                    System.out.println("IN DAOFACTORY" +daoFactory);
                 }
             }
         }

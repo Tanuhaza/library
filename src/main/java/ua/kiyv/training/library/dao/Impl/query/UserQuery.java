@@ -8,4 +8,6 @@ public interface UserQuery {
     String UPDATE_USER = "UPDATE user SET firstName = ?, lastName = ?, email=?, phone=?, password=?,role=? WHERE id = ?";
     String DELETE_USER = "DELETE FROM author WHERE id = ?";
     String FIND_USER_BY_EMAIL = "SELECT * FROM library.user where email=? ";
+    String COUNT_USERS = "SELECT COUNT(id) AS total_count FROM user ";
+    String SELECT_USER_WITH_LIMIT_PER_PAGE = "SELECT * FROM user order by lastName desc limit ?,?";
 }

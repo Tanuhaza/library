@@ -21,16 +21,13 @@ import static ua.kiyv.training.library.dao.Impl.query.AuthorQuery.*;
 
 public class JdbcAuthorDao implements AuthorDao {
 
-    JdbcAuthorDao() {
-    }
-
     private static final Logger logger = Logger.getLogger(JdbcAuthorDao.class);
 
     @Override
     public void create(Author author) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
             PreparedStatement statement = connection.prepareStatement(CREATE_AUTHOR,
-                    Statement.RETURN_GENERATED_KEYS);
+                    Statement.RETURN_GENERATED_KEYS)){
             statement.setString(1, author.getFirstName());
             statement.setString(2, author.getLastName());
             statement.setString(3, author.getLastName()+author.getFirstName());
@@ -45,7 +42,6 @@ public class JdbcAuthorDao implements AuthorDao {
             Integer id = generatedKeys.getInt(1);
             author.setId(id);
             generatedKeys.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_AUTHOR + author.toString());
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_CREATE);
@@ -54,10 +50,10 @@ public class JdbcAuthorDao implements AuthorDao {
     }
 
     @Override
-    public Author findById(int id) {
+    public Author findById(Integer id) {
             Author author;
-            try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-                PreparedStatement statement = connection.prepareStatement(SELECT_ALL_AUTHORS+FILTER_BY_ID);
+            try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+                PreparedStatement statement = connection.prepareStatement(SELECT_ALL_AUTHORS+FILTER_BY_ID)){
                 statement.setInt(1, id);
                 ResultSet resultSet = statement.executeQuery();
                 if (!resultSet.next()) {
@@ -66,7 +62,6 @@ public class JdbcAuthorDao implements AuthorDao {
                 AuthorMapper authorMapper = new AuthorMapper();
                 author = authorMapper.extractFromResultSet(resultSet);
                 resultSet.close();
-                statement.close();
             } catch (SQLException ex) {
                 logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
                 throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_GET);
@@ -79,7 +74,6 @@ public class JdbcAuthorDao implements AuthorDao {
         Author author;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_ALL_AUTHORS+FILTER_BY_FIRST_LAST_NAME)) {
-
             statement.setString(1, firstName);
             statement.setString(2, lastName);
             ResultSet resultSet = statement.executeQuery();
@@ -100,16 +94,14 @@ public class JdbcAuthorDao implements AuthorDao {
     public List<Author> findAll() {
         Author author;
         List<Author> authors = new ArrayList<>();
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
             Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_AUTHORS);
+            ResultSet resultSet = statement.executeQuery(SELECT_ALL_AUTHORS)){
             AuthorMapper authorMapper=new AuthorMapper();
             while (resultSet.next()) {
                 author = authorMapper.extractFromResultSet(resultSet);
                 authors.add(author);
             }
-            resultSet.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_ALL_AUTHOR);
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_AUTHORS);
@@ -119,8 +111,8 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public void update(Author author) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(UPDATE_AUTHOR);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_AUTHOR)){
             statement.setString(1, author.getFirstName());
             statement.setString(2, author.getLastName());
             statement.setInt(3, author.getId());
@@ -128,7 +120,6 @@ public class JdbcAuthorDao implements AuthorDao {
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_AUTHOR_DB_UPDATING_NO_ROWS_AFFECTED);
             }
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_UPDATE_AUTHOR + author.toString());
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_UPDATE);
@@ -138,8 +129,8 @@ public class JdbcAuthorDao implements AuthorDao {
 
     @Override
     public void delete(Author author) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(DELETE_AUTHOR);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(DELETE_AUTHOR)){
             statement.setInt(1, author.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {

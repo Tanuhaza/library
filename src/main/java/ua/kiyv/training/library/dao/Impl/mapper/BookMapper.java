@@ -12,25 +12,25 @@ public class BookMapper implements ObjectMapper<Book> {
     @Override
     public Book extractFromResultSet(ResultSet rs) throws SQLException {
 
-        return  new Book.Builder()
+        return new Book.Builder()
                 .setId(rs.getInt("book_id"))
-                .setTitle( rs.getString("title") )
-                .setDiscription( rs.getString("description") )
-                .setPictureId( rs.getString("picture") )
-                .setAvaliable( rs.getBoolean("available") )
-                .setQuantity( rs.getInt("quantity") )
-                .setYear( rs.getInt("year") )
-                .setGenreId( rs.getInt("genre_id") )
-                .setKeywords( rs.getString("keywords") )
-                .setAddedDate( rs.getDate("added_date") )
-                .setRate( rs.getInt("rate") )
+                .setTitle(rs.getString("title"))
+                .setDiscription(rs.getString("description"))
+                .setPictureId(rs.getString("picture"))
+                .setAvaliable(rs.getBoolean("available"))
+                .setQuantity(rs.getInt("quantity"))
+                .setYear(rs.getInt("year"))
+                .setGenreId(rs.getInt("genre_id"))
+                .setKeywords(rs.getString("keywords"))
+                .setAddedDate(rs.getDate("added_date"))
+                .setRate(rs.getInt("rate"))
                 .build();
     }
 
     @Override
     public Book makeUnique(Map<Integer, Book> cache,
-                             Book book) {
-        cache.putIfAbsent(book.getId(),book);
+                           Book book) {
+        cache.putIfAbsent(book.getId(), book);
         return cache.get(book.getId());
     }
 }

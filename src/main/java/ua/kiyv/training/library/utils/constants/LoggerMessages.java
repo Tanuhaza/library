@@ -25,6 +25,7 @@ public class LoggerMessages {
     public static final String CAN_NOT_COMMIT_TRANSACTION_NOT_BEGUN = "Can't commit transaction: it has not been begun";
     public static final String CAN_NOT_ROLLBACK_TRANSACTION_NOT_BEGUN = "Can't rollback transaction: it has not been begun";
     public static final String WRONG_TRANSACTION = "Transaction failed";
+    public static final String WRONG_ENCRYPT_PASSWORD = "Failed encrypt password";
 
     public static final String ERROR_FIND_USER_BY_LOGIN = "Error occurred when finding user by login: ";
     public static final String ERROR_FIND_USER_BY_ID = "Error occurred when finding user by id: ";

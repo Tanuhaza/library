@@ -12,15 +12,15 @@ public class AuthorMapper implements ObjectMapper<Author> {
     public Author extractFromResultSet(ResultSet rs) throws SQLException {
         return new Author.Builder()
                 .setId(rs.getInt("author_id"))
-                .setFirstName( rs.getString("firstName") )
-                .setLastName( rs.getString("lastName") )
+                .setFirstName(rs.getString("firstName"))
+                .setLastName(rs.getString("lastName"))
                 .build();
     }
 
     @Override
     public Author makeUnique(Map<Integer, Author> cache,
-                           Author author) {
-        cache.putIfAbsent(author.getId(),author);
+                             Author author) {
+        cache.putIfAbsent(author.getId(), author);
         return cache.get(author.getId());
     }
 

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public interface GenericDao<T> {
     void create (T entity);
-    T findById(int id);
+    T findById(Integer id);
     List<T> findAll();
     void update(T entity);
     void delete(T entity);

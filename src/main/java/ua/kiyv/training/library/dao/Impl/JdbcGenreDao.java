@@ -19,17 +19,15 @@ import java.util.List;
 import static ua.kiyv.training.library.dao.Impl.query.GenreQuery.SELECT_ALL_GENRES;
 
 public class JdbcGenreDao implements GenreDao {
-    public JdbcGenreDao() {
-    }
 
     private static final Logger logger = Logger.getLogger(JdbcGenreDao.class);
+
     @Override
     public void create(Genre entity) {
-
     }
 
     @Override
-    public Genre findById(int id) {
+    public Genre findById(Integer id) {
         return null;
     }
 
@@ -37,16 +35,14 @@ public class JdbcGenreDao implements GenreDao {
     public List<Genre> findAll() {
         Genre genre;
         List<Genre> genres = new ArrayList<>();
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_GENRES);
-            GenreMapper genreMapper=new GenreMapper();
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_GENRES)) {
+            GenreMapper genreMapper = new GenreMapper();
             while (resultSet.next()) {
                 genre = genreMapper.extractFromResultSet(resultSet);
                 genres.add(genre);
             }
-            resultSet.close();
-            statement.close();
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_ALL_GENRES);
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_GENRES);
@@ -56,11 +52,9 @@ public class JdbcGenreDao implements GenreDao {
 
     @Override
     public void update(Genre entity) {
-
     }
 
     @Override
     public void delete(Genre entity) {
-
     }
 }

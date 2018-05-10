@@ -89,7 +89,7 @@ public class RegisterSubmitCommand extends CommandWrapper {
         return new User.Builder()
                 .setFirstName(registerData.getFirstName())
                 .setLastName(registerData.getLastName())
-                .setPassword(registerData.getPassword())
+                .setPassword(userService.encrypt(registerData.getPassword()))
                 .setPhone(registerData.getPhone())
                 .setEmail(registerData.getEmail())
                 .setRole(Role.USER)

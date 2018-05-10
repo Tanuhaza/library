@@ -12,14 +12,14 @@ public class GenreMapper implements ObjectMapper<Genre> {
     public Genre extractFromResultSet(ResultSet rs) throws SQLException {
         return new Genre.Builder()
                 .setId(rs.getInt("id"))
-                .setName( rs.getString("name") )
+                .setName(rs.getString("name"))
                 .build();
     }
 
     @Override
     public Genre makeUnique(Map<Integer, Genre> cache,
-                           Genre genre) {
-        cache.putIfAbsent(genre.getId(),genre);
+                            Genre genre) {
+        cache.putIfAbsent(genre.getId(), genre);
         return cache.get(genre.getId());
     }
 

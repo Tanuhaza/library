@@ -21,16 +21,12 @@ import java.util.List;
 import java.util.Map;
 
 public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
+
     private LocalDate localDate = LocalDate.now();
-
-    JdbcBorrowedBookDao() {
-    }
-
     private static final Logger logger = Logger.getLogger(JdbcBorrowedBookDao.class);
 
     @Override
     public void create(BorrowedBook entity) {
-
     }
 
     @Override
@@ -40,10 +36,9 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
              PreparedStatement statement = connection.prepareStatement(CREATE_BORROWED_BOOK)) {
             statement.setInt(1, userId);
             statement.setInt(2, bookId);
-            statement.setDate(3,  Date.valueOf(localDate));
+            statement.setDate(3, Date.valueOf(localDate));
             statement.setDate(4, Date.valueOf(localDate.plusMonths(1)));
             int affectedRows = statement.executeUpdate();
-            System.out.println("Create Borrowed Book");
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
             }
@@ -51,11 +46,10 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BORROWED_BOOK_DB_CAN_NOT_CREATE);
         }
-
     }
 
     @Override
-    public BorrowedBook findById(int id) {
+    public BorrowedBook findById(Integer id) {
         return null;
     }
 
@@ -65,10 +59,9 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     }
 
     @Override
-    public List<BorrowedBook> findAllByUserId(int id) {
-
-        BorrowedBook borrowedBook = new BorrowedBook();
-        Author author = new Author();
+    public List<BorrowedBook> findAllByUserId(Integer id) {
+        BorrowedBook borrowedBook;
+        Author author;
         Map<Integer, BorrowedBook> books = new HashMap<>();
         Map<Integer, Author> authors = new HashMap<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
@@ -101,7 +94,6 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     public void delete(BorrowedBook borrowedBook) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_BORROWED_BOOK)) {
-
             statement.setInt(1, borrowedBook.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
@@ -114,7 +106,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     }
 
     @Override
-    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId){
+    public void deleteBorrowedBookByUserId(Integer bookId, Integer userId) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_BORROWED_BOOK_BY_USER_ID_BOOK_ID)) {
             statement.setInt(1, bookId);
