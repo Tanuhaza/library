@@ -12,8 +12,10 @@ import java.io.IOException;
 public class LogoutCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         request.getSession().invalidate();
-        response.sendRedirect(request.getContextPath()+PagesPath.LOGIN_PATH);
+        response.sendRedirect(PagesPath.LOGIN_PATH);
         return PagesPath.REDIRECTED;
+//        request.getContextPath()+
     }
 }

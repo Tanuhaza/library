@@ -25,18 +25,33 @@ import java.util.*;
  * Created by Tanya on 17.04.2018.
  */
 public class App {
+    public  void meth() {
+        synchronized (this.getClass()) {
+
+        }
+    }
+
+    public static void meth2() {
+        synchronized (App.class) {
+
+        }
+    }
+
     public static void main(String[] args) {
+        System.out.println(new Book().getClass() == Book.class);
+
+
 //        User user=new User("Tania","Zabolotko","wariushas@gmail","097394476","qwert", Role.USER);
 //        UserService userService =  ServiceFactory.getInstance().createUserService();
 ////        userService.create(user);
 ////        System.out.println( userService.findById(2));
 ////       System.out.println( userService.findAll());
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
-UserDao userDao = DaoFactory.getInstance().createUserDao();
-       BookService bookService = BookServiceImpl.getInstance();
-       String searchValue ="Lukas";
-       By query = By.byTitle();
-        List<Book> books = bookService.findBy(searchValue,query);
+        UserDao userDao = DaoFactory.getInstance().createUserDao();
+        BookService bookService = BookServiceImpl.getInstance();
+        String searchValue = "red";
+        By query = By.byAll();
+        List<Book> books = bookService.findBy(searchValue, query);
         System.out.println(books);
 //       AuthorService authorService = AuthorServiceImpl.getInstance();
 //        System.out.println(bookService.findAllBooks());

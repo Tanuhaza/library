@@ -31,7 +31,6 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
 
     @Override
     public void createBorrowedBookByUserId(Integer bookId, Integer userId) {
-        System.out.println("In Create Borrowed Book");
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(CREATE_BORROWED_BOOK)) {
             statement.setInt(1, userId);
@@ -119,5 +118,23 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
             logger.error(LoggerMessages.ERROR_DELETE_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
         }
+    }
+
+    @Override
+    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId) {
+        Boolean isBookOnLoan = false;
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BORROWED_BOOKS + FILTER_BY_BOOK_ID_USER_ID)) {
+            statement.setInt(1, bookId);
+            statement.setInt(2, userId);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    isBookOnLoan = true;
+                }
+            }
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_FIND_BORROWED_BOOK_BY_USER_ID);
+        }
+        return isBookOnLoan;
     }
 }

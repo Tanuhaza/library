@@ -26,12 +26,8 @@ public class GetBooksByGenreCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int genreId = paramExtractor.extractSingleIntPathParam(request);
-        System.out.println("GENRE_ID  "+genreId);
-
-        List<Book> booksByGenre=new ArrayList<>();
-        booksByGenre = bookService.findByGenreId(genreId);
+        List<Book> booksByGenre = bookService.findByGenreId(genreId);
         request.setAttribute("booksByGenre", booksByGenre);
-
         return USER_BOOKS_BY_GENRE_PAGE;
     }
 }

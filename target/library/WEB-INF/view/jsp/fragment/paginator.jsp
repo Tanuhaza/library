@@ -2,7 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="ua.kiyv.training.library.utils.constants.Attributes" %>
-<%--<%@ taglib uri="/WEB-INF/view/taglib/Paginator.tld" prefix="custom" %>--%>
+<%@ taglib uri="/WEB-INF/view/taglib/Paginator.tld" prefix="custom" %>
 <fmt:setBundle basename="${bundleFile}" var="msg"/>
 
 <fmt:message key="paginator.first" var="first" bundle="${msg}"/>

@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
     private BookDao bookDao;
     private BorrowedBookDao borrowedBookDao;
 
-    public BookServiceImpl(DaoFactory instance) {
+    private BookServiceImpl(DaoFactory instance) {
         this.daoFactory = instance;
         this.bookDao = daoFactory.createBookDao();
         this.borrowedBookDao = daoFactory.createBorrowedBookDao();
@@ -43,7 +43,6 @@ public class BookServiceImpl implements BookService {
     public static BookService getInstance() {
         return Holder.INSTANCE;
     }
-
 
     @Override
     public void create(Book book) {
@@ -102,8 +101,8 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book findById(Integer id) {
-         return Optional.ofNullable(bookDao.findById(id))
-                 .orElseThrow(()->new ServiceException(MessageKeys.WRONG_BOOK_DB_NO_ID_OBTAINED));
+        return Optional.ofNullable(bookDao.findById(id))
+                .orElseThrow(() -> new ServiceException(MessageKeys.WRONG_BOOK_DB_NO_ID_OBTAINED));
     }
 
     @Override
@@ -119,7 +118,8 @@ public class BookServiceImpl implements BookService {
     @Override
     public void createBorrowedBookByUserId(Integer bookId, Integer userId) {
         Book book = bookDao.findById(bookId);
-        if (isBookAvailable(book)) {
+        System.out.println(book);
+        if (isBookAvailable(book)&& (!isBookOnLoanByUser(bookId,userId))) {
             book.setQuantity(book.getQuantity() - 1);
             book.setAvaliable(isBookAvailable(book));
             bookDao.update(book);
@@ -136,12 +136,12 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Boolean isBookAvailable(Book book) {
-        if (book.getQuantity() > 0) {
-            book.setAvaliable(true);
-            return true;
-        }
-        book.setAvaliable(false);
-        return false;
+        return book.getQuantity() > 0;
+    }
+
+    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId){
+       return borrowedBookDao.isBookOnLoanByUser(bookId,userId);
+
     }
 
     @Override
@@ -160,16 +160,6 @@ public class BookServiceImpl implements BookService {
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_DELETING_BOOK);
         }
     }
-
-//    @Override
-//    public List<Book> findByAuthor(String searchValue) {
-//        return bookDao.findByAuthor(searchValue);
-//    }
-
-//    @Override
-//    public List<Book> findByTitle(String searchValue) {
-//        return bookDao.findByTitle(searchValue);
-//    }
 
     @Override
     public List<Book> findBy(String searchValue, By query) {

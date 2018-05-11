@@ -26,7 +26,7 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_STATISTIC
 
 public class StatisticsCommand implements Command {
     ParamExtractor paramExtractor = new ParamExtractor();
-    private static final int itemsPerPage = 7;
+    private static final int itemsPerPage = 2;
     private static final int FIRST = 1;
    UserService userService = UserServiceImpl.getInstance();
 
@@ -42,7 +42,7 @@ public class StatisticsCommand implements Command {
 
         int currentPageNumber = getPageNumberFromRequest(request);
         int ordersStartFrom = calculateItemOffset(currentPageNumber);
-        List<User> users = new ArrayList<>();
+        List<User> users ;
         users = userService.getAllWithLimitPerPage(ordersStartFrom, itemsPerPage);
         int lastPageNumber = calculateLastPageNumber(userService.countAllUsers());
         while (currentPageNumber > lastPageNumber) {

@@ -45,6 +45,7 @@ public class LoggerMessages {
     public static final String ERROR_UPDATE_BOOK= "Error occurred when updating book: ";
     public static final String ERROR_DELETE_BOOK = "Error occurred when deleting book: ";
     public static final String ERROR_FIND_ALL_BORROWED_BOOKS = "Error occurred when finding all borrowed books";
+    public static final String ERROR_FIND_BORROWED_BOOK_BY_USER_ID = "Error occurred when finding  borrowed book by user id";
 
 
     public static final String ERROR_FIND_ALL_GENRES = "Error occurred when finding all genres";

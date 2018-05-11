@@ -11,11 +11,10 @@
 <link rel="stylesheet" href="/css/home.css">
 <link rel="stylesheet" href="/css/library.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
-<%--<script src="/js/bootstrap.min.js"></script>--%>
+<script src="/js/bootstrap.min.js"></script>
 
 <fmt:setLocale value="${sessionScope['locale']}"/>
-<fmt:setBundle basename="webProject.i18n.messages" var="msg"/>
-<%--<fmt:setBundle basename="${bundleFile}" var="msg"/>--%>
+<fmt:setBundle basename="${bundleFile}" var="msg"/>
 <fmt:requestEncoding value="UTF-8"/>
 
 <div class="mainmenu-wrapper">
@@ -71,8 +70,7 @@
                             <br>
                             <input type="radio" name="filter" value="author" checked> author
                             <input type="radio" name="filter" value="title" > title
-                            <input type="radio" name="filter" value="keywords" > keywords
-
+                            <input type="radio" name="filter" value="keywords" > keyword
                         <%--</div>--%>
                     </form>
 

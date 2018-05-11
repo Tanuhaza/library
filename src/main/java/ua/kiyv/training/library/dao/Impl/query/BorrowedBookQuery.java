@@ -8,4 +8,5 @@ public interface BorrowedBookQuery {
     String CREATE_BORROWED_BOOK = "INSERT INTO book_out_on_loan (user_id, book_id,startDate, returnDate ) VALUES (?, ?, ?, ?)";
     String DELETE_BORROWED_BOOK = "DELETE FROM book_out_on_loan as bl  WHERE book_id = ?";
     String DELETE_BORROWED_BOOK_BY_USER_ID_BOOK_ID = "DELETE FROM book_out_on_loan   WHERE book_id = ? && user_id=?";
+    String FILTER_BY_BOOK_ID_USER_ID= " where bl.book_id =? and bl.user_id= ?";
 }

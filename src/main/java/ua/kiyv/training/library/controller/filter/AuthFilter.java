@@ -43,9 +43,9 @@ public class AuthFilter implements Filter {
         req.setCharacterEncoding(Attributes.UTF_8);
         res.setContentType("text/html");
 
-//        if (session == null || session.isNew()) {
-//            req.getRequestDispatcher("index.jsp").forward(request, response);
-//        }
+        if (session == null || session.isNew()) {
+            req.getRequestDispatcher("index.jsp").forward(request, response);
+        }
 
         Integer userId = (Integer) session.getAttribute(Attributes.USER_ID);
         Role role = (Role) session.getAttribute(Attributes.USER_ROLE);
@@ -88,9 +88,9 @@ public class AuthFilter implements Filter {
 
     private static class AdminAuthorizer implements Authorizer {
         public boolean check(String uri, Object userId) {
-            return (userId != null && (uri.startsWith(PagesPath.ADMIN_PATH)));
-//                    || uri.startsWith(PagesPath.LOGIN_PATH) ||
-//                    uri.startsWith(PagesPath.REGISTER_PATH));
+            return ((userId != null && (uri.startsWith(PagesPath.ADMIN_PATH)))
+                    || uri.startsWith(PagesPath.LOGIN_PATH) ||
+                    uri.startsWith(PagesPath.REGISTER_PATH));
         }
     }
 

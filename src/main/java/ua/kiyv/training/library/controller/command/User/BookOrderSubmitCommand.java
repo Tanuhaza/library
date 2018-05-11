@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-
+import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 import static ua.kiyv.training.library.utils.constants.Attributes.USER_ID;
 import static ua.kiyv.training.library.utils.constants.PagesPath.HOME_PATH;
 
@@ -23,10 +23,8 @@ public class BookOrderSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer userId = (Integer) request.getSession().getAttribute(USER_ID);
-        System.out.println(userId);
-        Integer bookId = Integer.valueOf(request.getParameter("bookId"));
+        Integer bookId = Integer.valueOf(request.getParameter(BOOK_ID));
         bookService.createBorrowedBookByUserId(bookId, userId);
-        System.out.println("Create Order");
         return HOME_PATH;
     }
 }

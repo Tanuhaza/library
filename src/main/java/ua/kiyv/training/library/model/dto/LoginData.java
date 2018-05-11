@@ -23,4 +23,26 @@ public class LoginData {
         this.email = email;
         this.password = password;
     }
+
+//    public static Builder builder() {
+//        return new Builder();
+//    }
+
+    public static class Builder {
+        private LoginData instance = new LoginData();
+
+        public Builder email(String email) {
+            instance.email = email;
+            return this;
+        }
+
+        public Builder password(String password) {
+            instance.password = password;
+            return this;
+        }
+
+        public LoginData build() {
+            return instance;
+        }
+    }
 }

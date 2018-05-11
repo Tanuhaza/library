@@ -11,21 +11,6 @@ public final class Attributes {
     public static final String ERRORS = "errors";
     public static final String TAB = "tab";
     public static final String REGISTER_TAB = "register";
-    public static final String ACCOUNT_TAB = "account";
-    public static final String TOPICS = "topics";
-    public static final String TOPIC_ID = "topic_id";
-
-    public static final String QUIZZES = "quizzes";
-    public static final String QUIZ = "quiz";
-    public static final String PASSED_TEST = "passedTests";
-    public static final String QUIZ_ID = "quiz_id";
-    public static final String QUIZ_RESULT_MAP = "quizResultMap";
-    public static final String QUIZ_RESULT_MAP_FIRST_TIME = "quizResultMapFirst";
-    public static final String QUIZ_RESULT_MAP_LAST_TIME = "quizResultMapLast";
-    public static final String PAGE_TITLE = "page_title";
-    public static final String IS_QUESTION_CHECKED = "isQuestionChecked";
-
-    public static final String QUESTIONS = "questions";
 
     public static final String USERS = "users";
     public static final String USER_PASSWORD = "userPassword";
@@ -46,6 +31,9 @@ public final class Attributes {
     public static final String FIRST_ATHOR_NAME = "first_athor_name";
     public static final String FIRST_ATHOR_SURNAME = "first_athor_surname";
     public static final String KEYWORDS = "keywords";
+    public static final String AUTHOR = "author";
+    public static final String FILTER = "filter";
+    public static final String SEARCH_VALUE = "searchValue";
 
     public static final String CONFIRM_MESSAGE = "confirmMessage";
 

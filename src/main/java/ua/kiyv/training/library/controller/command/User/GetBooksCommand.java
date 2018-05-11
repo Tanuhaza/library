@@ -21,7 +21,6 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.USER_BOOKS_PAGE
 public class GetBooksCommand implements Command {
     private BookService bookService = BookServiceImpl.getInstance();
 
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Book>  books = bookService.findAllBooks();

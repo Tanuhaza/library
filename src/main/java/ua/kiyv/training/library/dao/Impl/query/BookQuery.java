@@ -18,7 +18,8 @@ public interface BookQuery {
     String MATCH_BOOK_AUTHOR ="INSERT INTO book_author (book_id,author_id) values (?,?)";
     String SEARCH_BY_AUTHOR =" WHERE a.unique_cipher LIKE ?";
     String SEARCH_BY_TITLE =" WHERE b.title LIKE ?";
-    String SEARCH_BY_KEYWORDS =" WHERE b.keywords LIKE CONCAT('%',?,'%')";
-//    String SEARCH_ALL ="WHERE b.title LIKE CONCAT('%',?,'%')";
+    String SEARCH_BY_KEYWORDS =" WHERE b.keywords LIKE ?";
+    String SEARCH_BY_ALL=" WHERE a.unique_cipher or b.title or b.keywords LIKE ?";
+
 
 }

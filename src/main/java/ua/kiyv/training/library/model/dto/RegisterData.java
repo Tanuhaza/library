@@ -32,34 +32,39 @@ public class RegisterData extends LoginData {
         this.phone = phone;
     }
 
-    public static class Builder {
-        RegisterData instance = new RegisterData();
+    public static Builder builder(){
+        return new Builder();
+    }
 
-        public Builder setFirstName(String firstName) {
+    public static class Builder {
+        private RegisterData instance = new RegisterData();
+
+        private Builder(){}
+
+        public Builder firstName(String firstName) {
             instance.firstName = firstName;
             return this;
         }
 
-        public Builder setLastName(String lastName) {
+        public Builder lastName(String lastName) {
             instance.lastName = lastName;
             return this;
         }
 
-        public Builder setPhone(String phone) {
+        public Builder phone(String phone) {
             instance.phone = phone;
             return this;
         }
 
-        public Builder setEmail(String email) {
+        public Builder email(String email) {
             instance.email = email;
             return this;
         }
 
-        public Builder setPassword(String password) {
+        public Builder password(String password) {
             instance.password = password;
             return this;
         }
-
 
         public RegisterData build() {
             return instance;

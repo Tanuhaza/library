@@ -36,9 +36,7 @@ public interface BookService {
 
     void deleteBorrowedBookByUserId(Integer bookId, Integer userId);
 
-//    List<Book> findByAuthor(String searchValue);
-//
-//    List<Book> findByTitle(String searchValue);
-
     List<Book> findBy(String searchValue, By query);
+
+    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId);
 }

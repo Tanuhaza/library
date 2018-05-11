@@ -25,7 +25,6 @@ public class UserHomeCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer userId = (Integer) request.getSession().getAttribute(USER_ID);
         List<BorrowedBook> borrowedBooks =bookService.findAllBorrowedBooksByUserId(userId);
-        System.out.println(borrowedBooks);
         request.setAttribute("borrowedBooks", borrowedBooks);
         return HOME_PAGE;
     }

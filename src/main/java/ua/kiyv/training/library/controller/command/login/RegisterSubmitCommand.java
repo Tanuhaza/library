@@ -9,8 +9,6 @@ import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
 import ua.kiyv.training.library.model.dto.RegisterData;
 
-import ua.kiyv.training.library.service.BookService;
-import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.service.Impl.UserServiceImpl;
 import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.constants.Attributes;
@@ -53,12 +51,12 @@ public class RegisterSubmitCommand extends CommandWrapper {
     }
 
     private RegisterData extractRegisterData(HttpServletRequest request){
-        RegisterData.Builder builder = new RegisterData.Builder()
-                .setFirstName(request.getParameter("name"))
-                .setLastName(request.getParameter("surname"))
-                .setEmail(request.getParameter("email"))
-                .setPassword(request.getParameter("password"))
-                .setPhone(request.getParameter("phone"));
+        RegisterData.Builder builder = RegisterData.builder()
+                .firstName(request.getParameter("name"))
+                .lastName(request.getParameter("surname"))
+                .email(request.getParameter("email"))
+                .password(request.getParameter("password"))
+                .phone(request.getParameter("phone"));
         return builder.build();
     }
 

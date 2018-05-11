@@ -15,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static ua.kiyv.training.library.utils.constants.Attributes.*;
 import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
 public class SearchSubmitCommand extends CommandWrapper {
@@ -22,20 +23,16 @@ public class SearchSubmitCommand extends CommandWrapper {
     private Map<String, By> commandSearch = new HashMap<>();
 
     {
-        commandSearch.put("title", By.byTitle());
-        commandSearch.put("author", By.byAuthor());
-//       commandSearch.put("keywords",bookService.findByKeywords(searchValue));
+        commandSearch.put(TITLE, By.byTitle());
+        commandSearch.put(AUTHOR, By.byAuthor());
+        commandSearch.put(KEYWORDS, By.byKeywords());
     }
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String filterValue = request.getParameter("filter");
-        String searchValue = request.getParameter("searchValue");
-//        commandSearch.put("title",bookService.findByTitle(searchValue));
-//        commandSearch.put("author",bookService.findByAuthor(searchValue));
-//        commandSearch.put("keywords",bookService.findByKeywords(searchValue));
+        String filterValue = request.getParameter(FILTER);
+        String searchValue = request.getParameter(SEARCH_VALUE);
         By query = commandSearch.get(filterValue);
-        System.out.println("QUERY"+ query.getQuery());
         List<Book> books = bookService.findBy(searchValue,query);
         request.setAttribute("books", books);
         request.getRequestDispatcher(USER_BOOKS_PAGE).forward(request, response);
