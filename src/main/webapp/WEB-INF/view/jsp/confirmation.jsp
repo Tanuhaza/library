@@ -13,9 +13,9 @@
 </head>
 <body class="body-container">
 
-<jsp:include page="fragment/header.jsp"></jsp:include>
+<jsp:include page="user/header.jsp"></jsp:include>
     <div class="user-welcome">
-        <div  class ="welcome" align="center"><fmt:message key="testing.system.you.are.welcom" bundle="${msg}"/></div>
+        <div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>
         <div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>
     </div>
 <jsp:include page="fragment/footer.jsp"></jsp:include>

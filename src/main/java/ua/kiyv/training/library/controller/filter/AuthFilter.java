@@ -90,7 +90,8 @@ public class AuthFilter implements Filter {
         public boolean check(String uri, Object userId) {
             return ((userId != null && (uri.startsWith(PagesPath.ADMIN_PATH)))
                     || uri.startsWith(PagesPath.LOGIN_PATH) ||
-                    uri.startsWith(PagesPath.REGISTER_PATH));
+                    uri.startsWith(PagesPath.REGISTER_PATH)||
+                    uri.startsWith(PagesPath.SEARCH_PATH));
         }
     }
 

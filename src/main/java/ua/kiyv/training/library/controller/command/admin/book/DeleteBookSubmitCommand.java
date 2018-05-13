@@ -11,6 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PATH;
+
 /**
  * Created by Tanya on 19.04.2018.
  */
@@ -19,9 +22,8 @@ public class DeleteBookSubmitCommand extends CommandWrapper {
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id =Integer.parseInt(request.getParameter("bookId"));
-        System.out.println(request.getParameter("bookId"));
+        int id =Integer.parseInt(request.getParameter(BOOK_ID));
         bookService.delete(id);
-        return PagesPath.ADMIN_MANAGE_PATH;
+        return ADMIN_MANAGE_PATH;
     }
 }

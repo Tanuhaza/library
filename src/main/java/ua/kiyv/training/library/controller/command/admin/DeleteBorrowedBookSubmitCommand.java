@@ -18,6 +18,7 @@ import java.util.List;
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 import static ua.kiyv.training.library.utils.constants.Attributes.USER_ID;
 
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_BORROWED_BOOKS_BY_USER_PATH;
 import static ua.kiyv.training.library.utils.constants.PagesPath.FORWARD;
 import static ua.kiyv.training.library.utils.constants.PagesPath.USER_BORROWED_BOOK_PAGE;
 
@@ -28,15 +29,8 @@ public class DeleteBorrowedBookSubmitCommand extends CommandWrapper {
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer userId = Integer.valueOf(request.getParameter(USER_ID));
         Integer bookId = Integer.valueOf(request.getParameter(BOOK_ID));
-        bookService.deleteBorrowedBookByUserId(bookId,userId);
-        System.out.println("AFTER DELETING BORROWED BOOK");
-        List<BorrowedBook> borrowedBooks =new ArrayList<>();
-        borrowedBooks= bookService.findAllBorrowedBooksByUserId(userId);
-        System.out.println(borrowedBooks);
-        request.setAttribute("userId",userId);
-        request.setAttribute("borrowedBooks", borrowedBooks);
-        request.getRequestDispatcher(USER_BORROWED_BOOK_PAGE).forward(request,response);
-        return FORWARD;
+        bookService.deleteBorrowedBookByUserId(bookId, userId);
+        return ADMIN_BORROWED_BOOKS_BY_USER_PATH+"/"+userId;
     }
 
 

@@ -12,10 +12,10 @@ import static java.util.regex.Pattern.matches;
 
 
 public class BookValidator implements Validator<BookData> {
-    private static final String REGEX_TITLE = "[A-Z]{1}[a-z]{1,100}";
-    private static final String REGEX_DESCRIPTION = "[A-Z]{1}[A-Za-z0-9]{1,500}";
-    private static final String REGEX_QUANTITY = "[1-9]{1}[0-9]{0,2}";
-    private static final String REGEX_YEAR = "[1,2]{1}[0-9]{3}";
+    private static final String REGEX_TITLE = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\s]{1,100}";
+    private static final String REGEX_DESCRIPTION = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\d\\s,.!?;:()]{1,500}";
+    private static final String REGEX_QUANTITY = "[1-9]{1}[\\d]{0,2}";
+    private static final String REGEX_YEAR = "[1,2]{1}[\\d]{3}";
     private static final Logger LOGGER = Logger.getLogger(BookValidator.class);
 
 

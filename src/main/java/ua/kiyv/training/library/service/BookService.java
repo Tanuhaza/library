@@ -12,7 +12,11 @@ import java.util.Optional;
 public interface BookService {
     void create(Book book);
 
+    void createBookAuthor(Book book, Author author);
+
     void update(Book book);
+
+    public void updateBookAuthor(Book book, Author author);
 
     List<Book> findAllBooks();
 

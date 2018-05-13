@@ -6,7 +6,7 @@ public interface BookQuery {
     String CREATE_BOOK = "INSERT INTO book (title,description,picture,available,quantity," +
             "year,genre_id,keywords) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     String SELECT_ALL_BOOKS = "SELECT * FROM book as b left join book_author as ba on b.id=ba.book_id " +
-            "left join author as a on ba.author_id=a.id";
+            "left join author as a on ba.author_id=a.author_id";
     String FILTER_BY_ID = "  where b.id= ?";
     String FILTER_BY_TITLE = "  where b.title= ?";
     String FILTER_BY_GENRE_ID = "  where b.genre_id= ?";

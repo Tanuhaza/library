@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
+import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
 /**
  * Created by Tanya on 19.04.2018.
@@ -24,9 +25,11 @@ public class EditBookSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         saveBookDataToRequest(request);
-        request.getSession().setAttribute(BOOK_ID,request.getParameter("bookId"));
-        request.getRequestDispatcher(PagesPath.LOAD_BOOK_PAGE).forward(request, response);
-        return PagesPath.FORWARD;
+        request.getSession().setAttribute(BOOK_ID,Integer.valueOf(request.getParameter("bookId")));
+        System.out.println("BOOK_ID" + request.getParameter("bookId"));
+        System.out.println("REAQUEST PARAMETR " +request.getParameter("first_author_surname"));
+        request.getRequestDispatcher(UPDATE_BOOK_PAGE).forward(request, response);
+        return FORWARD;
     }
 
     private void saveBookDataToRequest(HttpServletRequest request) {
@@ -34,8 +37,8 @@ public class EditBookSubmitCommand extends CommandWrapper {
         request.setAttribute(Attributes.PREVIOUS_BOOK_DESCRIPTION, request.getParameter("description"));
         request.setAttribute(Attributes.PREVIOUS_BOOK_QUANTITY, request.getParameter("quantity"));
         request.setAttribute(Attributes.PREVIOUS_BOOK_YEAR, request.getParameter("year"));
-//        request.setAttribute(Attributes.PREVIOUS_BOOK_AUTHOR_NAME, request.getParameter("first_author_name"));
-//        request.setAttribute(Attributes.PREVIOUS_BOOK_AUTHOR_SURNAME, request.getParameter("first_author_surname"));
+        request.setAttribute(Attributes.PREVIOUS_BOOK_AUTHOR_NAME, request.getParameter("first_author_name"));
+        request.setAttribute(Attributes.PREVIOUS_BOOK_AUTHOR_SURNAME, request.getParameter("first_author_surname"));
         request.setAttribute(Attributes.PREVIOUS_BOOK_KEYWORDS, request.getParameter("keywords"));
         request.setAttribute(Attributes.PREVIOUS_BOOK_PICTURE_ID, request.getParameter("picture"));
     }

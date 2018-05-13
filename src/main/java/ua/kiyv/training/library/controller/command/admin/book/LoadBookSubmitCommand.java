@@ -20,6 +20,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PATH;
+
 
 /**
  * Created by Tanya on 19.04.2018.
@@ -27,7 +29,6 @@ import java.io.IOException;
 public class LoadBookSubmitCommand extends CommandWrapper {
     private static final Logger LOGGER = Logger.getLogger(LoadBookSubmitCommand.class);
     BookService bookService = BookServiceImpl.getInstance();
-    AuthorService authorService = AuthorServiceImpl.getInstance();
     private BookValidator bookValidator;
 
     public LoadBookSubmitCommand() {
@@ -41,23 +42,15 @@ public class LoadBookSubmitCommand extends CommandWrapper {
         saveBookDataToRequest(request);
         errors.addErrors(bookValidator.validate(bookdata).getErrors());
         if (errors.hasErrors()) {
-            System.out.println("has errors");
             processErrors(request, errors);
             request.getRequestDispatcher(PagesPath.LOAD_BOOK_PAGE).forward(request, response);
             return PagesPath.FORWARD;
         }
         Book book = extractBookFromRegisterData(bookdata);
         Author author = extractAuthorFromRegisterData(bookdata);
-        bookService.create(book);
-//        try {
-//            authorService.getAuthor(author.getFirstName() + author.getLastName());
-//        } catch (NullPointerException e) {}
-            authorService.create(author);
-//        }
-        bookService.matchBookAuthor(book, author);
-        System.out.println("Save Date to DB");
-        LOGGER.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
-        return PagesPath.ADMIN_MANAGE_PATH;
+        bookService.createBookAuthor(book, author);
+        LOGGER.info(String.format("Book %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
+        return ADMIN_MANAGE_PATH;
     }
 
     private BookData extractBookDate(HttpServletRequest request) {
@@ -65,7 +58,7 @@ public class LoadBookSubmitCommand extends CommandWrapper {
                 .setTitle(request.getParameter("title"))
                 .setDiscription(request.getParameter("description"))
                 .setPictureId(request.getParameter("picture"))
-                .setAvaliable(Boolean.parseBoolean(request.getParameter("isAvailable")))
+                .setAvaliable(Boolean.parseBoolean(request.getParameter("isAvaliable")))
                 .setQuantity(request.getParameter("quantity"))
                 .setYear(request.getParameter("year"))
                 .setGenreId(Integer.parseInt(request.getParameter("genre")))

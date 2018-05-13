@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PAGE;
+
 public class ManageBookCommand implements Command {
+    private BookService bookService = BookServiceImpl.getInstance();
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        BookService bookService = BookServiceImpl.getInstance();
-        List<Book> books =bookService.findAllBooks();
-        request.setAttribute("books",books);
-        return PagesPath.ADMIN_MANAGE_PAGE;
+        List<Book> books = bookService.findAllBooks();
+        request.setAttribute("books", books);
+        return ADMIN_MANAGE_PAGE;
     }
 }

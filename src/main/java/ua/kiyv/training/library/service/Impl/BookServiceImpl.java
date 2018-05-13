@@ -1,11 +1,8 @@
 package ua.kiyv.training.library.service.Impl;
 
 import org.apache.log4j.Logger;
-import ua.kiyv.training.library.dao.BookDao;
-import ua.kiyv.training.library.dao.BorrowedBookDao;
-import ua.kiyv.training.library.dao.By;
+import ua.kiyv.training.library.dao.*;
 import ua.kiyv.training.library.exception.DaoException;
-import ua.kiyv.training.library.dao.DaoFactory;
 import ua.kiyv.training.library.dao.Impl.JdbcDaoFactory;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.model.Author;
@@ -29,11 +26,13 @@ public class BookServiceImpl implements BookService {
     private DaoFactory daoFactory;
     private BookDao bookDao;
     private BorrowedBookDao borrowedBookDao;
+    private AuthorDao authorDao;
 
     private BookServiceImpl(DaoFactory instance) {
         this.daoFactory = instance;
         this.bookDao = daoFactory.createBookDao();
         this.borrowedBookDao = daoFactory.createBorrowedBookDao();
+        this.authorDao = daoFactory.createAuthorDao();
     }
 
     private static class Holder {
@@ -58,6 +57,26 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
+    public void createBookAuthor(Book book, Author author) {
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            bookDao.create(book);
+            try {
+                Author authorDB = authorDao.findByFirstLastName(author.getFirstName(), author.getLastName());
+                bookDao.matchBookAuthor(book, authorDB);
+            } catch (DaoException e) {
+                authorDao.create(author);
+                bookDao.matchBookAuthor(book, author);
+            }
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_BOOK);
+        }
+    }
+
+    @Override
     public void update(Book book) {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
@@ -67,6 +86,30 @@ public class BookServiceImpl implements BookService {
             JdbcTransactionHelper.getInstance().rollbackTransaction();
             LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
             throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_UPDATING_BOOK);
+        }
+    }
+
+    @Override
+    public void updateBookAuthor(Book book, Author author) {
+        JdbcTransactionHelper.getInstance().beginTransaction();
+        try {
+            bookDao.update(book);
+            try {
+                Author authorDB = authorDao.findByFirstLastName(author.getFirstName(), author.getLastName());
+                System.out.println("FIND AUTHOR " +authorDB);
+                bookDao.deleteMatchBookAuthor(book.getId());
+                bookDao.matchBookAuthor(book, authorDB);
+            } catch (DaoException e) {
+                System.out.println("GOT EXCEPTION");
+                bookDao.deleteMatchBookAuthor(book.getId());
+                authorDao.create(author);
+                bookDao.matchBookAuthor(book, author);
+            }
+            JdbcTransactionHelper.getInstance().commitTransaction();
+        } catch (DaoException ex) {
+            JdbcTransactionHelper.getInstance().rollbackTransaction();
+            LOGGER.error(LoggerMessages.WRONG_TRANSACTION);
+            throw new ServiceException(ex, MessageKeys.WRONG_TRANSACTION_WHILE_CREATING_BOOK);
         }
     }
 
@@ -119,7 +162,7 @@ public class BookServiceImpl implements BookService {
     public void createBorrowedBookByUserId(Integer bookId, Integer userId) {
         Book book = bookDao.findById(bookId);
         System.out.println(book);
-        if (isBookAvailable(book)&& (!isBookOnLoanByUser(bookId,userId))) {
+        if (isBookAvailable(book) && (!isBookOnLoanByUser(bookId, userId))) {
             book.setQuantity(book.getQuantity() - 1);
             book.setAvaliable(isBookAvailable(book));
             bookDao.update(book);
@@ -139,8 +182,8 @@ public class BookServiceImpl implements BookService {
         return book.getQuantity() > 0;
     }
 
-    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId){
-       return borrowedBookDao.isBookOnLoanByUser(bookId,userId);
+    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId) {
+        return borrowedBookDao.isBookOnLoanByUser(bookId, userId);
 
     }
 

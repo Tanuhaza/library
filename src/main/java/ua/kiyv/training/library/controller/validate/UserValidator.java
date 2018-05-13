@@ -9,7 +9,7 @@ import ua.kiyv.training.library.utils.constants.MessageKeys;
 import static java.util.regex.Pattern.matches;
 
 public class UserValidator implements Validator<RegisterData> {
-    private static final String REGEX_NAME = "[A-ZÀ-ß¯²ª¨]{1}[a-zà-ÿ¿³º¸]{1,}";
+    private static final String REGEX_NAME = "[A-Z]{1}[a-z]{1,}";
     private static final String REGEX_PASSWORD = "[A-Za-z0-9]{4,200}";
     private static final String REGEX_EMAIL = "^([a-z0-9_-]+\\.)*[a-z0-9_\\-]+@[a-z0-9_-]+(\\.[a-z0-9_\\-]+)*\\.[a-z]{2,6}$";
     private static final String REGEX_PHONE = "^(\\\\+380|0)([0-9]{9})$";

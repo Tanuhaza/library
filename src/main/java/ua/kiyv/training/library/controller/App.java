@@ -1,9 +1,7 @@
 package ua.kiyv.training.library.controller;
 
 
-import ua.kiyv.training.library.dao.By;
-import ua.kiyv.training.library.dao.DaoFactory;
-import ua.kiyv.training.library.dao.UserDao;
+import ua.kiyv.training.library.dao.*;
 import ua.kiyv.training.library.dao.connection.DaoConnection;
 import ua.kiyv.training.library.dao.connection.Jdbc.JdbcTransactionHelper;
 import ua.kiyv.training.library.exception.ServiceException;
@@ -48,11 +46,13 @@ public class App {
 ////       System.out.println( userService.findAll());
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
         UserDao userDao = DaoFactory.getInstance().createUserDao();
-        BookService bookService = BookServiceImpl.getInstance();
-        String searchValue = "red";
-        By query = By.byAll();
-        List<Book> books = bookService.findBy(searchValue, query);
-        System.out.println(books);
+//
+//        AuthorDao authorDao =DaoFactory.getInstance().createAuthorDao();
+//        System.out.println(authorDao.findByFirstLastName("Greate","Author"));
+        BookDao bookDao =DaoFactory.getInstance().createBookDao();
+        Book book =new Book(1,"Red Stars","Amazing","1",4,2000,true,2,"star",1);
+        bookDao.update(book);
+
 //       AuthorService authorService = AuthorServiceImpl.getInstance();
 //        System.out.println(bookService.findAllBooks());
 //       Optional<Book> book =

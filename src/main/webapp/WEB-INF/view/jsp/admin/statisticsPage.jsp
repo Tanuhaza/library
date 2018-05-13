@@ -44,7 +44,7 @@
                         <td>${user.email}</td>
                         <td>${user.phone}</td>
                         <td>
-                                <form action="/library/admin/user/borrowed/books" method="post" class="navbar-form navbar-right">
+                                <form action="/library/admin/borrowed/books/user" method="post" class="navbar-form navbar-right">
                                 <input type="hidden" name="command" value="openBook">
                                 <input type="hidden" name="userId" value="${user.id}">
                                 <input type="submit" value="<fmt:message key="library.admin.checkBook"/>"

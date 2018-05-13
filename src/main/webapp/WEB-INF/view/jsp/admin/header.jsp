@@ -43,6 +43,21 @@
                 <li>
                     <a href="/library/admin/manage"><fmt:message key="library.admin.menu.manage" bundle="${msg}"/></a>
                 </li>
+                <li>
+
+                    <form id="register-form" action="/library/search" method="post" role="form">
+                        <%--<div style="padding-left:16px">--%>
+                        <input type="search" id="searchValue" name="searchValue"
+                               placeholder="Search the site..." size="50">
+                        <button >Search</button>
+                        <br>
+                        <input type="radio" name="filter" value="author" checked> author
+                        <input type="radio" name="filter" value="title" > title
+                        <input type="radio" name="filter" value="keywords" > keyword
+                        <%--</div>--%>
+                    </form>
+
+                </li>
 
             </ul>
         </nav>

@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 public class BookData {
-    private int id;
+    private Integer id;
     private String title;
     private String description;
     private String pictureId;
@@ -15,7 +15,7 @@ public class BookData {
     private boolean avaliable;
     private String quantity;
     private String keywords;
-    private int genreId;
+    private Integer genreId;
     private String firstAuthorName;
     private String firstAuthorSurname;
     private String secondAuthorName;
@@ -24,11 +24,11 @@ public class BookData {
     public BookData() {
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -88,11 +88,11 @@ public class BookData {
         this.keywords = keywords;
     }
 
-    public int getGenreId() {
+    public Integer getGenreId() {
         return genreId;
     }
 
-    public void setGenreId(int genreId) {
+    public void setGenreId(Integer genreId) {
         this.genreId = genreId;
     }
 
@@ -131,7 +131,7 @@ public class BookData {
     public static class Builder {
         private BookData instance = new BookData();
 
-        public BookData.Builder setId(int id) {
+        public BookData.Builder setId(Integer id) {
             instance.setId(id);
             return this;
         }
@@ -151,7 +151,7 @@ public class BookData {
             return this;
         }
 
-        public BookData.Builder setGenreId(int genreId) {
+        public BookData.Builder setGenreId(Integer genreId) {
             instance.setGenreId(genreId);
             return this;
         }

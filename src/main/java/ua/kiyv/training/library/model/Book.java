@@ -18,8 +18,8 @@ public class Book {
     private int genreId;
     private List<Author> authors;
 
-    public Book( String title, String description, String pictureId, int rate,  boolean avaliable, int quantity,int year,  int genreId, String keywords) {
-
+    public Book(int id, String title, String description, String pictureId, int rate, int year, boolean avaliable, int quantity, String keywords, int genreId) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.pictureId = pictureId;
@@ -28,7 +28,6 @@ public class Book {
         this.avaliable = avaliable;
         this.quantity = quantity;
         this.keywords = keywords;
-
         this.genreId = genreId;
     }
 

@@ -5,6 +5,7 @@ import org.apache.log4j.Logger;
 import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.controller.validate.BookValidator;
 import ua.kiyv.training.library.controller.validate.Errors;
+import ua.kiyv.training.library.dao.BookDao;
 import ua.kiyv.training.library.model.Author;
 import ua.kiyv.training.library.model.Book;
 import ua.kiyv.training.library.model.dto.BookData;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
+import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PATH;
 
 public class UpdateBookSubmitCommand extends CommandWrapper {
     private static final Logger LOGGER = Logger.getLogger(LoadBookSubmitCommand.class);
@@ -33,6 +35,7 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Errors errors = new Errors();
+        System.out.println("BOOKID IN UPDATE" + request.getSession().getAttribute(BOOK_ID));
         BookData bookdata = extractBookDate(request);
         saveBookDataToRequest(request);
         errors.addErrors(bookValidator.validate(bookdata).getErrors());
@@ -44,17 +47,16 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
         }
         Book book = extractBookFromRegisterData(bookdata);
         Author author = extractAuthorFromRegisterData(bookdata);
-        bookService.update(book);
-//        authorService.create(author);
-//        bookService.matchBookAuthor(book, author);
+        System.out.println(author);
+        bookService.updateBookAuthor(book, author);
         System.out.println("Save Date to DB");
-        LOGGER.info(String.format("User %s %s was successfully registered", book.getTitle(), author.getFirstName(), author.getLastName()));
-        return PagesPath.ADMIN_MANAGE_PATH;
+        LOGGER.info(String.format("Book %s %s was successfully updated", book.getTitle(), author.getFirstName(), author.getLastName()));
+        return ADMIN_MANAGE_PATH;
     }
 
     private BookData extractBookDate(HttpServletRequest request) {
         return new BookData.Builder()
-                .setId((Integer)request.getSession().getAttribute(BOOK_ID))
+                .setId((Integer) request.getSession().getAttribute(BOOK_ID))
                 .setTitle(request.getParameter("title"))
                 .setDiscription(request.getParameter("description"))
                 .setPictureId(request.getParameter("picture"))
@@ -75,6 +77,7 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
 
     private Book extractBookFromRegisterData(BookData bookData) {
         return new Book.Builder()
+                .setId(bookData.getId())
                 .setTitle(bookData.getTitle())
                 .setDiscription(bookData.getDescription())
                 .setPictureId(bookData.getPictureId())

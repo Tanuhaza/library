@@ -22,7 +22,8 @@ public final class PagesPath {
     public static final String ADMIN_BOOK_EDIT_PATH = "/library/admin/book/edit";
     public static final String ADMIN_BOOK_LOAD_PATH = "/library/admin/book/load";
     public static final String ADMIN_BOOK_UPDATE_PATH = "/library/admin/book/update";
-    public static final String ADMIN_BORROWED_BOOKS_BY_USER_PATH = "/library/admin/user/borrowed/books";
+    public static final String ADMIN_BORROWED_BOOKS_BY_USER_PATH = "/library/admin/borrowed/books/user";
+    public static final String ADMIN_VIEW_BORROWED_BOOKS_BY_USER_PATH = "/library/admin/borrowed/books/user/id";
     public static final String ADMIN_BORROWED_BOOK_DELETE_BY_USER_PATH = "/library/admin/borrowed/book/delete";
 
     public static final String USER_BOOKS_PATH = "/library/user/books";

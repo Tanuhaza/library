@@ -61,15 +61,16 @@ public class JdbcBookDao implements BookDao, BookQuery {
              PreparedStatement statement = connection.prepareStatement(SELECT_ALL_BOOKS + FILTER_BY_ID)) {
             statement.setInt(1, id);
             try (ResultSet resultSet = statement.executeQuery()) {
+                BookMapper bookMapper = new BookMapper();
+                AuthorMapper authorMapper = new AuthorMapper();
                 while (resultSet.next()) {
-                    BookMapper bookMapper = new BookMapper();
-                    AuthorMapper authorMapper = new AuthorMapper();
                     book = bookMapper.extractFromResultSet(resultSet);
                     author = authorMapper.extractFromResultSet(resultSet);
                     book = bookMapper.makeUnique(books, book);
                     author = authorMapper.makeUnique(authors, author);
                     book.getAuthors().add(author);
                 }
+                book.setId(id);
             }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
@@ -164,8 +165,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
 
     @Override
     public void update(Book book) {
-        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection()) {
-            PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK);
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+            PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK)){
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getDescription());
             statement.setString(3, book.getPictureId());
@@ -176,11 +177,13 @@ public class JdbcBookDao implements BookDao, BookQuery {
             statement.setString(8, book.getKeywords());
             statement.setInt(9, book.getRate());
             statement.setInt(10, book.getId());
+            System.out.println(book.getId());
             int affectedRows = statement.executeUpdate();
+            System.out.println("IN BOOK DAO UPDATE");
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED);
             }
-            statement.close();
+            System.out.println("AFFECTED ROWS !=0");
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_UPDATE_BOOK + book.toString());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_UPDATE);
