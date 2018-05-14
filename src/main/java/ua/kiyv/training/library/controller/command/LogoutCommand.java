@@ -14,8 +14,10 @@ public class LogoutCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
         System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         request.getSession().invalidate();
-        response.sendRedirect(PagesPath.LOGIN_PATH);
-        return PagesPath.REDIRECTED;
+//        response.sendRedirect(PagesPath.LOGIN_PATH);
+//        request.getRequestDispatcher().forward(request,response);
+//        return PagesPath.FORWARD;
 //        request.getContextPath()+
+        return PagesPath.LOGIN_PAGE;
     }
 }

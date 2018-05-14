@@ -44,7 +44,7 @@
                             <form id="register-form" action="/library/admin/book/load" method="post" role="form">
                                 <input type="hidden" name="bookId" value="${book.id}">
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" tabindex="1" class="form-control"
+                                    <input type="text" name="title" id="title" tabindex="1" class="form-control" pattern="[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\s]{1,100}"
                                            placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
                                            value="${requestScope.previousBookTitle}" required>
                                 </div>
@@ -111,18 +111,6 @@
                                            placeholder="<fmt:message key="library.addBook.placeholder.first.author.surname" bundle="${msg}"/>"
                                            value="${requestScope.previousAuthorSurname}" required>
                                 </div>
-                                <%--<div class="form-group">--%>
-                                    <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>
-                                           <%--class="form-control"--%>
-                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.name" bundle="${msg}"/>"--%>
-                                    <%-->--%>
-                                <%--</div>--%>
-                                <%--<div class="form-group">--%>
-                                    <%--<input type="text" name="second_author_surname" id="second_author_surname"--%>
-                                           <%--tabindex="1" class="form-control"--%>
-                                           <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.surname" bundle="${msg}"/>"--%>
-                                    <%-->--%>
-                                <%--</div>--%>
 
                                 <div class="form-group">
                                     <div class="row">

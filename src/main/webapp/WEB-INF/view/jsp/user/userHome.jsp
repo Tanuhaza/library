@@ -16,8 +16,8 @@
 <body class="body-profile-container">
 <jsp:include page="../user/header.jsp"/>
 <%--<div class="user-welcome">--%>
-    <%--<div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>--%>
-    <%--<div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>--%>
+<%--<div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>--%>
+<%--<div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>--%>
 <%--</div>--%>
 
 <div class="container">
@@ -26,10 +26,18 @@
             <div class="col-lg-4">
                 <div class="book-box">
                     <tr>
-                        <div class="book-id">${borrowedBook.id}</div>
-                        <div class="book-title">${borrowedBook.title}</div>
-                        <div class="book-year">${borrowedBook.year}</div>
-                        <div class ="book-available">${borrowedBook.avaliable}</div>
+
+                        <div class="book-title">
+                            <div class="book-id">${borrowedBook.id}</div>
+                                ${borrowedBook.title}</div>
+                        <div class="book-authors-box">
+                            <c:forEach var="author" items="${borrowedBook.authors}">
+                                <div class="book-author">
+                                    <div class="book-author-name">${author.firstName}</div>
+                                    <div class="book-author-name">${author.lastName}</div>
+                                </div>
+                            </c:forEach>
+                        </div>
                         <div class="info-bottom">
                             <div class="book-image"><img src="/icons/${borrowedBook.pictureId}.jpg" alt="picture"></div>
                         </div>

@@ -11,24 +11,13 @@
     <link rel="stylesheet" href="/css/home.css">
     <link rel="stylesheet" href="/css/library.css">
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
-    <title>home page</title>
+    <title>statistics page</title>
 </head>
 <body>
 <jsp:include page="../admin/header.jsp"/>
-<%--<div class="container">--%>
-    <%--&lt;%&ndash;<div class="row">&ndash;%&gt;--%>
-    <%--<div class="col-md-8">--%>
-        <%--<div class=col-md-4> Hi</div>--%>
-        <%--<div class=col-md-4>Hi</div>--%>
-        <%--<div class=col-md-4>Hi</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-<%--</div>--%>
 
 <table class="table table-striped">
 <thead>
-<%--<div class="container">--%>
-<%--<div class="row">--%>
 <tr>
     <th><fmt:message key="library.admin.column.user.first.name"/></th>
 <th><fmt:message key="library.admin.column.user.last.name"/></th>

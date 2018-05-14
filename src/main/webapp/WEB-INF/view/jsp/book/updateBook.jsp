@@ -63,7 +63,6 @@
                                     <select id="isAvaliable" name="isAvaliable" class="form-control">
                                         <option selected disabled><fmt:message
                                                 key="library.addBook.placeholder.available" bundle="${msg}"/></option>
-                                        <%--<option selected value="t4"></option>--%>
                                         <option value="true">True</option>
                                         <option value="false">False</option>
                                     </select>
@@ -110,18 +109,6 @@
                                            placeholder="<fmt:message key="library.addBook.placeholder.first.author.surname" bundle="${msg}"/>"
                                            value="${requestScope.previousAuthorSurname}" required>
                                 </div>
-                                <%--<div class="form-group">--%>
-                                <%--<input type="text" name="second_author_name" id="second_author_name" tabindex="1"--%>
-                                <%--class="form-control"--%>
-                                <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.name" bundle="${msg}"/>"--%>
-                                <%-->--%>
-                                <%--</div>--%>
-                                <%--<div class="form-group">--%>
-                                <%--<input type="text" name="second_author_surname" id="second_author_surname"--%>
-                                <%--tabindex="1" class="form-control"--%>
-                                <%--placeholder="<fmt:message key="library.addBook.placeholder.second.author.surname" bundle="${msg}"/>"--%>
-                                <%-->--%>
-                                <%--</div>--%>
 
                                 <div class="form-group">
                                     <div class="row">

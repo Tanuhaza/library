@@ -1,39 +1,68 @@
 /*.row div{*/
-    /*height: 300px;*/
-    /*background: #333333;*/
+/*height: 300px;*/
+/*background: #333333;*/
 /*}*/
-.book-box{
+.book-box {
     display: block;
     border: 1px solid #b5e9a7;
     border-radius: 3px;
     position: relative;
-    background: #fff;
+    background-color: #FFFDFB;
     margin: 0 20px 20px 0;
     text-decoration: none;
     color: #474747;
     z-index: 0;
-    height: 500px;
+    height: 540px;
     position: relative;
+    padding: 10px 10px 10px 10px;
 }
 
-.info-bottom{
-    position:absolute;
+.book-box-for-added-info {
+    display: block;
+    border: 1px solid #b5e9a7;
+    border-radius: 3px;
+    position: relative;
+    background-color: #FFFDFB;
+    margin: 0 20px 20px 0;
+    text-decoration: none;
+    color: #474747;
+    z-index: 0;
+    height: 570px;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+}
+
+.info-bottom {
+    position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 350px;
+    height: 385px;
 }
-.order{
+
+.info-bottom-for-added-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 370px;
+}
+
+.submit-edit-delete {
+    padding-right: 70px;
 
 }
-.book-image{
+
+.book-image {
     max-height: 100%;
     margin: 0 auto;
     text-align: center;
 }
+
 .button {
     text-align: center;
 }
+
 .mainmenu-list {
     display: flex;
     justify-content: space-between;
@@ -43,3 +72,67 @@
 .mainmenu-list:last-child {
     margin-top: 20px;
 }
+
+.book-title {
+    text-align: center;
+    padding: 10px 10px 10px 10px;
+    background-color: #0075ff17;
+    font-family: serif;
+    font-style: italic;
+    color: navy;
+    font-size: 18px;
+}
+
+.book-id {
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 10px;
+    /*font-weight: 700;*/
+    text-align: center;
+}
+
+.book-author-name {
+    display: inline-block;
+    text-align: center;
+    font-family: serif;
+    font-style: italic;
+    color: navy;
+
+}
+
+.book-year {
+}
+
+.book-authors-box {
+    text-align: center;
+    font-size: 14px;
+    background-color: #8fa3e829;
+}
+
+.detail-info {
+    text-align: center;
+}
+.isAvaliable{
+    text-align: center;
+    padding: 10px 70px 10px 70px;
+    color: red;
+}
+.submit-delete{
+    padding-right: 133px;
+}
+.date{
+    display: inline-block;
+    color:#4ab30a;
+    font-family: cursive;
+    margin-right: 30px;
+    margin-left: 30px;
+    font-size: 15px;
+}
+.return-date{
+    color:red;
+}
+.submit-load-book{color: white;}
+.load-book-box{background-color: #4f8db3;
+    margin: 20px 870px 20px 870px;
+    padding: 10px 10px 10px 10px;
+    text-align: center;}

@@ -13,51 +13,75 @@
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <title>home page</title>
 </head>
+
 <body class="body-profile-container">
 <jsp:include page="../admin/header.jsp"/>
 
 <div class="container">
+    <c:set var="user" value="${user}"/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th><fmt:message key="library.admin.column.user.first.name"/></th>
+            <th><fmt:message key="library.admin.column.user.last.name"/></th>
+            <th><fmt:message key="library.admin.column.user.email"/></th>
+            <th><fmt:message key="library.admin.column.user.phone"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.phone}</td>
+        </tr>
+        </tbody>
+    </table>
     <div class="row">
-<c:forEach var="borrowedBook" items="${borrowedBooks}">
-    <%--<c:forEach var="author" items="${books.getAuthors}">--%>
-   <div class="col-lg-4">
-       <div class="book-box">
-            <tr>
-                <td>${borrowedBook.title}</td>
-                <td>${borrowedBook.year}</td>
-                <td>${borrowedBook.pictureId}</td>
-                <td>${borrowedBook.startDate}</td>
-                <td>${borrowedBook.dueToReturnDate}</td>
-                <td>
-                    <form action="/library/admin/book/edit" method="post" class="navbar-form navbar-right">
-                        <input type="hidden" name="command" value="openBook">
-                        <input type="hidden" name="bookId" value="${borrowedBook.id}">
-                        <input type="hidden" name="title" value="${borrowedBook.title}">
-                        <input type="hidden" name="description" value="${borrowedBook.description}">
-                        <input type="hidden" name="quantity" value="${borrowedBook.quantity}">
-                        <input type="hidden" name="year" value="${borrowedBook.year}">
-                        <input type="hidden" name="keywords" value="${borrowedBook.keywords}">
-                        <input type="hidden" name="picture" value="${borrowedBook.pictureId}">
-                        <input type="hidden" name="userId" value="${userId}">
+        <c:forEach var="book" items="${borrowedBooks}">
+            <div class="col-lg-4">
+                <div class="book-box-for-added-info">
+                    <div class="book-id">${book.id}</div>
+                    <div class="book-title">${book.title}</div>
 
-                        <input type="submit" value="<fmt:message key="library.admin.editBook"/>"
-                               class="btn btn-success btn-lg">
-                    </form>
-                </td>
+                    <div class="book-authors-box">
+                        <c:forEach var="author" items="${book.authors}">
+                            <div class="book-author">
+                                <div class="book-author-name">${author.firstName}</div>
+                                <div class="book-author-name">${author.lastName}</div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                    <div class="title-date">
+                        <div class="date">Start date:</div>
+                        <div class="date">
+                            <div class="return-date">Return date:</div>
+                        </div>
+                    </div>
+                    <div class="date">${book.startDate}</div>
+                    <div class="date">
+                        <div class="return-date">${book.dueToReturnDate}</div>
+                    </div>
 
-                <td>
-                    <form action="/library/admin/borrowed/book/delete" method="post" class="navbar-form navbar-right">
-                        <input type="hidden" name="command" value="openBook">
-                        <input type="hidden" name="bookId" value="${borrowedBook.id}">
-                        <input type="hidden" name="userId" value="${userId}">
-                        <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
-                               class="btn btn-success btn-lg">
-                    </form>
-                </td>
-            </tr>
-       </div>
-   </div>
-    </c:forEach>
+
+                    <div class="info-bottom-for-added-info">
+                        <div class="detail-info"><a href="/library/user/book/${book.id}"><fmt:message
+                                key="library.user.book.detail.info" bundle="${msg}"/></a></div>
+                        <div class="book-image"><img src="/icons/${book.pictureId}.jpg" alt="picture"></div>
+                        <div class="submit-delete">
+                            <form action="/library/admin/borrowed/book/delete" method="post"
+                                  class="navbar-form navbar-right">
+                                <input type="hidden" name="command" value="openBook">
+                                <input type="hidden" name="bookId" value="${borrowedBook.id}">
+                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
+                                       class="btn btn-success btn-lg">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
 

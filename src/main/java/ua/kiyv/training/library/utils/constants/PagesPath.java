@@ -30,6 +30,7 @@ public final class PagesPath {
     public static final String USER_BOOKS_BY_GENRE_PATH = "/library/user/books/genre/id";
     public static final String USER_ORDER = "/library/user/book/order";
     public static final String USER_BOOK_DESCRIPTION_PATH = "/library/user/book/id";
+    public static final String ADMIN_BOOK_DESCRIPTION_PATH = "/library/admin/book/id";
     public static final String SEARCH_PATH = "/library/search";
 
 
@@ -47,6 +48,7 @@ public final class PagesPath {
     public static final String USER_BOOKS_PAGE = VIEW_JSP_CLASSPATH + "user/getBooksPage.jsp";
     public static final String USER_BOOKS_BY_GENRE_PAGE = VIEW_JSP_CLASSPATH + "/user/getBooksByGenrePage.jsp";
     public static final String USER_BOOK_DESCRIPTION_PAGE = VIEW_JSP_CLASSPATH + "/user/bookDescriptionPage.jsp";
+    public static final String ADMIN_BOOK_DESCRIPTION_PAGE = VIEW_JSP_CLASSPATH + "/book/descriptionPage.jsp";
 
     public static final String HOME_PAGE = VIEW_JSP_CLASSPATH + "user/userHome.jsp";
 }

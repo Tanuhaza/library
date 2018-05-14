@@ -9,6 +9,7 @@
     <fmt:setLocale value="${sessionScope['locale']}"/>
     <fmt:requestEncoding value="UTF-8"/>
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
+    <fmt:setBundle basename="webProject.i18n.messages" var="msg"/>
     <meta charset="utf-8">
     <title>Title</title>
     <link rel="stylesheet" href="/css/login.css">

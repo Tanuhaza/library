@@ -56,6 +56,7 @@ public class CommandHolder {
         commands.put(GET + deployPath + USER_BOOKS_BY_GENRE_PATH, new GetBooksByGenreCommand());
         commands.put(GET + deployPath + USER_BOOKS_PATH, new GetBooksCommand());
         commands.put(GET + deployPath + USER_BOOK_DESCRIPTION_PATH, new BookDescriptionCommand());
+        commands.put(GET + deployPath + ADMIN_BOOK_DESCRIPTION_PATH, new BookAdminDescriptionCommand());
         commands.put(GET + deployPath + ADMIN_VIEW_BORROWED_BOOKS_BY_USER_PATH, new ViewUserBorrowedBooksCommand());
 
         commands.put(POST + deployPath + ADMIN_BOOK_UPDATE_PATH, new UpdateBookSubmitCommand());
