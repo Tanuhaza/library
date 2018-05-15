@@ -12,7 +12,7 @@ import static java.util.regex.Pattern.matches;
 
 
 public class BookValidator implements Validator<BookData> {
-    private static final String REGEX_TITLE = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\s]{1,100}";
+    private static final String REGEX_TITLE = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\s\\d]{1,100}";
     private static final String REGEX_DESCRIPTION = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\d\\s,.!?;:()]{1,500}";
     private static final String REGEX_QUANTITY = "[1-9]{1}[\\d]{0,2}";
     private static final String REGEX_YEAR = "[1,2]{1}[\\d]{3}";

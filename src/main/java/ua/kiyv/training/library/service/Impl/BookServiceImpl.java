@@ -118,6 +118,8 @@ public class BookServiceImpl implements BookService {
         JdbcTransactionHelper.getInstance().beginTransaction();
         try {
             bookDao.deleteMatchBookAuthor(id);
+            borrowedBookDao.deleteById(id);
+            System.out.println("After deleting connection book-author");
             bookDao.deleteById(id);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {

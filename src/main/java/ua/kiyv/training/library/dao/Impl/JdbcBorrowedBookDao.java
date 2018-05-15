@@ -105,6 +105,18 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
     }
 
     @Override
+    public void deleteById(Integer id) {
+        try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
+             PreparedStatement statement = connection.prepareStatement(DELETE_BORROWED_BOOK)) {
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        } catch (SQLException ex) {
+            logger.error(LoggerMessages.ERROR_DELETE_BOOK + id);
+            throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
+        }
+    }
+
+    @Override
     public void deleteBorrowedBookByUserId(Integer bookId, Integer userId) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(DELETE_BORROWED_BOOK_BY_USER_ID_BOOK_ID)) {

@@ -22,7 +22,7 @@ public class DeleteBookSubmitCommand extends CommandWrapper {
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id =Integer.parseInt(request.getParameter(BOOK_ID));
+        Integer id =Integer.valueOf(request.getParameter(BOOK_ID));
         bookService.delete(id);
         return ADMIN_MANAGE_PATH;
     }

@@ -13,4 +13,6 @@ public interface BorrowedBookDao extends GenericDao<BorrowedBook> {
     public void deleteBorrowedBookByUserId(Integer bookId, Integer userId);
 
     public Boolean isBookOnLoanByUser(Integer bookId, Integer userId);
+
+    public void deleteById(Integer id);
 }

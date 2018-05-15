@@ -44,7 +44,7 @@
                             <form id="register-form" action="/library/admin/book/load" method="post" role="form">
                                 <input type="hidden" name="bookId" value="${book.id}">
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" tabindex="1" class="form-control" pattern="[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\s]{1,100}"
+                                    <input type="text" name="title" id="title" tabindex="1" class="form-control" pattern="[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\s\d]{1,100}"
                                            placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
                                            value="${requestScope.previousBookTitle}" required>
                                 </div>
@@ -64,7 +64,6 @@
                                     <select id="isAvaliable" name="isAvaliable" class="form-control">
                                         <option selected disabled><fmt:message
                                                 key="library.addBook.placeholder.available" bundle="${msg}"/></option>
-                                        <%--<option selected value="t4"></option>--%>
                                         <option value="true">True</option>
                                         <option value="false">False</option>
                                     </select>

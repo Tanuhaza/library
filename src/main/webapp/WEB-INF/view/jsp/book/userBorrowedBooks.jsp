@@ -63,7 +63,6 @@
                         <div class="return-date">${book.dueToReturnDate}</div>
                     </div>
 
-
                     <div class="info-bottom-for-added-info">
                         <div class="detail-info"><a href="/library/user/book/${book.id}"><fmt:message
                                 key="library.user.book.detail.info" bundle="${msg}"/></a></div>
@@ -72,8 +71,8 @@
                             <form action="/library/admin/borrowed/book/delete" method="post"
                                   class="navbar-form navbar-right">
                                 <input type="hidden" name="command" value="openBook">
-                                <input type="hidden" name="bookId" value="${borrowedBook.id}">
-                                <input type="hidden" name="userId" value="${userId}">
+                                <input type="hidden" name="bookId" value="${book.id}">
+                                <input type="hidden" name="userId" value="${user.id}">
                                 <input type="submit" value="<fmt:message key="library.admin.deleteBook"/>"
                                        class="btn btn-success btn-lg">
                             </form>
