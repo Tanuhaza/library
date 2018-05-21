@@ -1,8 +1,8 @@
 package ua.kiyv.training.library.exception;
 
-
-import ua.kiyv.training.library.exception.ApplicationException;
-
+/**
+ * this class represents custom exception for dao layer
+ */
 public class DaoException extends ApplicationException {
 
     public DaoException(String message) {

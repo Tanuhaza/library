@@ -6,15 +6,12 @@ import ua.kiyv.training.library.model.Book;
 
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.Impl.BookServiceImpl;
-import ua.kiyv.training.library.service.Impl.UserServiceImpl;
-import ua.kiyv.training.library.service.UserService;
 import ua.kiyv.training.library.utils.ParamExtractor;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static ua.kiyv.training.library.utils.constants.PagesPath.USER_BOOKS_BY_GENRE_PAGE;

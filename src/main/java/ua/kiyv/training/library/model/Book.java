@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+
+/**
+ * this class represents book entity
+ */
 public class Book {
     private int id;
     private String title;
@@ -40,7 +44,7 @@ public class Book {
     }
 
     public Book() {
-        authors=new ArrayList<>();
+        authors = new ArrayList<>();
     }
 
     public int getId() {
@@ -133,8 +137,8 @@ public class Book {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
 
         Book book = (Book) o;
 
@@ -182,11 +186,11 @@ public class Book {
                 ", addedDate=" + addedDate +
                 ", genreId=" + genreId +
                 ", authors=" + authors +
-                '}'+'\n';
+                '}' + '\n';
     }
 
     public static class Builder {
-        private  Book instance = new Book();
+        private Book instance = new Book();
 
         public Book.Builder setId(int id) {
             instance.setId(id);
@@ -247,8 +251,4 @@ public class Book {
             return instance;
         }
     }
-
-//    public static Builder builder(){
-//        return new Builder();
-//    }
 }

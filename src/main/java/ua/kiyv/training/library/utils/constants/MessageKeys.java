@@ -38,18 +38,6 @@ public final class MessageKeys {
     public static final String WRONG_USER_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.user.no.rows.affected";
     public static final String WRONG_USER_DB_ROLE ="message.wrong.role";
 
-
-    public static final String WRONG_USER_RESPONSE_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.user.response.no.rows.affected";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_CREATE ="message.can.not.create.user.response";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_UPDATE ="message.can.not.update.response";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_GET ="message.can.not.get.user.response";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_DELETE ="message.can.not.delete.user.response";
-    public static final String WRONG_USER_RESPONSE_DB_NO_TESTS_ID_FIND="message.wrong.creating.user.response.no.tests.id.find";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_GET_ALL_USER_RESPONSES = "message.wrong.can.not.get.all.user.responses";
-    public static final String WRONG_USER_RESPONSE_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.user.response.no.rows.affected";
-    public static final String WRONG_USER_RESPONSE_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.user.response.no.rows.affected";
-    public static final String WRONG_USER_RESPONSE_DB_CAN_NOT_GET_PASSED_TIMES ="message.can.not.get.passed.times";
-
     public static final String WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.book.no.rows.affected";
     public static final String WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.book.no.rows.affected";
     public static final String WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.book.no.rows.affected";
@@ -67,31 +55,6 @@ public final class MessageKeys {
     public static final String WRONG_BOOK_DB_CAN_NOT_MATCH_AUTHOR ="message.can.not.create.book.author";
     public static final String WRONG_BOOK_IS_NOT_AVAILABLE ="message.can.not.create.book.is.not.available";
 
-    public static final String WRONG_OPTION_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.option.no.rows.affected";
-    public static final String WRONG_OPTION_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.option.no.rows.affected";
-    public static final String WRONG_OPTION_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.option.no.rows.affected";
-    public static final String WRONG_OPTION_DB_NO_ID_OBTAINED ="message.wrong.creating.option.no.id.obtained";
-    public static final String WRONG_OPTION_DB_CAN_NOT_CREATE ="message.can.not.create.option";
-    public static final String WRONG_OPTION_DB_CAN_NOT_UPDATE ="message.can.not.update.option";
-    public static final String WRONG_OPTION_DB_CAN_NOT_GET ="message.can.not.get.option";
-    public static final String WRONG_OPTION_DB_CAN_NOT_DELETE ="message.can.not.delete.option";
-    public static final String WRONG_OPTION_DB_NO_ID_EXIST="message.wrong.creating.option.no.id.exist";
-    public static final String WRONG_OPTION_DB_CAN_NOT_GET_ALL_OPTIONS = "message.wrong.can.not.get.all.options";
-
-    public static final String WRONG_TEST_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.test.no.rows.affected";
-    public static final String WRONG_TEST_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.test.no.rows.affected";
-    public static final String WRONG_TEST_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.test.no.rows.affected";
-    public static final String WRONG_TEST_DB_NO_ID_OBTAINED ="message.wrong.creating.test.no.id.obtained";
-    public static final String WRONG_TEST_DB_CAN_NOT_CREATE ="message.can.not.create.test";
-    public static final String WRONG_TEST_DB_CAN_NOT_UPDATE ="message.can.not.update.test";
-    public static final String WRONG_TEST_DB_CAN_NOT_GET ="message.can.not.get.test";
-    public static final String WRONG_TEST_DB_CAN_NOT_DELETE ="message.can.not.delete.test";
-    public static final String WRONG_TEST_DB_NO_ID_EXIST ="message.wrong.creating.test.no.id.exist";
-    public static final String WRONG_TEST_DB_CAN_NOT_GET_ASSOSIATED_QUESTIONS = "message.can.not.get.assosiated.qustion";
-    public static final String WRONG_TEST_DB_CAN_NOT_GET_ASSOSIATED_TEST_BY_TOPIC = "message.can.not.get.assosiated.tests.by.topic ";
-    public static final String WRONG_TEST_DB_CAN_NOT_ASSOSIATE_TESTS_WITH_QUESTIONS = "message.can.not.assosiate.tests.with.question";
-    public static final String WRONG_TEST_DB_CAN_NOT_GET_ALL_TESTS = "message.wrong.can.not.get.all.tests";
-
     public static final String WRONG_AUTHOR_DB_CREATING_NO_ROWS_AFFECTED = "message.wrong.creating.question.no.rows.affected";
     public static final String WRONG_AUTHOR_DB_DELETING_NO_ROWS_AFFECTED ="message.wrong.deleting.question.no.rows.affected";
     public static final String WRONG_AUTHOR_DB_UPDATING_NO_ROWS_AFFECTED ="message.wrong.updating.question.no.rows.affected";
@@ -105,7 +68,6 @@ public final class MessageKeys {
     public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_AUTHOR = "message.wrong.can.not.search.by.author";
     public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_TITLE = "message.wrong.can.not.search.by.title";
     public static final String WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_KEYWORDS = "message.wrong.can.not.search.by.keywords";
-
     public static final String WRONG_AUTHOR_DB_CAN_NOT_GET_ALL_GENRES = "message.wrong.can.not.get.all.genres";
 
     public static final String CONNECTION_PROBLEM_CONFIG_FILE = "message.wrong.connection.webProject.config";

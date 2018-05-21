@@ -18,12 +18,10 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.REDIRECTED;
 public class UnsupportedPathCommand implements Command {
     private static final Logger logger = Logger.getLogger(LogoutCommand.class);
 
-
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        logger.warn(LoggerMessages.REQUESTED_UNSUPPORTED_URI );
+        logger.warn(LoggerMessages.REQUESTED_UNSUPPORTED_URI);
         response.sendRedirect(request.getContextPath() + PagesPath.HOME_PATH);
         return REDIRECTED;
     }

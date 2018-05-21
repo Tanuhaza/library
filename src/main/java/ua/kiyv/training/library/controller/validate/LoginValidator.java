@@ -1,6 +1,5 @@
 package ua.kiyv.training.library.controller.validate;
 
-import ua.kiyv.training.library.model.dto.RegisterData;
 import ua.kiyv.training.library.utils.constants.Attributes;
 import ua.kiyv.training.library.utils.constants.MessageKeys;
 import ua.kiyv.training.library.model.dto.LoginData;
@@ -23,8 +22,9 @@ public class LoginValidator implements Validator<LoginData> {
             results.addError(Attributes.USER_PASSWORD, MessageKeys.WRONG_USER_PASSWORD);
         }
 
-        return results;}
+        return results;
     }
+}
 
 
 

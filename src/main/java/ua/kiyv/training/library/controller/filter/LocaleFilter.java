@@ -15,7 +15,7 @@ import java.util.Locale;
  * Filter which sets character encoding to utf-8
  * This filter also sets and changes locales
  */
-@WebFilter(filterName = "Local",urlPatterns = {"/*"})
+@WebFilter(filterName = "Local",urlPatterns = "/*")
 public class LocaleFilter implements Filter {
     /**
      * contains all supported locales
@@ -26,7 +26,7 @@ public class LocaleFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = ((HttpServletRequest) request);
-//        req.setCharacterEncoding(Attributes.UTF_8);
+        req.setCharacterEncoding(Attributes.UTF_8);
         HttpSession session = req.getSession();
         setResourceBundle(session);
         Locale locale = localeHolder.getCurrentLocale();
@@ -37,7 +37,6 @@ public class LocaleFilter implements Filter {
         req.setAttribute(Attributes.LOCALE, locale);
         session.setAttribute(Attributes.LOCALE, locale);
         session.setAttribute("SUPPORTED_LOCALES", LocaleHolder.SUPPORTED_LOCALES);
-        System.out.println("IN LOCALE FILTRE");
         chain.doFilter(request, response);
     }
 

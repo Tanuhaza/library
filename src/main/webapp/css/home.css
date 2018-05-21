@@ -14,26 +14,34 @@
 
 .welcome {
 }
+.welcome-center{
+    text-align: center;
+    margin-top: 50px;
+}
 .welcome-index {
-    padding: 40px 200px 40px 400px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 30;
+    font-size: 30px;
     font-weight: bolder;
-    color:#4f8db3;
+    color:#085ca5;
+
+
 }
 .welcome-text {
-    padding: 0px 100px 0px 100px;
+
     font-family: Georgia;
-    font-size: 20;
+    font-size: 20px;
     font-weight: 10px;
-    letter-spacing:0.5px
+    letter-spacing:0.5px;
+    margin-top:50px;
+    margin-bottom:50px;
+
 }
 .welcome-sign-in-out{
     margin: 0px 0px 40px 0px;
-    padding: 20px 300px 0px 500px;
     color: red;
     font-weight: bold;
-    font-size: 20;
+    font-size: 20px;
+
 }
 .main-menu {
 

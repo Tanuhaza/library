@@ -18,23 +18,20 @@ import java.util.Optional;
 
 import static ua.kiyv.training.library.utils.constants.PagesPath.USER_BORROWED_BOOK_PAGE;
 
-/**
- * Created by Tanya on 12.05.2018.
- */
 public class ViewUserBorrowedBooksCommand implements Command {
 
     private BookService bookService = BookServiceImpl.getInstance();
     private UserService userService = UserServiceImpl.getInstance();
-    private ParamExtractor paramExtractor =new ParamExtractor();
+    private ParamExtractor paramExtractor = new ParamExtractor();
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int userId = paramExtractor.extractSingleIntPathParam(request);
         List<BorrowedBook> borrowedBooks = bookService.findAllBorrowedBooksByUserId(userId);
         Optional<User> person = userService.findById(userId);
-        if(person.isPresent()){
-            User user =person.get();
-            request.setAttribute("user",user);
+        if (person.isPresent()) {
+            User user = person.get();
+            request.setAttribute("user", user);
         }
         request.setAttribute("userId", userId);
         request.setAttribute("borrowedBooks", borrowedBooks);

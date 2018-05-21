@@ -32,14 +32,15 @@ public class RegisterData extends LoginData {
         this.phone = phone;
     }
 
-    public static Builder builder(){
+    public static Builder builder() {
         return new Builder();
     }
 
     public static class Builder {
         private RegisterData instance = new RegisterData();
 
-        private Builder(){}
+        private Builder() {
+        }
 
         public Builder firstName(String firstName) {
             instance.firstName = firstName;

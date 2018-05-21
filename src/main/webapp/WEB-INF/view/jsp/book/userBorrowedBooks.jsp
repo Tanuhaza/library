@@ -41,8 +41,9 @@
         <c:forEach var="book" items="${borrowedBooks}">
             <div class="col-lg-4">
                 <div class="book-box-for-added-info">
-                    <div class="book-id">${book.id}</div>
-                    <div class="book-title">${book.title}</div>
+                    <div class="book-title">
+                        <div class="book-id">${book.id}</div>
+                            ${book.title}</div>
 
                     <div class="book-authors-box">
                         <c:forEach var="author" items="${book.authors}">
@@ -64,7 +65,7 @@
                     </div>
 
                     <div class="info-bottom-for-added-info">
-                        <div class="detail-info"><a href="/library/user/book/${book.id}"><fmt:message
+                        <div class="detail-info"><a href="/library/admin/book/${book.id}"><fmt:message
                                 key="library.user.book.detail.info" bundle="${msg}"/></a></div>
                         <div class="book-image"><img src="/icons/${book.pictureId}.jpg" alt="picture"></div>
                         <div class="submit-delete">
@@ -83,7 +84,6 @@
         </c:forEach>
     </div>
 </div>
-
 <jsp:include page="../fragment/footer.jsp"/>
 </body>
 </html>

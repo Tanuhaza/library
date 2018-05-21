@@ -25,8 +25,9 @@
         <c:forEach var="book" items="${books}">
             <div class="col-lg-4">
                 <div class="book-box">
-                    <div class="book-id">${book.id}</div>
-                    <div class="book-title">${book.title}</div>
+                    <div class="book-title">
+                        <div class="book-id">${book.id}</div>
+                            ${book.title}</div>
                     <div class="book-authors-box">
                         <c:forEach var="author" items="${book.authors}">
                             <div class="book-author">

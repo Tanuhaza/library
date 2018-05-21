@@ -20,10 +20,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * * Implementation of borrowed book  dao, which works with MySql using jdbc
+ */
 public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
 
     private LocalDate localDate = LocalDate.now();
-    private static final Logger logger = Logger.getLogger(JdbcBorrowedBookDao.class);
+    private static final Logger LOGGER = Logger.getLogger(JdbcBorrowedBookDao.class);
 
     @Override
     public void create(BorrowedBook entity) {
@@ -42,7 +45,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
                 throw new DaoException(MessageKeys.WRONG_BORROWED_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + bookId);
+            LOGGER.error(LoggerMessages.ERROR_CREATE_NEW_BORROWED_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BORROWED_BOOK_DB_CAN_NOT_CREATE);
         }
     }
@@ -78,7 +81,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
             }
             resultSet.close();
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_ALL_BORROWED_BOOKS);
+            LOGGER.error(LoggerMessages.ERROR_FIND_ALL_BORROWED_BOOKS);
             throw new DaoException(ex, MessageKeys.WRONG_BORROWED_BOOK_DB_CAN_NOT_GET_ALL_BOROOWED_BOOKS);
         }
         return new ArrayList<>(books.values());
@@ -99,7 +102,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_DELETE_BOOK + borrowedBook.getId());
+            LOGGER.error(LoggerMessages.ERROR_DELETE_BOOK + borrowedBook.getId());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
         }
     }
@@ -111,7 +114,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_DELETE_BOOK + id);
+            LOGGER.error(LoggerMessages.ERROR_DELETE_BOOK + id);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
         }
     }
@@ -127,7 +130,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_DELETING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_DELETE_BOOK + bookId);
+            LOGGER.error(LoggerMessages.ERROR_DELETE_BOOK + bookId);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_DELETE);
         }
     }
@@ -145,7 +148,7 @@ public class JdbcBorrowedBookDao implements BorrowedBookDao, BorrowedBookQuery {
                 }
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_BORROWED_BOOK_BY_USER_ID);
+            LOGGER.error(LoggerMessages.ERROR_FIND_BORROWED_BOOK_BY_USER_ID);
         }
         return isBookOnLoan;
     }

@@ -23,9 +23,11 @@
 </head>
 <body class="body-profile-container">
 <jsp:include page="WEB-INF/view/jsp/user/header.jsp"/>
+<div class="welcome-center">
 <div class="welcome-index"><fmt:message key="library.welcome" bundle="${msg}"/></div>
 <div class="welcome-text"><fmt:message key="library.welcome.text" bundle="${msg}"/></div>
 <div class="welcome-sign-in-out"><fmt:message key="library.sign.in.or.sign.out" bundle="${msg}"/></div>
+</div>
 <jsp:include page="WEB-INF/view/jsp/fragment/footer.jsp"/>
 </body>
 </html>

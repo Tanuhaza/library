@@ -1,5 +1,9 @@
 package ua.kiyv.training.library.model;
 
+
+/**
+ * this class represents  genre entity
+ */
 public class Genre {
     private int id;
     private String name;
@@ -66,6 +70,4 @@ public class Genre {
             return instance;
         }
     }
-
-
 }

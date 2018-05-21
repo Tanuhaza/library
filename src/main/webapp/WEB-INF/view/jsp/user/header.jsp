@@ -43,35 +43,35 @@
                     <a href="/library/user/books"><fmt:message key="library.user.menu.books" bundle="${msg}"/></a>
                 </li>
                 <li>
-                    <%--<a href="/library/user/books/genre">--%>
-                        <div class="dropdown show">
-                            <a class=" dropdown-toggle" href="/library/user/books/genre" role="button" id="dropdownMenuLink"
-                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <fmt:message key="library.user.menu.books.by.genre" bundle="${msg}"/>
-                            </a>
+                    <div class="dropdown show">
+                        <a class=" dropdown-toggle" href="/library/user/books/genre" role="button" id="dropdownMenuLink"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <fmt:message key="library.user.menu.books.by.genre" bundle="${msg}"/>
+                        </a>
 
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                <c:forEach var="genre" items="${genres}">
-                                    <a class="dropdown-item"
-                                       href="/library/user/books/genre/${genre.id}"> ${genre.name}</a>
-                                </c:forEach>
-                            </div>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <c:forEach var="genre" items="${genres}">
+                                <a class="dropdown-item"
+                                   href="/library/user/books/genre/${genre.id}"> ${genre.name}</a>
+                            </c:forEach>
                         </div>
-                    <%--</a>--%>
+                    </div>
 
                 </li>
                 <li>
 
                     <form id="register-form" action="/library/search" method="post" role="form">
-                        <%--<div style="padding-left:16px">--%>
-                            <input type="search" id="searchValue" name="searchValue"
-                                   placeholder="Search the site..." size="50">
-                            <button >Search</button>
-                            <br>
-                            <input type="radio" name="filter" value="author" checked> author
-                            <input type="radio" name="filter" value="title" > title
-                            <input type="radio" name="filter" value="keywords" > keyword
-                        <%--</div>--%>
+                        <input type="search" id="searchValue" name="searchValue"
+                               placeholder=
+                               <fmt:message key="library.search.placeholder" bundle="${msg}"/> size="50">
+                        <button><fmt:message key="library.button.search" bundle="${msg}"/></button>
+                        <br>
+                        <input type="radio" name="filter" value="author" checked> <fmt:message
+                            key="library.search.attribute.author" bundle="${msg}"/>
+                        <input type="radio" name="filter" value="title"> <fmt:message
+                            key="library.search.attribute.title" bundle="${msg}"/>
+                        <input type="radio" name="filter" value="keywords"> <fmt:message
+                            key="library.search.attribute.keywords" bundle="${msg}"/>
                     </form>
 
                 </li>
@@ -80,3 +80,4 @@
         </nav>
     </div>
 </div>
+

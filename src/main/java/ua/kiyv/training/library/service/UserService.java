@@ -36,11 +36,19 @@ public interface UserService {
      * @param password user's password, whose entity will be returned
      * @return user entity with specified email (login)
      */
-    public Optional<User> getUserByEmailPassword(String login, String password);
+    Optional<User> getUserByEmailPassword(String login, String password);
 
-    public int countAllUsers();
+    /**
+     * count all users
+     * @return int number
+     */
+    int countAllUsers();
 
-    public List<User> getAllWithLimitPerPage(Integer startFrom, Integer quantity);
+    List<User> getAllWithLimitPerPage(Integer startFrom, Integer quantity);
 
-    public String encrypt(String password);
+    /**
+     * encrypt user's password
+     * @return encrypted string value
+     */
+    String encrypt(String password);
 }

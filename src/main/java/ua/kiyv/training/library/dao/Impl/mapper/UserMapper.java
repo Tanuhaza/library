@@ -9,7 +9,6 @@ import java.util.Map;
 
 public class UserMapper implements ObjectMapper<User> {
 
-
     @Override
     public User extractFromResultSet(ResultSet rs) throws SQLException {
         return new User.Builder()

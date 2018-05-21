@@ -33,7 +33,6 @@ public final class PagesPath {
     public static final String ADMIN_BOOK_DESCRIPTION_PATH = "/library/admin/book/id";
     public static final String SEARCH_PATH = "/library/search";
 
-
     public static final String LOGIN_PAGE = VIEW_JSP_CLASSPATH + "loginPage.jsp";
     public static final String CONFIRMATION_PAGE = VIEW_JSP_CLASSPATH + "confirmation.jsp";
     public static final String ERROR_PAGE = VIEW_JSP_CLASSPATH + "error.jsp";

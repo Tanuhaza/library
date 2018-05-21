@@ -14,15 +14,12 @@ import java.io.IOException;
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PATH;
 
-/**
- * Created by Tanya on 19.04.2018.
- */
 public class DeleteBookSubmitCommand extends CommandWrapper {
     BookService bookService = BookServiceImpl.getInstance();
 
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer id =Integer.valueOf(request.getParameter(BOOK_ID));
+        Integer id = Integer.valueOf(request.getParameter(BOOK_ID));
         bookService.delete(id);
         return ADMIN_MANAGE_PATH;
     }

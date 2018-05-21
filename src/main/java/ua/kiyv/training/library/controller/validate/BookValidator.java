@@ -13,7 +13,7 @@ import static java.util.regex.Pattern.matches;
 
 public class BookValidator implements Validator<BookData> {
     private static final String REGEX_TITLE = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\s\\d]{1,100}";
-    private static final String REGEX_DESCRIPTION = "[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\\d\\s,.!?;:()]{1,500}";
+    private static final String REGEX_NAME = "[A-ZА-ЯЇІЄЁ]{1}[a-zа-яїієё]{1,}";
     private static final String REGEX_QUANTITY = "[1-9]{1}[\\d]{0,2}";
     private static final String REGEX_YEAR = "[1,2]{1}[\\d]{3}";
     private static final Logger LOGGER = Logger.getLogger(BookValidator.class);
@@ -27,7 +27,7 @@ public class BookValidator implements Validator<BookData> {
             results.addError(Attributes.TITLE, MessageKeys.WRONG_TITLE);
         }
 
-        if (isNull(bookData.getDescription()) || hasScript(bookData.getDescription()) || !matches(REGEX_DESCRIPTION, bookData.getDescription())) {
+        if (isNull(bookData.getDescription()) || hasScript(bookData.getDescription())) {
             results.addError(Attributes.DESCRIPTION, MessageKeys.WRONG_DESCRIPION);
         }
 
@@ -39,11 +39,11 @@ public class BookValidator implements Validator<BookData> {
             results.addError(Attributes.QUANTITY, MessageKeys.WRONG_QUANTITY);
         }
 
-        if ((isNull(bookData.getFirstAuthorName())) || hasScript(bookData.getFirstAuthorName()) || !matches(REGEX_TITLE, bookData.getFirstAuthorName())) {
+        if ((isNull(bookData.getFirstAuthorName())) || hasScript(bookData.getFirstAuthorName()) || !matches(REGEX_NAME, bookData.getFirstAuthorName())) {
             results.addError(Attributes.FIRST_ATHOR_NAME, MessageKeys.WRONG_FIRST_AUTHOR_NAME);
         }
 
-        if (isNull(bookData.getFirstAuthorSurname()) || hasScript(bookData.getFirstAuthorSurname()) || !matches(REGEX_TITLE, bookData.getFirstAuthorSurname())) {
+        if (isNull(bookData.getFirstAuthorSurname()) || hasScript(bookData.getFirstAuthorSurname()) || !matches(REGEX_NAME, bookData.getFirstAuthorSurname())) {
             results.addError(Attributes.FIRST_ATHOR_SURNAME, MessageKeys.WRONG_FIRST_AUTHOR_SURNAME);
         }
         return results;

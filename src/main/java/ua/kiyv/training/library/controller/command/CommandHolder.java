@@ -1,9 +1,6 @@
 package ua.kiyv.training.library.controller.command;
 
 
-import ua.kiyv.training.library.controller.command.Command;
-import ua.kiyv.training.library.controller.command.LogoutCommand;
-import ua.kiyv.training.library.controller.command.UnsupportedPathCommand;
 import ua.kiyv.training.library.controller.command.User.*;
 import ua.kiyv.training.library.controller.command.admin.*;
 import ua.kiyv.training.library.controller.command.admin.book.*;
@@ -44,7 +41,6 @@ public class CommandHolder {
 
     private void init() {
 
-//        commands.put(GET + deployPath + HOME_PATH, new HomeCommand());
         commands.put(GET + deployPath + LOGIN_PATH, new LoginCommand());
         commands.put(GET + deployPath + LOGOUT_PATH, new LogoutCommand());
         commands.put(GET + deployPath + ADMIN_STATISTICS_PATH, new StatisticsCommand());
@@ -68,8 +64,8 @@ public class CommandHolder {
         commands.put(POST + deployPath + ADMIN_BORROWED_BOOKS_BY_USER_PATH, new CheckUserBorrowedBooksSubmitCommand());
         commands.put(POST + deployPath + ADMIN_BORROWED_BOOK_DELETE_BY_USER_PATH, new DeleteBorrowedBookSubmitCommand());
 
-        commands.put(POST + deployPath +USER_ORDER, new BookOrderSubmitCommand());
-        commands.put(POST + deployPath +SEARCH_PATH, new SearchSubmitCommand());
+        commands.put(POST + deployPath + USER_ORDER, new BookOrderSubmitCommand());
+        commands.put(POST + deployPath + SEARCH_PATH, new SearchSubmitCommand());
 
     }
 
@@ -79,7 +75,6 @@ public class CommandHolder {
      */
     public Command findCommand(String commandKey) {
         String convertedKey = removeAllNumbersFromUrl(commandKey);
-        System.out.println(convertedKey);
         return commands.getOrDefault(convertedKey, unsupportedPathCommand);
     }
 

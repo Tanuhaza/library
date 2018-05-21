@@ -19,6 +19,10 @@ import java.util.List;
 
 import static ua.kiyv.training.library.dao.Impl.query.AuthorQuery.*;
 
+/**
+ * * Implementation of author dao, which works with MySql using jdbc
+ */
+
 public class JdbcAuthorDao implements AuthorDao {
 
     private static final Logger logger = Logger.getLogger(JdbcAuthorDao.class);
@@ -46,7 +50,6 @@ public class JdbcAuthorDao implements AuthorDao {
             logger.error(LoggerMessages.ERROR_CREATE_NEW_AUTHOR + author.toString());
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_CREATE);
         }
-
     }
 
     @Override
@@ -78,12 +81,10 @@ public class JdbcAuthorDao implements AuthorDao {
             statement.setString(2, lastName);
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (!resultSet.next()) {
-                    System.out.println("RESULT SET IS EMPTY");
                     throw new DaoException(MessageKeys.WRONG_AUTHOR_DB_NO_ID_EXIST);
                 }
                 AuthorMapper authorMapper = new AuthorMapper();
                 author = authorMapper.extractFromResultSet(resultSet);
-                System.out.println("IN AUTHOR DAO " +author);
             }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + firstName + " " + lastName);
@@ -126,7 +127,6 @@ public class JdbcAuthorDao implements AuthorDao {
             logger.error(LoggerMessages.ERROR_UPDATE_AUTHOR + author.toString());
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_UPDATE);
         }
-
     }
 
     @Override
@@ -143,6 +143,5 @@ public class JdbcAuthorDao implements AuthorDao {
             logger.error(LoggerMessages.ERROR_DELETE_AUTHOR + author.getId());
             throw new DaoException(ex, MessageKeys.WRONG_AUTHOR_DB_CAN_NOT_DELETE);
         }
-
     }
 }

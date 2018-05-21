@@ -35,21 +35,17 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Errors errors = new Errors();
-        System.out.println("BOOKID IN UPDATE" + request.getSession().getAttribute(BOOK_ID));
         BookData bookdata = extractBookDate(request);
         saveBookDataToRequest(request);
         errors.addErrors(bookValidator.validate(bookdata).getErrors());
         if (errors.hasErrors()) {
-            System.out.println("has errors");
             processErrors(request, errors);
             request.getRequestDispatcher(PagesPath.UPDATE_BOOK_PAGE).forward(request, response);
             return PagesPath.FORWARD;
         }
         Book book = extractBookFromRegisterData(bookdata);
         Author author = extractAuthorFromRegisterData(bookdata);
-        System.out.println(author);
         bookService.updateBookAuthor(book, author);
-        System.out.println("Save Date to DB");
         LOGGER.info(String.format("Book %s %s was successfully updated", book.getTitle(), author.getFirstName(), author.getLastName()));
         return ADMIN_MANAGE_PATH;
     }
@@ -60,7 +56,7 @@ public class UpdateBookSubmitCommand extends CommandWrapper {
                 .setTitle(request.getParameter("title"))
                 .setDiscription(request.getParameter("description"))
                 .setPictureId(request.getParameter("picture"))
-                .setAvaliable(Boolean.parseBoolean(request.getParameter("isAvailable")))
+                .setAvaliable(Boolean.parseBoolean(request.getParameter("isAvaliable")))
                 .setQuantity(request.getParameter("quantity"))
                 .setYear(request.getParameter("year"))
                 .setGenreId(Integer.parseInt(request.getParameter("genre")))

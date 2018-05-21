@@ -7,7 +7,7 @@
     border: 1px solid #b5e9a7;
     border-radius: 3px;
     position: relative;
-    background-color: #FFFDFB;
+    background-color: #f3e9e9;
     margin: 0 20px 20px 0;
     text-decoration: none;
     color: #474747;
@@ -27,7 +27,7 @@
     text-decoration: none;
     color: #474747;
     z-index: 0;
-    height: 570px;
+    height: 550px;
     position: relative;
     padding: 10px 10px 10px 10px;
 }
@@ -37,7 +37,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 385px;
+    height: 400px;
 }
 
 .info-bottom-for-added-info {
@@ -45,7 +45,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 370px;
+    height: 374px;
 }
 
 .submit-edit-delete {
@@ -57,6 +57,12 @@
     max-height: 100%;
     margin: 0 auto;
     text-align: center;
+}
+
+.book-image > img {
+    height: 280px;
+    width: 250px;
+    object-fit: contain;
 }
 
 .button {
@@ -76,11 +82,11 @@
 .book-title {
     text-align: center;
     padding: 10px 10px 10px 10px;
-    background-color: #0075ff17;
+    background-color: #6b6464;
     font-family: serif;
     font-style: italic;
-    color: navy;
-    font-size: 18px;
+    color: #e1e1ef;
+    font-size: 25px;
 }
 
 .book-id {
@@ -96,7 +102,7 @@
     text-align: center;
     font-family: serif;
     font-style: italic;
-    color: navy;
+    color: #58453a;
 
 }
 
@@ -105,34 +111,64 @@
 
 .book-authors-box {
     text-align: center;
-    font-size: 14px;
-    background-color: #8fa3e829;
+    font-size: 18px;
+    background-color: #5c5e6366;
 }
 
 .detail-info {
     text-align: center;
 }
-.isAvaliable{
+
+.isAvaliable {
     text-align: center;
     padding: 10px 70px 10px 70px;
     color: red;
 }
-.submit-delete{
+
+.submit-delete {
     padding-right: 133px;
 }
-.date{
+
+.date {
     display: inline-block;
-    color:#4ab30a;
+    color: #4ab30a;
     font-family: cursive;
     margin-right: 30px;
     margin-left: 30px;
     font-size: 15px;
 }
-.return-date{
-    color:red;
+
+.return-date {
+    color: red;
 }
-.submit-load-book{color: white;}
-.load-book-box{background-color: #4f8db3;
-    margin: 20px 870px 20px 870px;
+
+.submit-load-book {
+    color: white;
+}
+
+.load-book-box {
+    background-color: #4f8db3;
+    margin: 3% 40% 3% 40%;
     padding: 10px 10px 10px 10px;
-    text-align: center;}
+    text-align: center;
+}
+.book-description{
+    text-align: center;
+    font-size: 18px;
+    background-color: #5c5e6366;
+    margin-right: 20%;
+    margin-left: 20%;
+    color: #50303;
+    font-family: serif;
+
+}
+.book-description-main-info{
+    text-align: center;
+    font-size: 30px;
+    font-style: italic;
+    font-family: serif;
+    margin: 60px 10px 40px 10px;
+}
+.book-year{
+    margin: 2% 5% 2% 5%;
+}

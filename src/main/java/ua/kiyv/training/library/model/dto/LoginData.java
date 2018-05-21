@@ -24,10 +24,6 @@ public class LoginData {
         this.password = password;
     }
 
-//    public static Builder builder() {
-//        return new Builder();
-//    }
-
     public static class Builder {
         private LoginData instance = new LoginData();
 

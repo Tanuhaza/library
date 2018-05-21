@@ -22,10 +22,6 @@ import java.io.IOException;
 
 import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_MANAGE_PATH;
 
-
-/**
- * Created by Tanya on 19.04.2018.
- */
 public class LoadBookSubmitCommand extends CommandWrapper {
     private static final Logger LOGGER = Logger.getLogger(LoadBookSubmitCommand.class);
     BookService bookService = BookServiceImpl.getInstance();

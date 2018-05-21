@@ -26,7 +26,7 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_STATISTIC
 
 public class StatisticsCommand implements Command {
     ParamExtractor paramExtractor = new ParamExtractor();
-    private static final int itemsPerPage = 2;
+    private static final int itemsPerPage = 3;
     private static final int FIRST = 1;
     private UserService userService = UserServiceImpl.getInstance();
 

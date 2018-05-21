@@ -1,8 +1,8 @@
 package ua.kiyv.training.library.exception;
 
-
-import ua.kiyv.training.library.exception.ApplicationException;
-
+/**
+ * this class represents custom exception for service layer
+ */
 public class ServiceException extends ApplicationException {
 
     public ServiceException(String message) {
@@ -14,7 +14,7 @@ public class ServiceException extends ApplicationException {
     }
 
     public ServiceException(Throwable cause, String message) {
-        super( cause, message);
+        super(cause, message);
     }
 
 }

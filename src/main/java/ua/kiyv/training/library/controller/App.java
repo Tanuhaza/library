@@ -36,22 +36,36 @@ public class App {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Book().getClass() == Book.class);
+//        System.out.println(new Book().getClass() == Book.class);
+        BookDao bookDao =DaoFactory.getInstance().createBookDao();
+        BookService bookService = BookServiceImpl.getInstance();
+        System.out.println(bookService.findById(40));
+//        Book book =bookService.findById(32);
+//        System.out.println(book.getId());
+//        Optional.ofNullable(bookDao.findById(40))
+//                .orElseThrow(IllegalArgumentException::new);
+
+//        System.out.println(bookDao.findById(40));
+//            String nullName = null;
+//        String name = Optional.ofNullable(nullName).orElseThrow(
+//                IllegalArgumentException::new);
+//        System.out.println(name);
+    }
 
 
 //        User user=new User("Tania","Zabolotko","wariushas@gmail","097394476","qwert", Role.USER);
 //        UserService userService =  ServiceFactory.getInstance().createUserService();
-////        userService.create(user);
+//        userService.create(user);
 ////        System.out.println( userService.findById(2));
 ////       System.out.println( userService.findAll());
 ////        System.out.println(userService.getUserByEmailPassword("admin@gmail.com","java1love"));
-        UserDao userDao = DaoFactory.getInstance().createUserDao();
+//        UserDao userDao = DaoFactory.getInstance().createUserDao();
 //
 //        AuthorDao authorDao =DaoFactory.getInstance().createAuthorDao();
 //        System.out.println(authorDao.findByFirstLastName("Greate","Author"));
-        BookDao bookDao =DaoFactory.getInstance().createBookDao();
-        Book book =new Book(1,"Red Stars","Amazing","1",4,2000,true,2,"star",1);
-        bookDao.update(book);
+//        BookDao bookDao =DaoFactory.getInstance().createBookDao();
+//        Book book =new Book(1,"Red Stars","Amazing","1",4,2000,true,2,"star",1);
+//        bookDao.update(book);
 
 //       AuthorService authorService = AuthorServiceImpl.getInstance();
 //        System.out.println(bookService.findAllBooks());
@@ -114,4 +128,4 @@ public class App {
 
 
     }
-}
+

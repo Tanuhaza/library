@@ -6,8 +6,10 @@
 
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="/css/dropdown.css">
 <link rel="stylesheet" href="/css/header.css">
 <link rel="stylesheet" href="/css/home.css">
+<link rel="stylesheet" href="/css/library.css">
 <script src="/js/jquery-3.2.1.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
 
@@ -33,7 +35,7 @@
             </div>
         </div>
         <nav id="mainmenu" class="mainmenu">
-            <ul>
+            <ul class="mainmenu-list">
                 <li>
                     <a href="/library/admin"><fmt:message key="library.menu.home" bundle="${msg}"/></a>
                 </li>
@@ -46,15 +48,13 @@
                 <li>
 
                     <form id="register-form" action="/library/search" method="post" role="form">
-                        <%--<div style="padding-left:16px">--%>
                         <input type="search" id="searchValue" name="searchValue"
-                               placeholder="Search the site..." size="50">
-                        <button >Search</button>
+                               placeholder= <fmt:message key="library.search.placeholder" bundle="${msg}"/> size="50">
+                        <button > <fmt:message key="library.button.search" bundle="${msg}"/></button>
                         <br>
-                        <input type="radio" name="filter" value="author" checked> author
-                        <input type="radio" name="filter" value="title" > title
-                        <input type="radio" name="filter" value="keywords" > keyword
-                        <%--</div>--%>
+                        <input type="radio" name="filter" value="author" checked>  <fmt:message key="library.search.attribute.author" bundle="${msg}"/>
+                        <input type="radio" name="filter" value="title" >  <fmt:message key="library.search.attribute.title" bundle="${msg}"/>
+                        <input type="radio" name="filter" value="keywords" >  <fmt:message key="library.search.attribute.keywords" bundle="${msg}"/>
                     </form>
 
                 </li>

@@ -11,7 +11,6 @@
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <meta charset="utf-8">
     <title>Title</title>
-    <%--<link rel="stylesheet" href="/css/login.css">--%>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/login.js"></script>
@@ -44,7 +43,8 @@
                             <form id="register-form" action="/library/admin/book/load" method="post" role="form">
                                 <input type="hidden" name="bookId" value="${book.id}">
                                 <div class="form-group">
-                                    <input type="text" name="title" id="title" tabindex="1" class="form-control" pattern="[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\s\d]{1,100}"
+                                    <input type="text" name="title" id="title" tabindex="1" class="form-control"
+                                           pattern="[A-ZА-ЯЇІЄЁ]{1}[a-zA-Zа-яА-ЯїЇіІєЄёЁ\s\d]{1,100}"
                                            placeholder="<fmt:message key="library.addBook.placeholder.title" bundle="${msg}"/>"
                                            value="${requestScope.previousBookTitle}" required>
                                 </div>
@@ -130,3 +130,4 @@
 </div>
 </body>
 </html>
+

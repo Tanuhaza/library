@@ -39,15 +39,12 @@ public class AuthFilter implements Filter {
         HttpServletResponse res = ((HttpServletResponse) response);
         HttpSession session = req.getSession();
         String uri = req.getRequestURI();
-        System.out.println(uri);
-        req.setCharacterEncoding(Attributes.UTF_8);
         res.setContentType("text/html");
 
         Integer userId = (Integer) session.getAttribute(Attributes.USER_ID);
         Role role = (Role) session.getAttribute(Attributes.USER_ROLE);
 
         if (!checkUserPermissions(uri, userId, role)) {
-            System.out.println("AuthFilter.class REDIRECT TO LOGIN");
             res.sendRedirect(PagesPath.LOGIN_PATH);
             logger.info(String.format(USER_NOT_AUTHORIZED));
             return;

@@ -5,7 +5,6 @@ import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.service.BookService;
 import ua.kiyv.training.library.service.Impl.BookServiceImpl;
 import ua.kiyv.training.library.utils.constants.Attributes;
-import ua.kiyv.training.library.utils.constants.PagesPath;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,9 +14,6 @@ import java.io.IOException;
 import static ua.kiyv.training.library.utils.constants.Attributes.BOOK_ID;
 import static ua.kiyv.training.library.utils.constants.PagesPath.*;
 
-/**
- * Created by Tanya on 19.04.2018.
- */
 public class EditBookSubmitCommand extends CommandWrapper {
     private static final Logger LOGGER = Logger.getLogger(EditBookSubmitCommand.class);
     BookService bookService = BookServiceImpl.getInstance();
@@ -25,9 +21,7 @@ public class EditBookSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         saveBookDataToRequest(request);
-        request.getSession().setAttribute(BOOK_ID,Integer.valueOf(request.getParameter("bookId")));
-        System.out.println("BOOK_ID" + request.getParameter("bookId"));
-        System.out.println("REAQUEST PARAMETR " +request.getParameter("first_author_surname"));
+        request.getSession().setAttribute(BOOK_ID, Integer.valueOf(request.getParameter("bookId")));
         request.getRequestDispatcher(UPDATE_BOOK_PAGE).forward(request, response);
         return FORWARD;
     }

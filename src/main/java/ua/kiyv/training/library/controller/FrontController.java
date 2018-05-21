@@ -15,12 +15,11 @@ import java.io.IOException;
 /**
  * This class represents request dispatcher. It calls commands for correspondent request uri
  * and forwards request to the appropriate view page.
- *
  */
 @WebServlet(name = "MainController", value = "/library/*")
 public class FrontController extends HttpServlet {
 
-    private static final Logger logger = Logger.getLogger(FrontController.class);
+    private static final Logger LOGGER = Logger.getLogger(FrontController.class);
     private static final String URI_IS = " : uri = ";
 
     private static final String DELIMITER = CommandHolder.DELIMITER;
@@ -35,7 +34,6 @@ public class FrontController extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         commandHolder = new CommandHolder(getServletContext().getContextPath());
-        System.out.println("IN CONTROLLER");
     }
 
     /**
@@ -48,14 +46,10 @@ public class FrontController extends HttpServlet {
      */
     private String processRequest(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
-
-        System.out.println("FrontController.processRequest()");
         String commandKey = getMethod(request) + DELIMITER + getUri(request);
         Command command = commandHolder.findCommand(commandKey);
-        System.out.println(command);
         String view = command.execute(request, response);
         return view;
-
     }
 
     private String getMethod(HttpServletRequest request) {
@@ -64,19 +58,16 @@ public class FrontController extends HttpServlet {
 
     private String getUri(HttpServletRequest request) {
         String uri = request.getRequestURI();
-        logger.debug(request.getMethod().toUpperCase() + URI_IS + uri);
+        LOGGER.debug(request.getMethod().toUpperCase() + URI_IS + uri);
         return uri.toLowerCase();
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        System.out.println("GET");
         String path = processRequest(request, response);
-        System.out.println("FrontController.doGet() path: " + path);
-        if(!path.equals(PagesPath.REDIRECTED)) {
-                request.getRequestDispatcher(path).forward(request, response);
-            System.out.println("In if block FORWARD");
+        if (!path.equals(PagesPath.REDIRECTED)) {
+            request.getRequestDispatcher(path).forward(request, response);
         }
     }
 
@@ -86,9 +77,9 @@ public class FrontController extends HttpServlet {
             throws ServletException, IOException {
         String path = processRequest(request, response);
 
-        if(!path.equals(PagesPath.FORWARD)) //trur
-            System.out.println("FrontController.doPost() path: " + path);
+        if (!path.equals(PagesPath.FORWARD)) {
             response.sendRedirect(path);
+        }
     }
 
     void setCommandHolder(CommandHolder commandHolder) {

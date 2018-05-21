@@ -1,10 +1,8 @@
 package ua.kiyv.training.library.model.dto;
 
-import ua.kiyv.training.library.model.Author;
-import ua.kiyv.training.library.model.Book;
-
-import java.util.Date;
-import java.util.List;
+/**
+ * This class represents DTO to transfer book data from controller layer to user instance
+ */
 
 public class BookData {
     private Integer id;
@@ -180,14 +178,17 @@ public class BookData {
             instance.setFirstAuthorName(name);
             return this;
         }
+
         public BookData.Builder setFirstAuthorSurname(String surname) {
             instance.setFirstAuthorSurname(surname);
             return this;
         }
+
         public BookData.Builder setSecondAuthorName(String name) {
             instance.setSecondAuthorName(name);
             return this;
         }
+
         public BookData.Builder setSecondAuthorSurname(String surname) {
             instance.setSecondAuthorSurname(surname);
             return this;

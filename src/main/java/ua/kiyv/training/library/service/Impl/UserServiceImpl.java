@@ -1,6 +1,6 @@
 package ua.kiyv.training.library.service.Impl;
 
-import org.apache.log4j.Level;
+
 import org.apache.log4j.Logger;
 import ua.kiyv.training.library.dao.AuthorDao;
 import ua.kiyv.training.library.exception.DaoException;
@@ -21,15 +21,17 @@ import java.util.Base64;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Implementation for User service
+ **/
 public class UserServiceImpl implements UserService {
-    private static AuthorDao authorDao = JdbcDaoFactory.getInstance().createAuthorDao();
 
     private static final Logger LOGGER = Logger.getLogger(BookServiceImpl.class);
 
     private DaoFactory daoFactory;
     private UserDao userDao;
 
-    public UserServiceImpl(DaoFactory instance) {
+    private UserServiceImpl(DaoFactory instance) {
         this.daoFactory = instance;
         this.userDao = daoFactory.createUserDao();
     }

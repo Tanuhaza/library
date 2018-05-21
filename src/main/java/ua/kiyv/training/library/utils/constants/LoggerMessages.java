@@ -58,6 +58,7 @@ public class LoggerMessages {
     public static final String ERROR_FIND_AUTHOR_BY_EMAIL = "Error occurred when finding author by email: ";
     public static final String ERROR_FIND_ALL_AUTHOR = "Error occurred when finding all authors";
     public static final String ERROR_SEARCH_BY_AUTHOR = "Error occurred when searching by author";
+    public static final String ERROR_SEARCH_BY_BOOK = "Error occurred when searching by book";
     public static final String ERROR_SEARCH_BY_TITLE = "Error occurred when searching by title";
     public static final String ERROR_SEARCH_BY_KEYWORDS = "Error occurred when searching by keywords";
     public static final String ERROR_CREATE_NEW_AUTHOR = "Error occurred when creating new author: ";

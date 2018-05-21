@@ -4,10 +4,9 @@ import ua.kiyv.training.library.dao.By;
 import ua.kiyv.training.library.model.*;
 
 import java.util.List;
-import java.util.Optional;
 
 /**
- * Created by Tanya on 17.04.2018.
+ * Book service
  */
 public interface BookService {
     void create(Book book);
@@ -16,7 +15,7 @@ public interface BookService {
 
     void update(Book book);
 
-    public void updateBookAuthor(Book book, Author author);
+    void updateBookAuthor(Book book, Author author);
 
     List<Book> findAllBooks();
 
@@ -42,5 +41,5 @@ public interface BookService {
 
     List<Book> findBy(String searchValue, By query);
 
-    public Boolean isBookOnLoanByUser(Integer bookId, Integer userId);
+    Boolean isBookOnLoanByUser(Integer bookId, Integer userId);
 }

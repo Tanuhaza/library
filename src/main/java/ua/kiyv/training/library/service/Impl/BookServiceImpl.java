@@ -19,8 +19,8 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Created by Tanya on 17.04.2018.
- */
+ * Implementation for Book service
+ **/
 public class BookServiceImpl implements BookService {
     private static final Logger LOGGER = Logger.getLogger(BookServiceImpl.class);
     private DaoFactory daoFactory;
@@ -96,11 +96,9 @@ public class BookServiceImpl implements BookService {
             bookDao.update(book);
             try {
                 Author authorDB = authorDao.findByFirstLastName(author.getFirstName(), author.getLastName());
-                System.out.println("FIND AUTHOR " +authorDB);
                 bookDao.deleteMatchBookAuthor(book.getId());
                 bookDao.matchBookAuthor(book, authorDB);
             } catch (DaoException e) {
-                System.out.println("GOT EXCEPTION");
                 bookDao.deleteMatchBookAuthor(book.getId());
                 authorDao.create(author);
                 bookDao.matchBookAuthor(book, author);
@@ -119,7 +117,6 @@ public class BookServiceImpl implements BookService {
         try {
             bookDao.deleteMatchBookAuthor(id);
             borrowedBookDao.deleteById(id);
-            System.out.println("After deleting connection book-author");
             bookDao.deleteById(id);
             JdbcTransactionHelper.getInstance().commitTransaction();
         } catch (DaoException ex) {
@@ -147,7 +144,7 @@ public class BookServiceImpl implements BookService {
     @Override
     public Book findById(Integer id) {
         return Optional.ofNullable(bookDao.findById(id))
-                .orElseThrow(() -> new ServiceException(MessageKeys.WRONG_BOOK_DB_NO_ID_OBTAINED));
+                .orElseThrow(()->new ServiceException(MessageKeys.WRONG_BOOK_DB_NO_ID_OBTAINED));
     }
 
     @Override
@@ -163,7 +160,6 @@ public class BookServiceImpl implements BookService {
     @Override
     public void createBorrowedBookByUserId(Integer bookId, Integer userId) {
         Book book = bookDao.findById(bookId);
-        System.out.println(book);
         if (isBookAvailable(book) && (!isBookOnLoanByUser(bookId, userId))) {
             book.setQuantity(book.getQuantity() - 1);
             book.setAvaliable(isBookAvailable(book));

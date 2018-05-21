@@ -5,12 +5,10 @@ import org.apache.log4j.Logger;
 import ua.kiyv.training.library.controller.command.CommandWrapper;
 import ua.kiyv.training.library.controller.validate.Errors;
 import ua.kiyv.training.library.controller.validate.LoginValidator;
-import ua.kiyv.training.library.controller.validate.UserValidator;
 import ua.kiyv.training.library.model.Genre;
 import ua.kiyv.training.library.model.Role;
 import ua.kiyv.training.library.model.User;
 import ua.kiyv.training.library.model.dto.LoginData;
-import ua.kiyv.training.library.model.dto.RegisterData;
 import ua.kiyv.training.library.service.BookService;
 
 import ua.kiyv.training.library.service.Impl.BookServiceImpl;
@@ -23,7 +21,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +31,7 @@ public class LoginSubmitCommand extends CommandWrapper {
 
     private UserService userService = UserServiceImpl.getInstance();
     private BookService bookService = BookServiceImpl.getInstance();
-    private  LoginValidator loginValidator;
+    private LoginValidator loginValidator;
 
     public LoginSubmitCommand() {
         loginValidator = new LoginValidator();
@@ -49,14 +46,14 @@ public class LoginSubmitCommand extends CommandWrapper {
 
         LoginData loginData = extractLoginData(request);
         errors.addErrors(loginValidator.validate(loginData).getErrors());
-        if(errors.hasErrors()){
+        if (errors.hasErrors()) {
             processErrors(request, errors);
             request.getRequestDispatcher(PagesPath.LOGIN_PAGE).forward(request, response);
             return PagesPath.FORWARD;
         }
 
         String login = loginData.getEmail();
-        String password = loginData.getPassword();
+        String password = userService.encrypt(loginData.getPassword());
         Optional<User> user = userService.getUserByEmailPassword(login, password);
         if (user.isPresent()) {
             User person = user.get();
@@ -71,7 +68,7 @@ public class LoginSubmitCommand extends CommandWrapper {
     }
 
     private LoginData extractLoginData(HttpServletRequest request) {
-        return   new LoginData.Builder()
+        return new LoginData.Builder()
                 .email(request.getParameter(PARAM_LOGIN))
                 .password(request.getParameter(PARAM_PASSWORD))
                 .build();
@@ -84,7 +81,8 @@ public class LoginSubmitCommand extends CommandWrapper {
         }
         return result;
     }
-    private void processErrors(HttpServletRequest request, Errors errors){
+
+    private void processErrors(HttpServletRequest request, Errors errors) {
         LOGGER.error("Wrong input data in login");
         request.setAttribute(Attributes.ERRORS, errors);
     }

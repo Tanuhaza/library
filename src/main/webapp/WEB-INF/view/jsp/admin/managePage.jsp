@@ -17,7 +17,8 @@
 <jsp:include page="../admin/header.jsp"/>
 
 <div class="load-book-box">
-    <a class="submit-load-book" href="/library/admin/book/load"><fmt:message key="library.admin.LoadBook" bundle="${msg}"/></a>
+    <a class="submit-load-book" href="/library/admin/book/load"><fmt:message key="library.admin.LoadBook"
+                                                                             bundle="${msg}"/></a>
 </div>
 
 <div class="container">
@@ -25,8 +26,9 @@
         <c:forEach var="book" items="${books}">
             <div class="col-lg-4">
                 <div class="book-box">
-                    <div class="book-id">${book.id}</div>
-                    <div class="book-title">${book.title}</div>
+                    <div class="book-title">
+                        <div class="book-id">${book.id}</div>
+                            ${book.title}</div>
                     <div class="book-authors-box">
                         <c:forEach var="author" items="${book.authors}">
                             <div class="book-author">

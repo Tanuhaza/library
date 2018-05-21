@@ -1,7 +1,5 @@
 package ua.kiyv.training.library.dao.Impl.query;
 
-import java.security.PublicKey;
-
 public interface BookQuery {
     String CREATE_BOOK = "INSERT INTO book (title,description,picture,available,quantity," +
             "year,genre_id,keywords) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";

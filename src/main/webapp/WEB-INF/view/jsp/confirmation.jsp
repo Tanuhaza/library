@@ -5,19 +5,20 @@
 <html>
 <head>
     <fmt:setLocale value="${sessionScope['locale']}"/>
-    <fmt:requestEncoding value="UTF-8" />
+    <fmt:requestEncoding value="UTF-8"/>
     <fmt:setBundle basename="${sessionScope['bundleFile']}" var="msg"/>
     <link rel="stylesheet" href="/css/home.css">
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
 </head>
 <body class="body-container">
 
 <jsp:include page="user/header.jsp"></jsp:include>
-    <div class="user-welcome">
-        <div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>
-        <div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>
-    </div>
+<div class="user-welcome">
+    <div class="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>
+    <div class="user-first-last-name" align="center">${user.firstName}<span
+            style='padding-left:10px;'> </span>${user.lastName}</div>
+</div>
 <jsp:include page="fragment/footer.jsp"></jsp:include>
 </body>
 </html>

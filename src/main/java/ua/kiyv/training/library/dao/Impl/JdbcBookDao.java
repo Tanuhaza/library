@@ -17,6 +17,9 @@ import ua.kiyv.training.library.utils.constants.MessageKeys;
 import java.sql.*;
 import java.util.*;
 
+/**
+ * * Implementation of book dao, which works with MySql using jdbc
+ */
 public class JdbcBookDao implements BookDao, BookQuery {
 
     private static final Logger logger = Logger.getLogger(JdbcBookDao.class);
@@ -70,7 +73,6 @@ public class JdbcBookDao implements BookDao, BookQuery {
                     author = authorMapper.makeUnique(authors, author);
                     book.getAuthors().add(author);
                 }
-                book.setId(id);
             }
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
@@ -115,7 +117,6 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Author> authors = new HashMap<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query.getQuery())) {
-            System.out.println(query.getQuery());
             statement.setString(1, "%" + searchValue + "%");
             try (ResultSet resultSet = statement.executeQuery()) {
                 BookMapper bookMapper = new BookMapper();
@@ -127,10 +128,9 @@ public class JdbcBookDao implements BookDao, BookQuery {
                     author = authorMapper.makeUnique(authors, author);
                     book.getAuthors().add(author);
                 }
-                System.out.println(books.values());
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_SEARCH_BY_AUTHOR);
+            logger.error(LoggerMessages.ERROR_SEARCH_BY_BOOK);
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_SEARCH_BY_AUTHOR);
         }
         return new ArrayList<>(books.values());
@@ -145,7 +145,7 @@ public class JdbcBookDao implements BookDao, BookQuery {
         Map<Integer, Author> authors = new HashMap<>();
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery(SELECT_ALL_BOOKS)){
+             ResultSet resultSet = statement.executeQuery(SELECT_ALL_BOOKS)) {
             BookMapper bookMapper = new BookMapper();
             AuthorMapper authorMapper = new AuthorMapper();
             while (resultSet.next()) {
@@ -166,7 +166,7 @@ public class JdbcBookDao implements BookDao, BookQuery {
     @Override
     public void update(Book book) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK)){
+             PreparedStatement statement = connection.prepareStatement(UPDATE_BOOK)) {
             statement.setString(1, book.getTitle());
             statement.setString(2, book.getDescription());
             statement.setString(3, book.getPictureId());
@@ -177,13 +177,10 @@ public class JdbcBookDao implements BookDao, BookQuery {
             statement.setString(8, book.getKeywords());
             statement.setInt(9, book.getRate());
             statement.setInt(10, book.getId());
-            System.out.println(book.getId());
             int affectedRows = statement.executeUpdate();
-            System.out.println("IN BOOK DAO UPDATE");
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_UPDATING_NO_ROWS_AFFECTED);
             }
-            System.out.println("AFFECTED ROWS !=0");
         } catch (SQLException ex) {
             logger.error(LoggerMessages.ERROR_UPDATE_BOOK + book.toString());
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_UPDATE);
@@ -241,11 +238,8 @@ public class JdbcBookDao implements BookDao, BookQuery {
     public void matchBookAuthor(Book book, Author author) {
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(MATCH_BOOK_AUTHOR)) {
-            System.out.println("First Match book id " + book.getId());
             statement.setInt(1, book.getId());
-            System.out.println("Match book id " + book.getId());
             statement.setInt(2, author.getId());
-            System.out.println("Match book id " + book.getId());
             int affectedRows = statement.executeUpdate();
             if (affectedRows == 0) {
                 throw new DaoException(MessageKeys.WRONG_BOOK_DB_CREATING_NO_ROWS_AFFECTED);
@@ -255,6 +249,4 @@ public class JdbcBookDao implements BookDao, BookQuery {
             throw new DaoException(ex, MessageKeys.WRONG_BOOK_DB_CAN_NOT_CREATE);
         }
     }
-
-
 }

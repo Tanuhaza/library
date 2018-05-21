@@ -3,6 +3,9 @@ package ua.kiyv.training.library.dao.Impl;
 
 import ua.kiyv.training.library.dao.*;
 
+/**
+ * JDBC implementation of dao factory
+ */
 public class JdbcDaoFactory extends DaoFactory {
 
     @Override

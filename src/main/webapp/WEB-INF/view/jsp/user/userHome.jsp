@@ -15,11 +15,6 @@
 </head>
 <body class="body-profile-container">
 <jsp:include page="../user/header.jsp"/>
-<%--<div class="user-welcome">--%>
-<%--<div  class ="welcome" align="center"><fmt:message key="library.you.are.welcom" bundle="${msg}"/></div>--%>
-<%--<div class="user-first-last-name" align="center">${user.firstName}<span style='padding-left:10px;'> </span>${user.lastName}</div>--%>
-<%--</div>--%>
-
 <div class="container">
     <div class="row">
         <c:forEach var="borrowedBook" items="${borrowedBooks}">

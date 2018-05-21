@@ -26,6 +26,6 @@ public class CheckUserBorrowedBooksSubmitCommand extends CommandWrapper {
     @Override
     public String performExecute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Integer userId = Integer.valueOf(request.getParameter(USER_ID));
-        return ADMIN_BORROWED_BOOKS_BY_USER_PATH+"/"+userId;
+        return ADMIN_BORROWED_BOOKS_BY_USER_PATH + "/" + userId;
     }
 }

@@ -11,7 +11,6 @@ public class BookMapper implements ObjectMapper<Book> {
 
     @Override
     public Book extractFromResultSet(ResultSet rs) throws SQLException {
-
         return new Book.Builder()
                 .setId(rs.getInt("book_id"))
                 .setTitle(rs.getString("title"))

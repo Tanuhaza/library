@@ -21,8 +21,8 @@ public class BookAdminDescriptionCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int bookId = paramExtractor.extractSingleIntPathParam(request);
-        Book book =bookService.findById(bookId);
+        Book book = bookService.findById(bookId);
         request.setAttribute("book", book);
-        return ADMIN_BOOK_DESCRIPTION_PAGE ;
+        return ADMIN_BOOK_DESCRIPTION_PAGE;
     }
 }

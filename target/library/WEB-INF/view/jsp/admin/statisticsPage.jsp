@@ -43,12 +43,7 @@
                     </tr>
         </c:forEach>
         </tbody>
-        <%--</c:forEach>--%>
-    <%--</div>--%>
     <jsp:include page="../fragment/paginator.jsp"/>
 </table>
-<%--</div>--%>
-
-
 </body>
 </html>

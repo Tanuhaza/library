@@ -18,6 +18,9 @@ import java.util.List;
 
 import static ua.kiyv.training.library.dao.Impl.query.GenreQuery.SELECT_ALL_GENRES;
 
+/**
+ * * Implementation of genre dao, which works with MySql using jdbc
+ */
 public class JdbcGenreDao implements GenreDao {
 
     private static final Logger logger = Logger.getLogger(JdbcGenreDao.class);

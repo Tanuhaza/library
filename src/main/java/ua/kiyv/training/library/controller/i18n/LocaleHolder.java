@@ -1,9 +1,5 @@
 package ua.kiyv.training.library.controller.i18n;
 
-
-
-
-
 import ua.kiyv.training.library.utils.constants.Attributes;
 
 import java.util.Locale;

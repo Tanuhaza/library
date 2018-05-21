@@ -17,15 +17,17 @@ import java.util.*;
 
 import static ua.kiyv.training.library.dao.Impl.query.UserQuery.*;
 
+/**
+ * * Implementation of user dao, which works with MySql using jdbc
+ */
 public class JdbcUserDao implements UserDao {
 
-    private static final Logger logger = Logger.getLogger(JdbcUserDao.class);
+    private static final Logger LOGGER = Logger.getLogger(JdbcUserDao.class);
 
     @Override
     public void create(User user) {
-        String sqlStatement = CREATE_USER;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlStatement,
+             PreparedStatement statement = connection.prepareStatement(CREATE_USER,
                      Statement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, user.getFirstName());
             statement.setString(2, user.getLastName());
@@ -46,7 +48,7 @@ public class JdbcUserDao implements UserDao {
             user.setId(id);
             generatedKeys.close();
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_CREATE_NEW_USER + user.toString());
+            LOGGER.error(LoggerMessages.ERROR_CREATE_NEW_USER + user.toString());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_CREATE);
         }
     }
@@ -73,7 +75,7 @@ public class JdbcUserDao implements UserDao {
             user.getBorrowedBooks().add(borrowedBook);
             resultSet.close();
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
+            LOGGER.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_ID + id);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
         }
         return user;
@@ -98,7 +100,7 @@ public class JdbcUserDao implements UserDao {
                 user.getBorrowedBooks().add(borrowedBook);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
+            LOGGER.error(LoggerMessages.ERROR_FIND_ALL_USERS);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
         }
         return new ArrayList<>(users.values());
@@ -119,7 +121,7 @@ public class JdbcUserDao implements UserDao {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_UPDATING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_UPDATE_USER + user.toString());
+            LOGGER.error(LoggerMessages.ERROR_UPDATE_USER + user.toString());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_UPDATE);
         }
     }
@@ -134,7 +136,7 @@ public class JdbcUserDao implements UserDao {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_DELETING_NO_ROWS_AFFECTED);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_DELETE_USER + user.getId());
+            LOGGER.error(LoggerMessages.ERROR_DELETE_USER + user.getId());
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_DELETE);
         }
     }
@@ -153,7 +155,7 @@ public class JdbcUserDao implements UserDao {
                 result = userMapper.extractFromResultSet(resultSet);
             }
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_EMAIL + email);
+            LOGGER.error(LoggerMessages.ERROR_FIND_AUTHOR_BY_EMAIL + email);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET);
         }
         return result;
@@ -163,14 +165,14 @@ public class JdbcUserDao implements UserDao {
     public int countAllUsers() {
         int totalNumberOfUsers;
         try (DaoConnection connection = JdbcTransactionHelper.getInstance().getConnection();
-            PreparedStatement statement = connection.prepareStatement(COUNT_USERS);
-            ResultSet resultSet = statement.executeQuery()){
+             PreparedStatement statement = connection.prepareStatement(COUNT_USERS);
+             ResultSet resultSet = statement.executeQuery()) {
             if (!resultSet.next()) {
                 throw new DaoException(MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
             }
             totalNumberOfUsers = resultSet.getInt("total_count");
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
+            LOGGER.error(LoggerMessages.ERROR_FIND_ALL_USERS);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
         }
         return totalNumberOfUsers;
@@ -192,9 +194,10 @@ public class JdbcUserDao implements UserDao {
             }
             resultSet.close();
         } catch (SQLException ex) {
-            logger.error(LoggerMessages.ERROR_FIND_ALL_USERS);
+            LOGGER.error(LoggerMessages.ERROR_FIND_ALL_USERS);
             throw new DaoException(ex, MessageKeys.WRONG_USER_DB_CAN_NOT_GET_ALL_USERS);
         }
         return users;
     }
 }
+

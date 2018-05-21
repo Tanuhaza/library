@@ -3,6 +3,10 @@ package ua.kiyv.training.library.model;
 
 import java.util.Date;
 
+
+/**
+ * this class represents borrowed book entity
+ */
 public class BorrowedBook extends Book {
     private Date startDate;
     private Date dueToReturnDate;
@@ -45,13 +49,13 @@ public class BorrowedBook extends Book {
     @Override
     public String toString() {
         return "BorrowedBook{" +
-                "id=" + getId()+
+                "id=" + getId() +
                 ", title='" + getTitle() + '\'' +
                 ", description='" + getDescription() + '\'' +
                 ", pictureId='" + getPictureId() + '\'' +
                 ", rate=" + getRate() +
                 ", year=" + getYear() +
-                ", avaliable=" + isAvaliable()+
+                ", avaliable=" + isAvaliable() +
                 ", quantity=" + getQuantity() +
                 "startDate=" + startDate +
                 ", dueToReturnDate=" + dueToReturnDate +
@@ -130,8 +134,4 @@ public class BorrowedBook extends Book {
             return instance;
         }
     }
-
-//    public static Builder builder(){
-//        return new Builder();
-//    }
 }

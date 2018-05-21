@@ -13,7 +13,7 @@ import static ua.kiyv.training.library.utils.constants.PagesPath.ADMIN_HOME_PAGE
 public class AdminHomeCommand implements Command {
 
     @Override
-    public String execute (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return ADMIN_HOME_PAGE;
     }
 }

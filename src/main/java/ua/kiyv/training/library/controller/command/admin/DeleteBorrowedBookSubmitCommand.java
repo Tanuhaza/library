@@ -30,7 +30,7 @@ public class DeleteBorrowedBookSubmitCommand extends CommandWrapper {
         Integer userId = Integer.valueOf(request.getParameter(USER_ID));
         Integer bookId = Integer.valueOf(request.getParameter(BOOK_ID));
         bookService.deleteBorrowedBookByUserId(bookId, userId);
-        return ADMIN_BORROWED_BOOKS_BY_USER_PATH+"/"+userId;
+        return ADMIN_BORROWED_BOOKS_BY_USER_PATH + "/" + userId;
     }
 
 

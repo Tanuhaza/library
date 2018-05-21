@@ -1,10 +1,12 @@
 package ua.kiyv.training.library.model;
 
 
-
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * this class represents user entity
+ */
 public class User {
     private int id;
     private String firstName;
@@ -34,7 +36,7 @@ public class User {
     }
 
     public User() {
-        this.borrowedBooks=new ArrayList<>();
+        this.borrowedBooks = new ArrayList<>();
     }
 
     public int getId() {
@@ -132,7 +134,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", role=" + role +
                 ", borrowedBooks=" + borrowedBooks +
-                '}'+'\n';
+                '}' + '\n';
     }
 
     public static class Builder {
@@ -177,6 +179,5 @@ public class User {
             return instance;
         }
     }
-
 }
 
